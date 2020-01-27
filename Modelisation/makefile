@@ -3,7 +3,7 @@
 BASE	= modelisation.tex
 SOURCES = $(wildcard *.tex)
 
-UMLETSH=umlet.sh
+UMLETSH=umlet
 UMLET = $(wildcard DiagrammesDeCasDUtilisation/*.uxf) \
 	$(wildcard DiagrammesDeClasses/*.uxf) \
 	$(wildcard DiagrammesDObjets/*.uxf) \
