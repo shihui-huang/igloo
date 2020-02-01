@@ -14,3 +14,4 @@
 **/*.toc
 **/*.iml
 **/.idea
+.DS_Store
