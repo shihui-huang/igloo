@@ -218,7 +218,86 @@ Nombre de jeux de test
 \end{tabular}
 \caption{Cas d'utilisation <<~créer une chambre~>>}
 \end{table}
+        \begin{table}[htbp!]
+            \begin{tabular}{|p{0.6\linewidth}|c|c|c|c|c|c|c|c|}
+                \hline
+                Numéro de test
+                    &1&2&3&4&5&6&7&8\\
+                \hline
+                \hline
+                Nom et prénom du client bien formés (non \nullvalue et non vide)
+                    &F&T&T& & & & &T\\
+                \hline
+                Client existe
+                    & &F&T& & & & &T\\
+                \hline
+                Client occupe aucune chambre
+                    & & &F& & & & &T\\
+                \hline
+                \hline
+                Identifiant/code de la chambre bien formé ($\neq$ \nullvalue $\land$ $\neq$ vide)
+                    & & & &F&T&T&T&T\\
+                \hline
+                Chambre avec ce code existante
+                    & & & & &F&T&T&T\\
+                \hline
+                Chambre non occupée
+                    & & & & & &F&T&T\\
+                \hline
+                Dernière paire de clefs de la chambre bien formé ($\neq$ \nullvalue $\land$ $\neq$ vide)
+                    & & & & & & &F&T\\
+                \hline
+                \hline
+                Enregistrement accepté
+                    &F&F&F&F&F&F&F&T\\
+                \hline
+                \hline
+                Nombre de jeux de test
+                                    &2&1&1&2&1&1&2&2 \\
+                \hline
+            \end{tabular}
+            \caption{Cas d'utilisation <<~enregistrer l'occupation d'une chambre par un client~>>}
+        \end{table}
 
+        \begin{table}[htbp!]
+            \begin{tabular}{|p{0.6\linewidth}|c|c|c|c|c|c|c|c|}
+                \hline
+                Numéro de test
+                    &1&2&3&4&5&6&7&8\\
+                \hline
+                \hline
+                Nom et prénom du client bien formés (non \nullvalue et non vide)
+                    &F&T&T& & & & &T\\
+                \hline
+                Client existe
+                    & &F&T& & & & &T\\
+                \hline
+                Client occupe une chambre
+                    & & &F& & & & &T\\
+                \hline
+                \hline
+                Identifiant/code de la chambre bien formé ($\neq$ \nullvalue $\land$ $\neq$ vide)
+                    & & & &F&T&T&T&T\\
+                \hline
+                Chambre avec ce code existante
+                    & & & & &F&T&T&T\\
+                \hline
+                Chambre occupée
+                    & & & & & &F&T&T\\
+                \hline
+                Paire de clés du badge d'accès bien formées ($\neq$ \nullvalue $\land$ $\neq$ vide)
+                    & & & & & & &F&T\\
+                \hline
+                \hline                Libération acceptée
+                    &F&F&F&F&F&F&F&T\\
+                \hline
+                \hline
+                Nombre de jeux de test
+                    &2&1&1&2&1&1&2&2 \\
+                \hline
+            \end{tabular}
+            \caption{Cas d'utilisation <<~libérer une chambre~>>}
+        \end{table}
 \newpage
 
 \section{Conception}
