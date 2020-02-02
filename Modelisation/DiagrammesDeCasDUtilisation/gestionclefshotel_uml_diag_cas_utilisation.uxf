@@ -129,7 +129,7 @@ fontsize=10
     <coordinates>
       <x>300</x>
       <y>0</y>
-      <w>550</w>
+      <w>540</w>
       <h>990</h>
     </coordinates>
     <panel_attributes>GestionClefsHôtel
@@ -156,17 +156,6 @@ halign=left</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>Créer un client</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>350</x>
-      <y>530</y>
-      <w>310</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Donner le badge d'access au client pour un chambre libre</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -289,5 +278,16 @@ halign=left</panel_attributes>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;190.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>350</x>
+      <y>520</y>
+      <w>350</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Enregistrer l'occupation d'une chambre par un client</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
