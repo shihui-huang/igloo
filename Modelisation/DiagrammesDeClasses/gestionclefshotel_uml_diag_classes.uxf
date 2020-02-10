@@ -4,33 +4,41 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>80</y>
-      <w>240</w>
-      <h>80</h>
+      <x>330</x>
+      <y>190</y>
+      <w>480</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>GestionClefsHotel
 --
-</panel_attributes>
++chercherChambre(long id)
++creerChambre(long id, String graine, int sel)
++creerBadge(long id)
++chercherBadge(long id)
++obtenirGraineEtSel(Chambre chambre)
++creerClient(long id, String nom, String prenom)
++chercherClient(long id)
++enregisterOccupationChambre(Client client, Chambre chambre)
++libererChambre(Chambre chambre)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>150</y>
-      <w>320</w>
+      <x>190</x>
+      <y>360</y>
+      <w>200</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 m2=*</panel_attributes>
-    <additional_attributes>300.0;10.0;300.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+    <additional_attributes>180.0;10.0;180.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1090</x>
-      <y>90</y>
+      <x>400</x>
+      <y>40</y>
       <w>350</w>
       <h>100</h>
     </coordinates>
@@ -45,98 +53,124 @@ _+clefToString(byte[] clef): String_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
-      <y>270</y>
-      <w>190</w>
-      <h>110</h>
+      <x>60</x>
+      <y>480</y>
+      <w>280</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>Chambre
 --
 id: long
-code:String
 graine:String
-sel:int</panel_attributes>
+sel:int
+--
++create(long id, String graine, int sel)
++liberer()
++obtenirNouvellePaireDeCles()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
-      <y>280</y>
-      <w>210</w>
-      <h>90</h>
+      <x>820</x>
+      <y>500</y>
+      <w>330</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>_Client_
 --
 id: long
 nom: String
-prenom: String</panel_attributes>
+prenom: String
+--
++create(long id, String nom, String prenom)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>990</x>
-      <y>290</y>
-      <w>210</w>
-      <h>70</h>
+      <x>430</x>
+      <y>470</y>
+      <w>290</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>_Badge_
 --
-cle1: String
-cle2: String</panel_attributes>
+id: long
+cle1: byte[]
+cle2: byte[]
+--
++create(long id)
++inscrireCles(cle1, cle2)
++vider()
++associerClient(Client client)
++associerChambre(Chambre chambre)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
-      <y>150</y>
-      <w>40</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>820</x>
-      <y>150</y>
-      <w>300</w>
+      <x>760</x>
+      <y>360</y>
+      <w>250</w>
       <h>160</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 m2=*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;270.0;70.0;270.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;220.0;70.0;220.0;140.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>310</y>
-      <w>180</w>
-      <h>50</h>
+      <x>560</x>
+      <y>360</y>
+      <w>40</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>590</y>
+      <w>840</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..1
 m2=0..1
 &lt; utilise</panel_attributes>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;10.0;100.0;790.0;100.0;790.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>310</y>
-      <w>170</w>
+      <x>710</x>
+      <y>520</y>
+      <w>130</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..1
 m2=0..1
-possède &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+&lt; possède</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>520</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*
+&lt; ouvre</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
   </element>
 </diagram>

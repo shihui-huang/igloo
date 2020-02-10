@@ -32,6 +32,7 @@
 \usepackage{graphicx} % figure postcript avec latex,
 		      % figure png avec pdflatex, au lieu d'utiliser epsfig
 \usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage[export]{adjustbox}
 \usepackage{paralist}
 \usepackage{ifthen}
 \usepackage{amssymb}
@@ -310,7 +311,7 @@ attributs:
 \item \textsf{Client}~---~identifiant, nom, prénom (ces deux derniers
   sont ajoutés ici mais ne sont pas essentiels au fonctionnement du
   système \textsf{GestionClefsHotel})
-\item \textsf{Badge}~---~clé 1, clé 2
+\item \textsf{Badge}~---~identifiant, clé 1, clé 2
 \item \textsf{Util} (classe utilitaire déjà programmée)~---~'attribut
   de classe \textsf{TAILLE\_CLEF}, méthodes de classe
   \textsf{genererUneNouvelleClef} et \textsf{clefToString})
@@ -319,14 +320,12 @@ attributs:
 
 \subsection{Diagramme de classes}
 
-{\color{red}\textbf{Le diagramme de classes suivant est à compléter.}}
-
 \begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.6]{DiagrammesDeClasses/gestionclefshotel_uml_diag_classes}
-\caption{Diagramme de classes}
-\end{center}
-\label{umlet_diag_classes}
+  %\begin{center}
+    \includegraphics[width=1.3\textwidth,center]{DiagrammesDeClasses/gestionclefshotel_uml_diag_classes}
+    \caption{Diagramme de classes}
+  %\end{center}
+  \label{umlet_diag_classes}
 \end{figure}
 
 \newpage
