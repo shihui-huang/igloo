@@ -28,11 +28,11 @@
       <x>190</x>
       <y>360</y>
       <w>200</w>
-      <h>140</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 m2=*</panel_attributes>
-    <additional_attributes>180.0;10.0;180.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+    <additional_attributes>180.0;10.0;180.0;70.0;10.0;70.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -54,15 +54,17 @@ _+clefToString(byte[] clef): String_</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>60</x>
-      <y>480</y>
+      <y>470</y>
       <w>280</w>
-      <h>130</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>Chambre
 --
 id: long
-graine:String
-sel:int
+graine: String
+sel: int
+cle1: byte[]
+cle2: byte[]
 --
 +create(long id, String graine, int sel)
 +liberer()
@@ -143,7 +145,7 @@ m2=*</panel_attributes>
 m1=0..1
 m2=0..1
 &lt; utilise</panel_attributes>
-    <additional_attributes>10.0;20.0;10.0;100.0;790.0;100.0;790.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;100.0;790.0;100.0;790.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
