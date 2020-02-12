@@ -231,8 +231,8 @@ badge = chercherBadge(idBadge) : Badge</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-cle1, cle2 =
-obtenirNouvellePaireDeCles()</panel_attributes>
+clefs =
+obtenirNouvellePaireDeClefs()</panel_attributes>
     <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -330,11 +330,11 @@ associerChambre(chambre)</panel_attributes>
     <coordinates>
       <x>850</x>
       <y>590</y>
-      <w>120</w>
+      <w>180</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-cle1 = cle2</panel_attributes>
+clefs.clef1 = clefs.clef2</panel_attributes>
     <additional_attributes>10.0;40.0;50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -346,7 +346,7 @@ cle1 = cle2</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-cle2 = genererUneNouvelleCle(graine, sel)</panel_attributes>
+clefs.clef2 = genererUneNouvelleClef(graine, sel)</panel_attributes>
     <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -402,7 +402,7 @@ cle2 = genererUneNouvelleCle(graine, sel)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-inscrireCles(cle1, cle2)</panel_attributes>
+inscrireClefs(clefs)</panel_attributes>
     <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>

@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>330</x>
-      <y>190</y>
+      <y>180</y>
       <w>480</w>
       <h>180</h>
     </coordinates>
@@ -26,19 +26,19 @@
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>360</y>
+      <y>350</y>
       <w>200</w>
-      <h>130</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 m2=*</panel_attributes>
-    <additional_attributes>180.0;10.0;180.0;70.0;10.0;70.0;10.0;110.0</additional_attributes>
+    <additional_attributes>180.0;10.0;180.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>400</x>
-      <y>40</y>
+      <y>30</y>
       <w>350</w>
       <h>100</h>
     </coordinates>
@@ -46,7 +46,7 @@ m2=*</panel_attributes>
 --
 _TAILLE_CLEF:int:16_
 --
-_+générerUneNouvelleClef(String graine, int sel)_
+_+genererUneNouvelleClef(String graine, int sel)_
 _+clefToString(byte[] clef): String_</panel_attributes>
     <additional_attributes/>
   </element>
@@ -56,26 +56,24 @@ _+clefToString(byte[] clef): String_</panel_attributes>
       <x>60</x>
       <y>470</y>
       <w>280</w>
-      <h>170</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>Chambre
 --
 id: long
 graine: String
 sel: int
-cle1: byte[]
-cle2: byte[]
 --
 +create(long id, String graine, int sel)
 +liberer()
-+obtenirNouvellePaireDeCles()</panel_attributes>
++obtenirNouvellePaireDeClefs()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>820</x>
-      <y>500</y>
+      <y>490</y>
       <w>330</w>
       <h>100</h>
     </coordinates>
@@ -94,16 +92,14 @@ prenom: String
       <x>430</x>
       <y>470</y>
       <w>290</w>
-      <h>170</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>_Badge_
 --
 id: long
-cle1: byte[]
-cle2: byte[]
 --
 +create(long id)
-+inscrireCles(cle1, cle2)
++inscrireClefs(PaireClefs clefs)
 +vider()
 +associerClient(Client client)
 +associerChambre(Chambre chambre)</panel_attributes>
@@ -113,7 +109,7 @@ cle2: byte[]
     <id>Relation</id>
     <coordinates>
       <x>760</x>
-      <y>360</y>
+      <y>350</y>
       <w>250</w>
       <h>160</h>
     </coordinates>
@@ -125,27 +121,27 @@ m2=*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>560</x>
-      <y>360</y>
+      <y>350</y>
       <w>40</w>
-      <h>130</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 m2=*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>590</y>
+      <y>580</y>
       <w>840</w>
-      <h>120</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=0..1
 m2=0..1
 &lt; utilise</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;100.0;790.0;100.0;790.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;170.0;790.0;170.0;790.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -174,5 +170,41 @@ m1=1
 m2=1..*
 &lt; ouvre</panel_attributes>
     <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>660</y>
+      <w>110</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>PaireClefs
+--
+clef1: byte[]
+clef2: byte[]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>600</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;70.0;40.0;70.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>600</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;40.0;10.0;40.0;10.0;60.0</additional_attributes>
   </element>
 </diagram>

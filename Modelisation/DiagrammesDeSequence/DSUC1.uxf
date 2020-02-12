@@ -233,14 +233,14 @@ _:Chambre_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
+      <x>630</x>
       <y>450</y>
-      <w>230</w>
+      <w>270</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-cle1 = genererUneNouvelleCle(graine, sel)</panel_attributes>
-    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+clefs.clef1 = genererUneNouvelleClef(graine, sel)</panel_attributes>
+    <additional_attributes>230.0;20.0;30.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -267,14 +267,14 @@ cle1 = genererUneNouvelleCle(graine, sel)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
+      <x>630</x>
       <y>510</y>
-      <w>230</w>
+      <w>270</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-cle2 = genererUneNouvelleCle(graine, sel)</panel_attributes>
-    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+clefs.clef2 = genererUneNouvelleClef(graine, sel)</panel_attributes>
+    <additional_attributes>230.0;20.0;30.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
