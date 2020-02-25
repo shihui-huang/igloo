@@ -34,8 +34,8 @@ Denis Conan
 - tables de décision des tests de validation
     - [] à adapter selon les remarques précédentes
 - diagramme de classes
-    - [] une chambre est toujours associée à un badge ?
-    - [] une chambre peut être associée à plusieurs badges ?
+    - [x] une chambre est toujours associée à un badge ?
+    - [x] une chambre peut être associée à plusieurs badges ?
     - [] redondance de chemins entre Chambre et Badge (association directe et
          passage par PaireClefs) : c'est une faiblesse
     - [] redondance de chemins entre Chambre et Client
