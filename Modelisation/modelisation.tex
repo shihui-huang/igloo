@@ -350,31 +350,74 @@ attributs:
 
 \section{Fiche des classes}
 
-{\color{red}\textbf{La section est à compléter avec les fiches de vos
-    classes les plus importantes. La première fiche, celle de la
-    façade, est aussi à compléter.}}
+  %{\color{red}\textbf{La section est à compléter avec les fiches de vos
+  %classes les plus importantes. La première fiche, celle de la
+  %façade, est aussi à compléter.}}
 
-\subsection{Classe \textsf{GestionClefsHotel}}
+  \subsection{Classe \textsf{GestionClefsHotel}}
 
-\begin{center}
-\begin{longtable}{|p{15cm}|}
-\hline
-\multicolumn{1}{|c|}{{\Large \textsf{GestionClefsHotel}}} \\
-\hline
-%\cmt{attributs}\\
-\cmt{attributs <<~association~>>}\\
-$-$ chambres : collection de @Chambre \\
-\hline
-\cmt{constructeur} \\
-$+$ GestionClefsHotel()\\
-%$+$ destructeur()\\
-$+$ invariant():booléen\\
-\cmt{operations <<~cas d'utilisation~>>} \\
-$+$ créerChambre(String code, String graine) \\
-%\cmt{opérations de recherche} \\
-\hline
-\end{longtable}%)
-\end{center}
+  \begin{center}
+	  \begin{longtable}{|p{15cm}|}
+		  \hline
+		  \multicolumn{1}{|c|}{{\Large \textsf{GestionClefsHotel}}} \\
+		  \hline
+		  %\cmt{attributs}\\
+		  \cmt{attributs <<~association~>>}\\
+		  $-$ chambres : collection de @Chambre \\
+		  $-$ badges : collection de @Badge \\
+		  $-$ clients : collection de @Client \\
+
+		  \hline
+		  \cmt{constructeur} \\
+		  $+$ GestionClefsHotel()\\
+		  %$+$ destructeur()\\
+		  $+$ invariant():booléen\\
+		  \cmt{operations <<~cas d'utilisation~>>} \\
+		  $+$ créerChambre(String code, String graine) \\
+		  $+$ créerBadge(Int idBadge) \\
+		  $+$ obtenirGraineEtSel(Chambre chambre) \\
+		  $+$ créerClient(Int idClient) \\
+		  $+$ enregistrerOccupationChambre(Chambre chambre, Client client) \\
+		  $+$ initialiserSerrure(Chambre chambre) \\
+		  $+$ listerChambres() \\
+		  $+$ libérerChambre(Chambre chambre) \\
+		  \cmt{opérations de recherche} \\
+		  $+$ chercherBadge(long idBadge) \\
+		  $+$ chercherChambre(long codeChambre) \\
+		  $+$ chercherClient(long idClient) \\
+		  \hline
+	  \end{longtable}%)
+  \end{center}
+
+  \subsection{Classe \textsf{BadgeDAcces}}
+
+  \begin{center}
+	  \begin{longtable}{|p{15cm}|}
+		  \hline
+		  \multicolumn{1}{|c|}{{\Large \textsf{Badge}}} \\
+		  \hline
+		  \cmt{attributs}\\
+		  $-$ id : long \\
+		  $-$ premiereCle : long \\
+		  $-$ secondeCle : long \\
+		  %\cmt{attributs <<~association~>>}\\
+		  \hline
+		  \cmt{constructeur} \\
+		  $+$ Badge()\\
+		  %$+$ destructeur()\\
+		  $+$ invariant():booléen\\
+		  \cmt{operations <<~cas d'utilisation~>>} \\
+		  $+$ créerBadge(long idBadge) \\
+		  $+$ viderBadge(long idBadge) \\
+		  $+$ associerClient(Client client) \\
+		  $+$ associerChambre(Chambre chambre) \\
+		  $+$ dissocierClient() \\
+		  \cmt{opérations de recherche} \\
+		  $+$ chercherBadge(long idBadge) \\
+		  \hline
+	  \end{longtable}%)
+  \end{center}
+
 
 \newpage
 
