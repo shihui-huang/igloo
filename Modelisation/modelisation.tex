@@ -221,7 +221,7 @@ Nombre de jeux de test
                     &1&2&3&4&5&6&7&8\\
                 \hline
                 \hline
-                Nom et prénom du client bien formés (non \nullvalue et non vide)
+                Nom prénom et identifiant du client bien formés (non \nullvalue et non vide)
                     &F&T&T& & & & &T\\
                 \hline
                 Client existe
@@ -259,37 +259,32 @@ Nombre de jeux de test
             \begin{tabular}{|p{0.6\linewidth}|c|c|c|c|c|c|c|c|}
                 \hline
                 Numéro de test
-                    &1&2&3&4&5&6&7&8\\
+                    &1&2&3&4&5&6&7\\
                 \hline
                 \hline
-                Nom et prénom du client bien formés (non \nullvalue et non vide)
-                    &F&T&T& & & & &T\\
-                \hline
+
                 Client existe
-                    & &F&T& & & & &T\\
+                    &F&T& & & & &T\\
                 \hline
                 Client occupe une chambre
-                    & & &F& & & & &T\\
+                    & &F& & & & &T\\
                 \hline
                 \hline
                 Identifiant/code de la chambre bien formé ($\neq$ \nullvalue $\land$ $\neq$ vide)
-                    & & & &F&T&T&T&T\\
-                \hline
-                Chambre avec ce code existante
-                    & & & & &F&T&T&T\\
+                    & & &F&T&T&T&T\\
                 \hline
                 Chambre occupée
-                    & & & & & &F&T&T\\
+                    & & & & &F&T&T\\
                 \hline
                 Paire de clés du badge d'accès bien formées ($\neq$ \nullvalue $\land$ $\neq$ vide)
-                    & & & & & & &F&T\\
+                    & & & & & &F&T\\
                 \hline
                 \hline                Libération acceptée
-                    &F&F&F&F&F&F&F&T\\
+                    &F&F&F&F&F&F&T\\
                 \hline
                 \hline
                 Nombre de jeux de test
-                    &2&1&1&2&1&1&2&2 \\
+                    &1&1&2&1&1&2&2 \\
                 \hline
             \end{tabular}
             \caption{Cas d'utilisation <<~libérer une chambre~>>}
