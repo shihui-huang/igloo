@@ -61,8 +61,8 @@ fontsize=10
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>480</x>
-      <y>750</y>
+      <x>470</x>
+      <y>650</y>
       <w>100</w>
       <h>100</h>
     </coordinates>
@@ -72,13 +72,13 @@ fontsize=10
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
+      <x>540</x>
       <y>650</y>
-      <w>150</w>
-      <h>160</h>
+      <w>160</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;140.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;140.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLActor</id>
@@ -172,24 +172,24 @@ halign=left</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
-      <y>700</y>
-      <w>150</w>
-      <h>110</h>
+      <x>540</x>
+      <y>680</y>
+      <w>160</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;90.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
-      <y>760</y>
-      <w>150</w>
-      <h>50</h>
+      <x>540</x>
+      <y>680</y>
+      <w>160</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;30.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
@@ -217,50 +217,6 @@ halign=left</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>680</x>
-      <y>800</y>
-      <w>250</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>(Ré)Initialiser un badge</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>550</x>
-      <y>780</y>
-      <w>150</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;130.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>680</x>
-      <y>860</y>
-      <w>250</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>Effacer un badge</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>550</x>
-      <y>780</y>
-      <w>150</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;130.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>680</x>
       <y>590</y>
       <w>250</w>
       <h>40</h>
@@ -271,13 +227,13 @@ halign=left</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
+      <x>540</x>
       <y>600</y>
-      <w>150</w>
-      <h>210</h>
+      <w>160</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;190.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;140.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
