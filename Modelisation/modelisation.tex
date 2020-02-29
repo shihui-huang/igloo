@@ -121,7 +121,7 @@
 
 \usecase{\haute}{Créer un client}
                %% précondition
-                    {\\nom et prénom du client bien formées (non \nullvalue et non vide)\\
+                    {\\nom prénom et identifiant du client bien formées (non \nullvalue et non vide)\\
                     $\land$ client non existant dans le système}
                 %% postcondition
                     {\\client enregistré dans le système}
@@ -145,7 +145,7 @@
                         $\land$ identifiant/code de la chambre bien formé (non \nullvalue et non vide)\\
                         $\land$ chambre avec ce code existante\\
                         $\land$ chambre non occupée\\
-                    $\land$ dernière paire de clefs de la chambre bien formé (non \nullvalue et non vide)}
+                     	$\land$ badge d'accèss disponible\\
                 %% postcondition
                     {\\badge d'accès initialisé\\
                         $\land$ paire de clés du badge d'accès bien formées (non \nullvalue et non vide)\\
@@ -156,15 +156,13 @@
 
            \usecase{\haute}{Libérer une chambre}
                 %% précondition
-                    {\\nom et prénom du client bien formés (non \nullvalue et non vide)\\
+                    {\\
                         $\land$ client existe\\
                         $\land$ client occupe une chambre\\
                         $\land$ identifiant/code de la chambre bien formé (non \nullvalue et non vide)\\
-                        $\land$ chambre avec ce code existante\\
                         $\land$ chambre occupée\\
-                    $\land$ paire de clés du badge d'accès bien formées (non \nullvalue et non vide)}
                 %% postcondition
-                    {\\paire de clés du badge d'accès effacée (\nullvalue ou vide)\\
+                    {\\
                         $\land$ -1 sur nombre de chambre occupée en cous du client\\
                     $\land$ chambre non occupée}
 
