@@ -64,3 +64,58 @@ Denis Conan
     - [] à faire
 
 ---
+
+# Suivi du lun. 02 mars 2020 14:40:39 CET
+Denis Conan
+- merci pour l'indication des commentaires pris en compte ; je regarde les
+  nouveaux éléments uniquement
+- à la lecture du journal du dépôt, je comprends que vous vous êtes concentrés
+  sur l'amélioration de la modélisation
+- préconditions et postconditions
+    - [] « enregistrer... » : on ne donne une dernière paire de clefs en
+         entrée de ce cas d'utilisation ; en revanche, on donne l'identifiant
+         d'un badge et on vérifie qu'il est à la réception
+- diagramme de classes
+    - [] ne mettez pas les opérations dans le diagramme de classes ; ce n'est
+         pas nécessaire et pas encore pertinent (la liste précise avec les
+         prototypes sera donné dans la fiche de la classe ; et c'est amplement
+         suffisant)
+    - [] pb de multiplicité et de sémantique sur les compositions vers
+         PaireClefs : un objet composant n'est que dans un composé
+         => vous ne pouvez pas mettre une composition, mais vous pouvez mettre
+            une agrégation si vous le souhaitez
+         + la multiplicité « 1 » de PaireClefs vers Chambre ou vers Badge
+           posera un problème dans le sprint 2 ; mettez « 0..1 »
+- diagrammes de séquence
+    - [] « créer une chambre » : on ne crée pas la serrure dans ce diagramme :
+         c'est un autre système possiblement utilisé par un autre acteur, etc.
+         + écrire clefs.clef1 suppose que l'attribut clef1 est public (ce que
+           nous ne voulons pas)
+         + comme vous avez le concept PaireClefs, vous devez créer
+           un nouvel objet PaireClefs
+    - [] « enregistrer... » : vous avez décider de dessiner le diagramme sans
+         donner auparavant la séquence (comme suggéré / demandé dans l'énoncé
+         du TP) ; et, vous avez oublié une partie de la précondition : par
+         exemple la chambre doit être disponible
+         + on ne met pas d'affectation à la place d'un message
+         + idem écrire clefs.clef1
+         + comme vous avez le concept PaireClefs, vous devez préférer créer
+           un nouvel objet PaireClefs au lieu de modifier le contenu de
+           l'existant (ce qui est dangereux lorsque la paire de clefs reste
+           associée au badge)
+         + au lieu des clefs en argument de inscrireClefs, vous devez mettre
+           un objet de type PaireClefs
+         + l'association entre Badge et Client est bidirectionnelle ; vous
+           devez donc aussi associer le client
+    - [] « libérer... » : les associations autour de Chambre, Badge et Client
+         sont bidirectionnelles ; donc, il manque des messages pour retirer
+         toutes les associations
+
+- tous les éléments de la modélisation ne sont pas dans modelisation.pdf
+
+- pour que le script de la séance passe, vous devez commencer la programmation
+
+- je vous encourage à débuter la programmation en hors présentiel avant la
+  prochaine séance ce mercredi
+
+---
