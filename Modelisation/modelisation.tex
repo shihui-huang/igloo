@@ -357,25 +357,25 @@ attributs:
 		  \multicolumn{1}{|c|}{{\Large \textsf{GestionClefsHotel}}} \\
 		  \hline
 		  \cmt{attributs <<~association~>>}\\
-		  $-$ chambres: collection de @Chambre \\
-		  $-$ badges: collection de @Badge \\
-		  $-$ clients: collection de @Client \\
+		  $-$ chambres: [Chambre] \\
+		  $-$ badges: [Badge] \\
+		  $-$ clients: [Client] \\
 		  \hline
 		  \cmt{constructeur} \\
 		  $+$ GestionClefsHotel() \\
 		  $+$ invariant(): boolean \\
 		  \cmt{operations <<~cas d'utilisation~>>} \\
-		  $+$ Chambre creerChambre(String code, String graine) \\
+		  $+$ Chambre creerChambre(long idChambre, String graine, int sel) \\
 		  $+$ Badge creerBadge(long idBadge) \\
 		  $+$ void obtenirGraineEtSel(Chambre chambre) \\
-		  $+$ Client creerClient(long idClient) \\
+		  $+$ Client creerClient(long idClient, String nom, String prenom) \\
 		  $+$ void enregistrerOccupationChambre(Chambre chambre, Client client) \\
 		  $+$ void initialiserSerrure(Chambre chambre) \\
 		  $+$ [Chambre] listerChambres() \\
 		  $+$ void libererChambre(Chambre chambre) \\
 		  \cmt{opérations de recherche} \\
 		  $+$ Badge chercherBadge(long idBadge) \\
-		  $+$ Chambre chercherChambre(long codeChambre) \\
+		  $+$ Chambre chercherChambre(long idChambre) \\
 		  $+$ Client chercherClient(long idClient) \\
 		  \hline
 	  \end{longtable}
