@@ -87,13 +87,13 @@ Denis Conan
          + la multiplicité « 1 » de PaireClefs vers Chambre ou vers Badge
            posera un problème dans le sprint 2 ; mettez « 0..1 »
 - diagrammes de séquence
-    - [] « créer une chambre » : on ne crée pas la serrure dans ce diagramme :
+    - [x] « créer une chambre » : on ne crée pas la serrure dans ce diagramme :
          c'est un autre système possiblement utilisé par un autre acteur, etc.
          + écrire clefs.clef1 suppose que l'attribut clef1 est public (ce que
            nous ne voulons pas)
          + comme vous avez le concept PaireClefs, vous devez créer
            un nouvel objet PaireClefs
-    - [] « enregistrer... » : vous avez décider de dessiner le diagramme sans
+    - [x] « enregistrer... » : vous avez décider de dessiner le diagramme sans
          donner auparavant la séquence (comme suggéré / demandé dans l'énoncé
          du TP) ; et, vous avez oublié une partie de la précondition : par
          exemple la chambre doit être disponible
@@ -107,7 +107,7 @@ Denis Conan
            un objet de type PaireClefs
          + l'association entre Badge et Client est bidirectionnelle ; vous
            devez donc aussi associer le client
-    - [] « libérer... » : les associations autour de Chambre, Badge et Client
+    - [x] « libérer... » : les associations autour de Chambre, Badge et Client
          sont bidirectionnelles ; donc, il manque des messages pour retirer
          toutes les associations
 
