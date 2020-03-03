@@ -168,10 +168,11 @@ m2=0..1
     <coordinates>
       <x>530</x>
       <y>510</y>
-      <w>70</w>
+      <w>100</w>
       <h>100</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m1=0..1</panel_attributes>
     <additional_attributes>50.0;10.0;50.0;60.0;10.0;60.0;10.0;80.0</additional_attributes>
   </element>
   <element>
@@ -182,7 +183,8 @@ m2=0..1
       <w>70</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m1=0..1</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;50.0;40.0;50.0;60.0</additional_attributes>
   </element>
 </diagram>

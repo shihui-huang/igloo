@@ -76,11 +76,11 @@ Denis Conan
          entrée de ce cas d'utilisation ; en revanche, on donne l'identifiant
          d'un badge et on vérifie qu'il est à la réception
 - diagramme de classes
-    - [] ne mettez pas les opérations dans le diagramme de classes ; ce n'est
+    - [x] ne mettez pas les opérations dans le diagramme de classes ; ce n'est
          pas nécessaire et pas encore pertinent (la liste précise avec les
          prototypes sera donné dans la fiche de la classe ; et c'est amplement
          suffisant)
-    - [] pb de multiplicité et de sémantique sur les compositions vers
+    - [x] pb de multiplicité et de sémantique sur les compositions vers
          PaireClefs : un objet composant n'est que dans un composé
          => vous ne pouvez pas mettre une composition, mais vous pouvez mettre
             une agrégation si vous le souhaitez
@@ -113,9 +113,9 @@ Denis Conan
 
 - tous les éléments de la modélisation ne sont pas dans modelisation.pdf
 
-- pour que le script de la séance passe, vous devez commencer la programmation
+- [x] pour que le script de la séance passe, vous devez commencer la programmation
 
-- je vous encourage à débuter la programmation en hors présentiel avant la
+- [x] je vous encourage à débuter la programmation en hors présentiel avant la
   prochaine séance ce mercredi
 
 ---
