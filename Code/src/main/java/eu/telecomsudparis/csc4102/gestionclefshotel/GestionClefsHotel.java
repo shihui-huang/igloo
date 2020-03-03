@@ -64,7 +64,7 @@ public class GestionClefsHotel {
 	}
 	
 	public void initialiserSerrure(Chambre chambre) throws ProblemeDansGenerationClef {
-		String randomId;
+		String randomId;						// TODO ???
 		
 		while (true) {
 			randomId = GestionClefsHotel.newRandomId();

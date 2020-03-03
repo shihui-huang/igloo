@@ -28,6 +28,10 @@ public class Badge {
 	}
 	
 	public void vider() {
+		if (this.chambre != null) {
+			this.chambre.setBadge(null);
+		}
+		
 		this.paireClefs = null;
 	}
 	
@@ -46,9 +50,14 @@ public class Badge {
 	
 	public void associerClient(final Client client) {
 		this.client = client;
+		this.client.setBadge(this);
 	}
 	
 	public void dissocierClient() {
+		if (this.client != null) {
+			this.client.setBadge(null);
+		}
+		
 		this.client = null;
 	}
 	

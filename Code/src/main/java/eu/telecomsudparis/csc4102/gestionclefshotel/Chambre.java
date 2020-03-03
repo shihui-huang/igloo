@@ -48,6 +48,8 @@ public class Chambre {
 		return this.paireClefs;
 	}
 	
+	// TODO obtenirNouvellePaireClefs
+	
 	public void inscrireClefs(final PaireClefs paireClefs) {
 		this.paireClefs = paireClefs;
 	}
@@ -55,6 +57,7 @@ public class Chambre {
 	public void liberer() {
 		this.occupee = false;
 		this.badge.dissocierClient();
+		this.badge.vider();
 	}
 	
 	@Override
