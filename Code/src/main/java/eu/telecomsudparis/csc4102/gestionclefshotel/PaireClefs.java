@@ -17,11 +17,11 @@ public class PaireClefs {
 	}
 	
 	public byte[] getClef1() {
-		return this.clef1;
+		return this.clef1.clone();
 	}
 	
 	public byte[] getClef2() {
-		return this.clef2;
+		return this.clef2.clone();
 	}
 	
 	@Override
