@@ -349,77 +349,127 @@ attributs:
 \newpage
 
 \section{Fiche des classes}
-
-  %{\color{red}\textbf{La section est à compléter avec les fiches de vos
-  %classes les plus importantes. La première fiche, celle de la
-  %façade, est aussi à compléter.}}
-
+  
   \subsection{Classe \textsf{GestionClefsHotel}}
-
   \begin{center}
 	  \begin{longtable}{|p{15cm}|}
 		  \hline
 		  \multicolumn{1}{|c|}{{\Large \textsf{GestionClefsHotel}}} \\
 		  \hline
-		  %\cmt{attributs}\\
 		  \cmt{attributs <<~association~>>}\\
-		  $-$ chambres : collection de @Chambre \\
-		  $-$ badges : collection de @Badge \\
-		  $-$ clients : collection de @Client \\
-
+		  $-$ chambres: collection de @Chambre \\
+		  $-$ badges: collection de @Badge \\
+		  $-$ clients: collection de @Client \\
 		  \hline
 		  \cmt{constructeur} \\
-		  $+$ GestionClefsHotel()\\
-		  %$+$ destructeur()\\
-		  $+$ invariant():booléen\\
+		  $+$ GestionClefsHotel() \\
+		  $+$ invariant(): boolean \\
 		  \cmt{operations <<~cas d'utilisation~>>} \\
-		  $+$ créerChambre(String code, String graine) \\
-		  $+$ créerBadge(Int idBadge) \\
-		  $+$ obtenirGraineEtSel(Chambre chambre) \\
-		  $+$ créerClient(Int idClient) \\
-		  $+$ enregistrerOccupationChambre(Chambre chambre, Client client) \\
-		  $+$ initialiserSerrure(Chambre chambre) \\
-		  $+$ listerChambres() \\
-		  $+$ libérerChambre(Chambre chambre) \\
+		  $+$ Chambre creerChambre(String code, String graine) \\
+		  $+$ Badge creerBadge(long idBadge) \\
+		  $+$ void obtenirGraineEtSel(Chambre chambre) \\
+		  $+$ Client creerClient(long idClient) \\
+		  $+$ void enregistrerOccupationChambre(Chambre chambre, Client client) \\
+		  $+$ void initialiserSerrure(Chambre chambre) \\
+		  $+$ [Chambre] listerChambres() \\
+		  $+$ void libererChambre(Chambre chambre) \\
 		  \cmt{opérations de recherche} \\
-		  $+$ chercherBadge(long idBadge) \\
-		  $+$ chercherChambre(long codeChambre) \\
-		  $+$ chercherClient(long idClient) \\
+		  $+$ Badge chercherBadge(long idBadge) \\
+		  $+$ Chambre chercherChambre(long codeChambre) \\
+		  $+$ Client chercherClient(long idClient) \\
 		  \hline
-	  \end{longtable}%)
+	  \end{longtable}
   \end{center}
 
-  \subsection{Classe \textsf{BadgeDAcces}}
+  \subsection{Classe \textsf{Chambre}}
+  \begin{center}
+	  \begin{longtable}{|p{15cm}|}
+		  \hline
+		  \multicolumn{1}{|c|}{{\Large \textsf{Chambre}}} \\
+		  \hline
+		  \cmt{attributs}\\
+		  $-$ id: long \\
+		  $-$ graine: String \\
+		  $-$ sel: int \\
+		  $-$ occupee: boolean \\
+		  \cmt{attributs <<~association~>>}\\
+		  $-$ paireClefs: PaireClefs \\
+		  $-$ badge: Badge \\
+		  \hline
+		  \cmt{constructeur} \\
+		  $+$ Chambre(long id, String graine, int sel) \\
+		  $+$ invariant(): boolean \\
+		  \cmt{operations <<~cas d'utilisation~>>} \\
+		  $+$ void inscrireClefs(PaireClefs paireClefs) \\
+		  $+$ void liberer() \\
+		  \hline
+	  \end{longtable}
+  \end{center}
 
+  \subsection{Classe \textsf{Badge}}
   \begin{center}
 	  \begin{longtable}{|p{15cm}|}
 		  \hline
 		  \multicolumn{1}{|c|}{{\Large \textsf{Badge}}} \\
 		  \hline
 		  \cmt{attributs}\\
-		  $-$ id : long \\
-		  $-$ premiereCle : long \\
-		  $-$ secondeCle : long \\
-		  %\cmt{attributs <<~association~>>}\\
+		  $-$ id: long \\
+		  \cmt{attributs <<~association~>>}\\
+		  $-$ paireClefs: PaireClefs \\
+		  $-$ chambre: Chambre \\
+		  $-$ client: Client \\
 		  \hline
 		  \cmt{constructeur} \\
-		  $+$ Badge()\\
-		  %$+$ destructeur()\\
-		  $+$ invariant():booléen\\
+		  $+$ Badge(long id) \\
+		  $+$ invariant(): boolean \\
 		  \cmt{operations <<~cas d'utilisation~>>} \\
-		  $+$ créerBadge(long idBadge) \\
-		  $+$ viderBadge(long idBadge) \\
-		  $+$ associerClient(Client client) \\
-		  $+$ associerChambre(Chambre chambre) \\
-		  $+$ dissocierClient() \\
-		  \cmt{opérations de recherche} \\
-		  $+$ chercherBadge(long idBadge) \\
+		  $+$ void inscrireClefs(PaireClefs paireClefs) \\
+		  $+$ void vider() \\
+		  $+$ void associerClient(Client client) \\
+		  $+$ void associerChambre(Chambre chambre) \\
+		  $+$ void dissocierClient() \\
 		  \hline
-	  \end{longtable}%)
+	  \end{longtable}
   \end{center}
 
+  \subsection{Classe \textsf{Client}}
+  \begin{center}
+	  \begin{longtable}{|p{15cm}|}
+		  \hline
+		  \multicolumn{1}{|c|}{{\Large \textsf{Client}}} \\
+		  \hline
+		  \cmt{attributs}\\
+		  $-$ id: long \\
+		  $-$ nom: String \\
+		  $-$ prenom: String \\
+		  \cmt{attributs <<~association~>>}\\
+		  $-$ badge: Badge \\
+		  \hline
+		  \cmt{constructeur} \\
+		  $+$ Client(long id, String nom, String prenom) \\
+		  $+$ invariant(): boolean \\
+		  \hline
+	  \end{longtable}
+  \end{center}
 
-\newpage
+  \subsection{Classe \textsf{PaireClefs}}
+  \begin{center}
+	  \begin{longtable}{|p{15cm}|}
+		  \hline
+		  \multicolumn{1}{|c|}{{\Large \textsf{PaireClefs}}} \\
+		  \hline
+		  \cmt{attributs}\\
+		  $-$ clef1: byte[] \\
+		  $-$ clef2: byte[] \\
+		  \hline
+		  \cmt{constructeur} \\
+		  $+$ PaireClefs(byte[] clef1, byte[] clef2) \\
+		  $+$ invariant(): boolean \\
+		  \hline
+	  \end{longtable}
+  \end{center}
+
+%\newpage
 
 \section{Diagrammes de machine à états et invariants}
 
