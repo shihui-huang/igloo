@@ -40,7 +40,7 @@ public class Client {
 	 */
 	public Client(final long id, final String nom, final String prenom) {
 		this.id = id;
-		this.nom = nom;					// TODO Take clones.
+		this.nom = nom;
 		this.prenom = prenom;
 	}
 	
@@ -59,14 +59,14 @@ public class Client {
 	 * @return Le nom de famille du client.
 	 */
 	public String getNom() {
-		return this.nom;				// TODO Return clone instead.
+		return this.nom;
 	}
 	
 	/**
 	 * @return Le prénom du client.
 	 */
 	public String getPrenom() {
-		return this.prenom;				// TODO Return clone instead.
+		return this.prenom;
 	}
 	
 	/**

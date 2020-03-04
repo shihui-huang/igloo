@@ -28,8 +28,8 @@ public class PaireClefs {
 	 * @param clef2 La deuxième clef de la paire.
 	 */
 	public PaireClefs(final byte[] clef1, final byte[] clef2) {
-		this.clef1 = clef1;				// TODO Take clones.
-		this.clef2 = clef2;
+		this.clef1 = clef1.clone();
+		this.clef2 = clef2.clone();
 	}
 	
 	public boolean invariant() {
