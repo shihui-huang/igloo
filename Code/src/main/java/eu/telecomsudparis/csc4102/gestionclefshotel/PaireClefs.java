@@ -13,7 +13,7 @@ public class PaireClefs {				// TODO Documentation.
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO
+		return false;					// TODO invariant.
 	}
 	
 	public byte[] getClef1() {

@@ -14,7 +14,7 @@ public class Client {					// TODO Documentation.
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO
+		return false;					// TODO invariant.
 	}
 	
 	public Badge getBadge() {

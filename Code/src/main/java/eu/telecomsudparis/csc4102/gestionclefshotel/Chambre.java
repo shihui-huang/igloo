@@ -21,7 +21,7 @@ public class Chambre {					// TODO Documentation.
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO
+		return false;					// TODO invariant.
 	}
 	
 	public long getId() {

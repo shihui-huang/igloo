@@ -12,7 +12,7 @@ public class Badge {					// TODO Documentation.
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO
+		return false;					// TODO invariant.
 	}
 	
 	public long getId() {
