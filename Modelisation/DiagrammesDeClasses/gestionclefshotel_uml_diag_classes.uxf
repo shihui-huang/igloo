@@ -5,21 +5,23 @@
     <id>UMLClass</id>
     <coordinates>
       <x>360</x>
-      <y>200</y>
+      <y>190</y>
       <w>490</w>
-      <h>180</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>GestionClefsHotel
 --
-+chercherChambre(long id)
-+creerChambre(long id, String graine, int sel)
-+creerBadge(long id)
-+chercherBadge(long id)
-+obtenirGraineEtSel(Chambre chambre)
-+creerClient(long id, String nom, String prenom)
-+chercherClient(long id)
-+enregisterOccupationChambre(Client client, Chambre chambre)
-+libererChambre(Chambre chambre)</panel_attributes>
++ chercherChambre(long id)
++ creerChambre(long id, String graine, int sel)
++ creerBadge(long id)
++ chercherBadge(long id)
++ creerClient(long id, String nom, String prenom)
++ chercherClient(long id)
++ enregisterOccupationChambre(lond idChambre,
+                                                     long idBadge, long idClient)
++ libererChambre(long idChambre)
++ listerChambres()
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -46,8 +48,8 @@ m2=*</panel_attributes>
 --
 _TAILLE_CLEF:int:16_
 --
-_+genererUneNouvelleClef(String graine, int sel)_
-_+clefToString(byte[] clef): String_</panel_attributes>
+_+ genererUneNouvelleClef(String graine, int sel)_
+_+ clefToString(byte[] clef): String_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -63,7 +65,7 @@ _+clefToString(byte[] clef): String_</panel_attributes>
 - id: long
 - graine: String
 - sel: int
-+ occupee: boolean
+/ occupee: boolean
 </panel_attributes>
     <additional_attributes/>
   </element>

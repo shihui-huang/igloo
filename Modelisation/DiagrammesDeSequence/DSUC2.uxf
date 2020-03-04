@@ -42,7 +42,7 @@ fontsize=10
       <x>350</x>
       <y>220</y>
       <w>20</w>
-      <h>640</h>
+      <h>610</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -64,7 +64,7 @@ fontsize=10
       <x>480</x>
       <y>230</y>
       <w>20</w>
-      <h>620</h>
+      <h>590</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -108,10 +108,10 @@ fontsize=10
       <x>1010</x>
       <y>190</y>
       <w>30</w>
-      <h>460</h>
+      <h>430</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -123,7 +123,7 @@ fontsize=10
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 enregistrerOccupationChambre(
-idChambre, idClient, idBadge)</panel_attributes>
+idChambre, idBadge, idClient)</panel_attributes>
     <additional_attributes>140.0;20.0;30.0;20.0</additional_attributes>
   </element>
   <element>
@@ -192,13 +192,11 @@ badge = chercherBadge(idBadge) : Badge</panel_attributes>
       <x>420</x>
       <y>400</y>
       <w>800</w>
-      <h>460</h>
+      <h>430</h>
     </coordinates>
     <panel_attributes>optional
 --
-[idChambre non null et non vide &amp;&amp; chambre != null
-&amp;&amp; idClient non null et non vide &amp;&amp; client != null
-&amp;&amp; idBadge non null et non vide &amp;&amp; badge != null &amp;&amp; badge vide]</panel_attributes>
+[chambre != null &amp;&amp; client != null &amp;&amp; badge != null &amp;&amp; badge vide]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -207,10 +205,10 @@ badge = chercherBadge(idBadge) : Badge</panel_attributes>
       <x>650</x>
       <y>190</y>
       <w>30</w>
-      <h>410</h>
+      <h>380</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;390.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;360.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -218,29 +216,29 @@ badge = chercherBadge(idBadge) : Badge</panel_attributes>
       <x>770</x>
       <y>190</y>
       <w>30</w>
-      <h>320</h>
+      <h>290</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;300.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>610</y>
+      <y>580</y>
       <w>180</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 clefs =
-obtenirNouvellePaireDeClefs()</panel_attributes>
+obtenirNouvellePaireClefs()</panel_attributes>
     <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>650</x>
-      <y>580</y>
+      <y>550</y>
       <w>20</w>
       <h>220</h>
     </coordinates>
@@ -251,7 +249,7 @@ obtenirNouvellePaireDeClefs()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>770</x>
-      <y>490</y>
+      <y>460</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -262,7 +260,7 @@ obtenirNouvellePaireDeClefs()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>470</y>
+      <y>440</y>
       <w>300</w>
       <h>40</h>
     </coordinates>
@@ -274,7 +272,7 @@ associerClient(client)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>520</y>
+      <y>490</y>
       <w>300</w>
       <h>30</h>
     </coordinates>
@@ -285,7 +283,7 @@ associerClient(client)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>770</x>
-      <y>560</y>
+      <y>530</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -296,7 +294,7 @@ associerClient(client)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>540</y>
+      <y>510</y>
       <w>300</w>
       <h>40</h>
     </coordinates>
@@ -308,7 +306,7 @@ associerChambre(chambre)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>600</y>
+      <y>570</y>
       <w>300</w>
       <h>30</h>
     </coordinates>
@@ -319,7 +317,7 @@ associerChambre(chambre)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>770</x>
-      <y>520</y>
+      <y>490</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -330,19 +328,19 @@ associerChambre(chambre)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>660</x>
-      <y>660</y>
+      <y>630</y>
       <w>410</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-clefs = create(clefs.getClef1(), newClef2)</panel_attributes>
+paireClefs = create(paireClefs.getClef1(), newClef2)</panel_attributes>
     <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>660</x>
-      <y>610</y>
+      <y>580</y>
       <w>370</w>
       <h>40</h>
     </coordinates>
@@ -354,7 +352,7 @@ newClef2 = genererUneNouvelleClef(graine, sel)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1010</x>
-      <y>630</y>
+      <y>600</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -365,7 +363,7 @@ newClef2 = genererUneNouvelleClef(graine, sel)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>660</x>
-      <y>640</y>
+      <y>610</y>
       <w>370</w>
       <h>30</h>
     </coordinates>
@@ -376,7 +374,7 @@ newClef2 = genererUneNouvelleClef(graine, sel)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>790</y>
+      <y>760</y>
       <w>180</w>
       <h>30</h>
     </coordinates>
@@ -387,7 +385,7 @@ newClef2 = genererUneNouvelleClef(graine, sel)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>770</x>
-      <y>820</y>
+      <y>790</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
@@ -398,7 +396,7 @@ newClef2 = genererUneNouvelleClef(graine, sel)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>800</y>
+      <y>770</y>
       <w>300</w>
       <h>40</h>
     </coordinates>
@@ -410,7 +408,7 @@ inscrireClefs(clefs)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>830</y>
+      <y>800</y>
       <w>300</w>
       <h>30</h>
     </coordinates>
@@ -421,7 +419,7 @@ inscrireClefs(clefs)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>770</x>
-      <y>600</y>
+      <y>570</y>
       <w>30</w>
       <h>240</h>
     </coordinates>
@@ -432,7 +430,7 @@ inscrireClefs(clefs)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>360</x>
-      <y>840</y>
+      <y>810</y>
       <w>140</w>
       <h>30</h>
     </coordinates>
@@ -443,7 +441,7 @@ inscrireClefs(clefs)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1010</x>
-      <y>640</y>
+      <y>610</y>
       <w>30</w>
       <h>260</h>
     </coordinates>
@@ -454,7 +452,7 @@ inscrireClefs(clefs)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>840</y>
+      <y>810</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -465,7 +463,7 @@ inscrireClefs(clefs)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
-      <y>850</y>
+      <y>820</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -476,7 +474,7 @@ inscrireClefs(clefs)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1050</x>
-      <y>660</y>
+      <y>630</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -488,7 +486,7 @@ _:PaireClefs_</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1090</x>
-      <y>690</y>
+      <y>660</y>
       <w>30</w>
       <h>50</h>
     </coordinates>
@@ -499,7 +497,7 @@ _:PaireClefs_</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1090</x>
-      <y>720</y>
+      <y>690</y>
       <w>20</w>
       <h>70</h>
     </coordinates>
@@ -510,7 +508,7 @@ _:PaireClefs_</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1100</x>
-      <y>720</y>
+      <y>690</y>
       <w>120</w>
       <h>50</h>
     </coordinates>
@@ -522,7 +520,7 @@ clef1 = clef1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1100</x>
-      <y>750</y>
+      <y>720</y>
       <w>120</w>
       <h>50</h>
     </coordinates>
@@ -534,7 +532,7 @@ clef2 = clef2</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>660</x>
-      <y>780</y>
+      <y>750</y>
       <w>450</w>
       <h>30</h>
     </coordinates>
@@ -545,7 +543,7 @@ clef2 = clef2</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1090</x>
-      <y>780</y>
+      <y>750</y>
       <w>30</w>
       <h>120</h>
     </coordinates>
@@ -556,7 +554,7 @@ clef2 = clef2</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>770</x>
-      <y>840</y>
+      <y>810</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -567,7 +565,7 @@ clef2 = clef2</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>650</x>
-      <y>790</y>
+      <y>760</y>
       <w>30</w>
       <h>110</h>
     </coordinates>
@@ -592,16 +590,16 @@ _:Client_</panel_attributes>
       <x>890</x>
       <y>190</y>
       <w>30</w>
-      <h>330</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>890</x>
-      <y>500</y>
+      <y>470</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -612,19 +610,19 @@ _:Client_</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>780</x>
-      <y>480</y>
+      <y>450</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setBadge(badge)</panel_attributes>
+associerBadge(badge)</panel_attributes>
     <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>780</x>
-      <y>510</y>
+      <y>480</y>
       <w>130</w>
       <h>30</h>
     </coordinates>
@@ -635,19 +633,19 @@ setBadge(badge)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>660</x>
-      <y>560</y>
+      <y>530</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setBadge(badge)</panel_attributes>
+associerBadge(badge)</panel_attributes>
     <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>660</x>
-      <y>590</y>
+      <y>560</y>
       <w>130</w>
       <h>30</h>
     </coordinates>
@@ -658,7 +656,7 @@ setBadge(badge)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>890</x>
-      <y>510</y>
+      <y>480</y>
       <w>30</w>
       <h>390</h>
     </coordinates>

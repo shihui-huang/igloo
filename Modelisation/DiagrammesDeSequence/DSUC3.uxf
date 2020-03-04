@@ -42,7 +42,7 @@ fontsize=10
       <x>507</x>
       <y>156</y>
       <w>26</w>
-      <h>481</h>
+      <h>468</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -64,7 +64,7 @@ fontsize=10
       <x>754</x>
       <y>169</y>
       <w>26</w>
-      <h>455</h>
+      <h>442</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -157,12 +157,11 @@ badge = chercherBadge(idBadge) : Badge</panel_attributes>
       <x>676</x>
       <y>325</y>
       <w>663</w>
-      <h>286</h>
+      <h>273</h>
     </coordinates>
     <panel_attributes>optional
 --
-[idChambre non null et non vide &amp;&amp; chambre != null
-&amp;&amp; idBadge non null et non vide &amp;&amp; badge != null &amp;&amp; badge vide]</panel_attributes>
+[chambre != null &amp;&amp; badge != null &amp;&amp; badge vide]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -171,16 +170,16 @@ badge = chercherBadge(idBadge) : Badge</panel_attributes>
       <x>936</x>
       <y>117</y>
       <w>39</w>
-      <h>338</h>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>936</x>
-      <y>429</y>
+      <y>403</y>
       <w>26</w>
       <h>78</h>
     </coordinates>
@@ -191,7 +190,7 @@ badge = chercherBadge(idBadge) : Badge</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>767</x>
-      <y>403</y>
+      <y>377</y>
       <w>195</w>
       <h>52</h>
     </coordinates>
@@ -203,7 +202,7 @@ liberer()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>767</x>
-      <y>494</y>
+      <y>468</y>
       <w>195</w>
       <h>39</h>
     </coordinates>
@@ -214,7 +213,7 @@ liberer()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1118</x>
-      <y>533</y>
+      <y>507</y>
       <w>26</w>
       <h>65</h>
     </coordinates>
@@ -225,7 +224,7 @@ liberer()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>767</x>
-      <y>507</y>
+      <y>481</y>
       <w>377</w>
       <h>52</h>
     </coordinates>
@@ -237,7 +236,7 @@ vider()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>767</x>
-      <y>585</y>
+      <y>559</y>
       <w>377</w>
       <h>39</h>
     </coordinates>
@@ -248,18 +247,18 @@ vider()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1118</x>
-      <y>585</y>
+      <y>559</y>
       <w>39</w>
-      <h>104</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>520</x>
-      <y>611</y>
+      <y>598</y>
       <w>260</w>
       <h>39</h>
     </coordinates>
@@ -270,7 +269,7 @@ vider()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>754</x>
-      <y>611</y>
+      <y>598</y>
       <w>39</w>
       <h>78</h>
     </coordinates>
@@ -281,7 +280,7 @@ vider()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>507</x>
-      <y>624</y>
+      <y>611</y>
       <w>39</w>
       <h>65</h>
     </coordinates>
@@ -294,16 +293,16 @@ vider()</panel_attributes>
       <x>1118</x>
       <y>117</y>
       <w>39</w>
-      <h>351</h>
+      <h>325</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>936</x>
-      <y>494</y>
+      <y>468</y>
       <w>39</w>
       <h>91</h>
     </coordinates>
@@ -314,7 +313,7 @@ vider()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>936</x>
-      <y>559</y>
+      <y>533</y>
       <w>26</w>
       <h>26</h>
     </coordinates>
@@ -325,19 +324,19 @@ vider()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>949</x>
-      <y>533</y>
+      <y>507</y>
       <w>195</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setBadge(null)</panel_attributes>
+dissocierBadge</panel_attributes>
     <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>949</x>
-      <y>572</y>
+      <y>546</y>
       <w>195</w>
       <h>39</h>
     </coordinates>
@@ -348,12 +347,12 @@ setBadge(null)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>936</x>
-      <y>572</y>
+      <y>546</y>
       <w>39</w>
-      <h>117</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -371,7 +370,7 @@ _:Client_</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1118</x>
-      <y>442</y>
+      <y>416</y>
       <w>26</w>
       <h>52</h>
     </coordinates>
@@ -382,7 +381,7 @@ _:Client_</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>949</x>
-      <y>416</y>
+      <y>390</y>
       <w>195</w>
       <h>52</h>
     </coordinates>
@@ -394,7 +393,7 @@ dissocierClient()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1300</x>
-      <y>455</y>
+      <y>429</y>
       <w>26</w>
       <h>26</h>
     </coordinates>
@@ -405,19 +404,19 @@ dissocierClient()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1131</x>
-      <y>429</y>
+      <y>403</y>
       <w>195</w>
       <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setBadge(null)</panel_attributes>
+dissocierBadge()</panel_attributes>
     <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1131</x>
-      <y>468</y>
+      <y>442</y>
       <w>195</w>
       <h>39</h>
     </coordinates>
@@ -428,7 +427,7 @@ setBadge(null)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>949</x>
-      <y>481</y>
+      <y>455</y>
       <w>195</w>
       <h>39</h>
     </coordinates>
@@ -441,27 +440,27 @@ setBadge(null)</panel_attributes>
       <x>1300</x>
       <y>117</y>
       <w>39</w>
-      <h>364</h>
+      <h>338</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1300</x>
-      <y>468</y>
+      <y>442</y>
       <w>39</w>
-      <h>221</h>
+      <h>234</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1118</x>
-      <y>481</y>
+      <y>455</y>
       <w>39</w>
       <h>78</h>
     </coordinates>

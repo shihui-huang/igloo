@@ -147,8 +147,7 @@ s = chercherChambre(id) : Chambre</panel_attributes>
     </coordinates>
     <panel_attributes>optional
 --
-[id non null et non vide &amp;&amp; s = null
-&amp;&amp; graine non null et non vide &amp;&amp; sel non null et non vide]</panel_attributes>
+[s = null &amp;&amp; graine non null et non vide]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

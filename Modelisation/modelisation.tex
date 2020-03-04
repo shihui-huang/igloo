@@ -88,11 +88,9 @@
 \subsection{Diagrammes de cas d'utilisation}
 
 \begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.5]{DiagrammesDeCasDUtilisation/gestionclefshotel_uml_diag_cas_utilisation}
-\caption{Diagramme de cas d'utilisation}
-\end{center}
-\label{umlet_diag_cas_utilisation}
+  \includegraphics[width=1.3\textwidth,center]{DiagrammesDeCasDUtilisation/gestionclefshotel_uml_diag_cas_utilisation}
+  \caption{Diagramme de cas d'utilisation}
+  \label{umlet_diag_cas_utilisation}
 \end{figure}
 
 \newpage
@@ -363,20 +361,18 @@ attributs:
 		  \hline
 		  \cmt{constructeur} \\
 		  $+$ GestionClefsHotel() \\
-		  $+$ invariant(): boolean \\
+		  $+$ boolean invariant() \\
 		  \cmt{operations <<~cas d'utilisation~>>} \\
-		  $+$ Chambre creerChambre(long idChambre, String graine, int sel) \\
-		  $+$ Badge creerBadge(long idBadge) \\
-		  $+$ void obtenirGraineEtSel(Chambre chambre) \\
-		  $+$ Client creerClient(long idClient, String nom, String prenom) \\
-		  $+$ void enregistrerOccupationChambre(Chambre chambre, Client client) \\
-		  $+$ void initialiserSerrure(Chambre chambre) \\
+		  $+$ Chambre creerChambre(long id, String graine, int sel) \\
+		  $+$ Badge creerBadge(long id) \\
+		  $+$ Client creerClient(long id, String nom, String prenom) \\
+		  $+$ void enregistrerOccupationChambre(long idChambre, long idBadge, long idClient) \\
 		  $+$ [Chambre] listerChambres() \\
-		  $+$ void libererChambre(Chambre chambre) \\
+		  $+$ void libererChambre(long id) \\
 		  \cmt{opérations de recherche} \\
-		  $+$ Badge chercherBadge(long idBadge) \\
-		  $+$ Chambre chercherChambre(long idChambre) \\
-		  $+$ Client chercherClient(long idClient) \\
+		  $+$ Badge chercherBadge(long id) \\
+		  $+$ Chambre chercherChambre(long id) \\
+		  $+$ Client chercherClient(long id) \\
 		  \hline
 	  \end{longtable}
   \end{center}
@@ -398,7 +394,7 @@ attributs:
 		  \hline
 		  \cmt{constructeur} \\
 		  $+$ Chambre(long id, String graine, int sel) \\
-		  $+$ invariant(): boolean \\
+		  $+$ boolean invariant() \\
 		  \cmt{operations <<~cas d'utilisation~>>} \\
 		  $+$ void inscrireClefs(PaireClefs paireClefs) \\
 		  $+$ void liberer() \\
@@ -421,7 +417,7 @@ attributs:
 		  \hline
 		  \cmt{constructeur} \\
 		  $+$ Badge(long id) \\
-		  $+$ invariant(): boolean \\
+		  $+$ boolean invariant() \\
 		  \cmt{operations <<~cas d'utilisation~>>} \\
 		  $+$ void inscrireClefs(PaireClefs paireClefs) \\
 		  $+$ void vider() \\
@@ -447,7 +443,7 @@ attributs:
 		  \hline
 		  \cmt{constructeur} \\
 		  $+$ Client(long id, String nom, String prenom) \\
-		  $+$ invariant(): boolean \\
+		  $+$ boolean invariant() \\
 		  \hline
 	  \end{longtable}
   \end{center}
@@ -464,7 +460,7 @@ attributs:
 		  \hline
 		  \cmt{constructeur} \\
 		  $+$ PaireClefs(byte[] clef1, byte[] clef2) \\
-		  $+$ invariant(): boolean \\
+		  $+$ boolean invariant() \\
 		  \hline
 	  \end{longtable}
   \end{center}
