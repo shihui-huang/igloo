@@ -9,10 +9,12 @@ public class Badge {					// TODO Documentation.
 	
 	public Badge(final long id) {
 		this.id = id;
+		assert this.invariant();
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO invariant.
+		return Long.toString(id) != null ;
+				
 	}
 	
 	public long getId() {

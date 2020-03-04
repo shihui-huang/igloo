@@ -46,10 +46,15 @@ public class Chambre {					// TODO Documentation.
 		final byte[] clef2 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
 		this.sel++;
 		this.paireClefs = new PaireClefs(clef1, clef2);
+		assert this.invariant();
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO invariant.
+		return Long.toString(id) != null 
+				&& graine != null && !graine.equals("") 
+				&& Integer.toString(sel) != null 
+				&& occupee == true || occupee == false
+				&& paireClefs != null;				
 	}
 	
 	/**
@@ -165,6 +170,7 @@ public class Chambre {					// TODO Documentation.
 										Util.genererUneNouvelleClef(this.graine,
 																	String.format("%010d%n", this.sel)));
 		this.sel++;
+		assert invariant();
 		return this.paireClefs;
 	}
 	
@@ -185,6 +191,7 @@ public class Chambre {					// TODO Documentation.
 	public void liberer() {
 		this.occupee = false;
 		this.badge.dissocierClient(true);
+		assert invariant();
 	}
 	
 	/**

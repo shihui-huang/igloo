@@ -10,10 +10,11 @@ public class PaireClefs {				// TODO Documentation.
 	public PaireClefs(final byte[] clef1, final byte[] clef2) {
 		this.clef1 = clef1;
 		this.clef2 = clef2;
+		assert this.invariant();
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO invariant.
+		return	clef1 != null && clef2 != null; 						
 	}
 	
 	public byte[] getClef1() {

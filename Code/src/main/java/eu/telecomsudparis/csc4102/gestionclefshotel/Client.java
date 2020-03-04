@@ -11,10 +11,13 @@ public class Client {					// TODO Documentation.
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
+		assert this.invariant();
 	}
 	
 	public boolean invariant() {
-		return false;					// TODO invariant.
+		return Long.toString(id) != null 
+				&& nom != null && !nom.equals("") 
+				&& prenom !=null && !prenom.equals("");	
 	}
 	
 	public Badge getBadge() {
