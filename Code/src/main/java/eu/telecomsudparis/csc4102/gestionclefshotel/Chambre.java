@@ -57,7 +57,7 @@ public class Chambre {
 	 */
 	public Chambre(final long id, final String graine, final int sel) throws ProblemeDansGenerationClef {
 		this.id = id;
-		this.graine = graine;
+		this.graine = graine;			// TODO Take clone.
 		this.sel = sel;
 		this.occupee = false;
 		
