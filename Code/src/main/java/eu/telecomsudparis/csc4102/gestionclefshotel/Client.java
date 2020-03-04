@@ -1,7 +1,7 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
 
-public class Client {
+public class Client {					// TODO Documentation.
 	private final long id;
 	private final String nom;
 	private final String prenom;
@@ -21,8 +21,28 @@ public class Client {
 		return this.badge;
 	}
 	
-	public void setBadge(final Badge badge) {
+	public void associerBadge(final Badge badge) {
+		this.associerBadge(badge, false);
+	}
+	
+	public void associerBadge(final Badge badge, boolean symetrique) {
 		this.badge = badge;
+		
+		if (symetrique) {
+			this.badge.associerClient(this, false);
+		}
+	}
+	
+	public void dissocierBadge() {
+		this.dissocierBadge(false);
+	}
+	
+	public void dissocierBadge(boolean symetrique) {
+		if (symetrique && this.badge != null) {
+			this.badge.dissocierClient(false);
+		}
+		
+		this.badge = null;
 	}
 	
 	public long getId() {

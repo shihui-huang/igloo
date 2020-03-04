@@ -1,7 +1,7 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
 
-public class Badge {
+public class Badge {					// TODO Documentation.
 	private final long id;
 	private PaireClefs paireClefs;
 	private Chambre chambre;
@@ -29,7 +29,7 @@ public class Badge {
 	
 	public void vider() {
 		if (this.chambre != null) {
-			this.chambre.setBadge(null);
+			this.chambre.dissocierBadge();
 		}
 		
 		this.paireClefs = null;
@@ -40,8 +40,27 @@ public class Badge {
 	}
 	
 	public void associerChambre(final Chambre chambre) {
+		this.associerChambre(chambre, false);
+	}
+	
+	public void associerChambre(final Chambre chambre, boolean symetrique) {
 		this.chambre = chambre;
-		this.chambre.setBadge(this);
+		
+		if (symetrique) {
+			this.chambre.associerBadge(this, false);
+		}
+	}
+	
+	public void dissocierChambre() {
+		this.dissocierChambre(false);
+	}
+	
+	public void dissocierChambre(boolean symetrique) {
+		if (symetrique && this.chambre != null) {
+			this.chambre.dissocierBadge(false);
+		}
+		
+		this.chambre = null;
 	}
 	
 	public Client getClient() {
@@ -49,13 +68,24 @@ public class Badge {
 	}
 	
 	public void associerClient(final Client client) {
+		this.associerClient(client, false);
+	}
+	
+	public void associerClient(final Client client, boolean symetrique) {
 		this.client = client;
-		this.client.setBadge(this);
+		
+		if (symetrique) {
+			this.client.associerBadge(this, false);
+		}
 	}
 	
 	public void dissocierClient() {
-		if (this.client != null) {
-			this.client.setBadge(null);
+		this.dissocierClient(false);
+	}
+	
+	public void dissocierClient(boolean symetrique) {
+		if (symetrique && this.client != null) {
+			this.client.dissocierBadge(false);
 		}
 		
 		this.client = null;

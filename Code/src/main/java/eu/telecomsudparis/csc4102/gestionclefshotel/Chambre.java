@@ -1,7 +1,9 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenerationClef;
 
-public class Chambre {
+
+public class Chambre {					// TODO Documentation.
 	private final long id;
 	private final String graine;
 	private final int sel;
@@ -9,11 +11,13 @@ public class Chambre {
 	private Badge badge;
 	private PaireClefs paireClefs;
 	
-	public Chambre(final long id, final String graine, final int sel) {
+	public Chambre(final long id, final String graine, final int sel) throws ProblemeDansGenerationClef {
 		this.id = id;
 		this.graine = graine;
 		this.sel = sel;
 		this.occupee = false;
+		this.inscrireClefs(new PaireClefs(Util.genererUneNouvelleClef(graine, Integer.toString(sel)),
+											Util.genererUneNouvelleClef(graine, Integer.toString(sel))));
 	}
 	
 	public boolean invariant() {
@@ -28,8 +32,28 @@ public class Chambre {
 		return this.badge;
 	}
 	
-	public void setBadge(final Badge badge) {
+	public void associerBadge(final Badge badge) {
+		this.associerBadge(badge, false);
+	}
+	
+	public void associerBadge(final Badge badge, boolean symetrique) {
 		this.badge = badge;
+		
+		if (symetrique) {
+			this.badge.associerChambre(this, false);
+		}
+	}
+	
+	public void dissocierBadge() {
+		this.dissocierBadge(false);
+	}
+	
+	public void dissocierBadge(boolean symetrique) {
+		if (symetrique && this.badge != null) {
+			this.badge.dissocierClient(false);
+		}
+		
+		this.badge = null;
 	}
 	
 	public String getGraine() {

@@ -3,7 +3,7 @@ package eu.telecomsudparis.csc4102.gestionclefshotel;
 import java.util.Arrays;
 
 
-public class PaireClefs {
+public class PaireClefs {				// TODO Documentation.
 	private final byte[] clef1;
 	private final byte[] clef2;
 	
