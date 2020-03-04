@@ -34,10 +34,17 @@ public class GestionClefsHotel {								// TODO Documentation.
 	}
 	
 	public Chambre creerChambre(final long id, final String graine, final int sel)
-			throws ProblemeDansGenerationClef {					// TODO Consistent with sequence diagram.
-		final Chambre chambre = new Chambre(id, graine, sel);
-		this.chambres.put(id, chambre);
-		return chambre;
+			throws ProblemeDansGenerationClef {
+		final Chambre current = this.chercherChambre(id);
+		
+		if (current == null && graine != null && !graine.isEmpty()) {
+			final Chambre chambre = new Chambre(id, graine, sel);
+			this.chambres.put(id, chambre);
+			return chambre;
+		}
+		else {
+			return current;
+		}
 	}
 	
 	public Chambre chercherChambre(final long id) {
@@ -48,15 +55,31 @@ public class GestionClefsHotel {								// TODO Documentation.
 		return this.chambres.values();
 	}
 	
-	public void enregistrerOccupationChambre(Chambre chambre, Client client) {
-		chambre.getBadge().associerClient(client);				// TODO Consistent with sequence diagram + with new system.
+	public void enregistrerOccupationChambre(final long idChambre,
+											final long idBadge,
+											final long idClient) throws ProblemeDansGenerationClef {
+		final Chambre chambre = this.chercherChambre(idChambre);
+		final Badge badge = this.chercherBadge(idBadge);
+		final Client client = this.chercherClient(idClient);
+		
+		if (chambre != null && client != null && badge != null && badge.getClefs() == null) {
+			badge.associerClient(client, true);
+			badge.associerChambre(chambre, true);
+			badge.inscrireClefs(chambre.obtenirNouvellePaireClefs());
+		}
 	}
 	
-	public void libererChambre(Chambre chambre) {
-		chambre.getBadge().dissocierClient();					// TODO Consistent with sequence diagram + with new system.
+	public void libererChambre(final long idChambre, final long idBadge) {
+		final Chambre chambre = this.chercherChambre(idChambre);
+		final Badge badge = this.chercherBadge(idBadge);
+		
+		if (chambre != null && badge != null && badge.getClefs() == null) {
+			chambre.liberer();
+			badge.vider();
+		}
 	}
 	
-	public Badge creerBadge(final long id) {					// TODO Consistent with sequence diagram.
+	public Badge creerBadge(final long id) {					// TODO Check implementation.
 		final Badge badge = new Badge(id);
 		this.badges.put(id, badge);
 		return badge;
@@ -67,7 +90,7 @@ public class GestionClefsHotel {								// TODO Documentation.
 	}
 	
 	public Client creerClient(final long id, final String nom, final String prenom) {
-		final Client client = new Client(id, nom, prenom);		// TODO Consistent with sequence diagram.
+		final Client client = new Client(id, nom, prenom);		// TODO Check implementation.
 		this.clients.put(id, client);
 		return client;
 	}

@@ -90,8 +90,7 @@ public class Chambre {					// TODO Documentation.
 	
 	public void liberer() {
 		this.occupee = false;
-		this.badge.dissocierClient();
-		this.badge.vider();
+		this.badge.dissocierClient(true);
 	}
 	
 	@Override
