@@ -43,10 +43,10 @@ public class Badge {					// TODO Documentation.
 		this.associerChambre(chambre, false);
 	}
 	
-	public void associerChambre(final Chambre chambre, boolean symetrique) {
+	public void associerChambre(final Chambre chambre, boolean bidirectionnel) {
 		this.chambre = chambre;
 		
-		if (symetrique) {
+		if (bidirectionnel) {
 			this.chambre.associerBadge(this, false);
 		}
 	}
@@ -55,8 +55,8 @@ public class Badge {					// TODO Documentation.
 		this.dissocierChambre(false);
 	}
 	
-	public void dissocierChambre(boolean symetrique) {
-		if (symetrique && this.chambre != null) {
+	public void dissocierChambre(boolean bidirectionnel) {
+		if (bidirectionnel && this.chambre != null) {
 			this.chambre.dissocierBadge(false);
 		}
 		
@@ -71,10 +71,10 @@ public class Badge {					// TODO Documentation.
 		this.associerClient(client, false);
 	}
 	
-	public void associerClient(final Client client, boolean symetrique) {
+	public void associerClient(final Client client, boolean bidirectionnel) {
 		this.client = client;
 		
-		if (symetrique) {
+		if (bidirectionnel) {
 			this.client.associerBadge(this, false);
 		}
 	}
@@ -83,8 +83,8 @@ public class Badge {					// TODO Documentation.
 		this.dissocierClient(false);
 	}
 	
-	public void dissocierClient(boolean symetrique) {
-		if (symetrique && this.client != null) {
+	public void dissocierClient(boolean bidirectionnel) {
+		if (bidirectionnel && this.client != null) {
 			this.client.dissocierBadge(false);
 		}
 		

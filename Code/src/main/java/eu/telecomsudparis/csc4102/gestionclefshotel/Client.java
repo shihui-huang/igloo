@@ -25,10 +25,10 @@ public class Client {					// TODO Documentation.
 		this.associerBadge(badge, false);
 	}
 	
-	public void associerBadge(final Badge badge, boolean symetrique) {
+	public void associerBadge(final Badge badge, boolean bidirectionnel) {
 		this.badge = badge;
 		
-		if (symetrique) {
+		if (bidirectionnel) {
 			this.badge.associerClient(this, false);
 		}
 	}
@@ -37,8 +37,8 @@ public class Client {					// TODO Documentation.
 		this.dissocierBadge(false);
 	}
 	
-	public void dissocierBadge(boolean symetrique) {
-		if (symetrique && this.badge != null) {
+	public void dissocierBadge(boolean bidirectionnel) {
+		if (bidirectionnel && this.badge != null) {
 			this.badge.dissocierClient(false);
 		}
 		
