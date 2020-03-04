@@ -15,12 +15,32 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenera
  * @see GestionClefsHotel
  * @author Paul Mabileau
  */
-public class Chambre {					// TODO Documentation.
+public class Chambre {
+	/**
+	 * L'identifiant unique de la chambre.
+	 */
 	private final long id;
+	/**
+	 * La graine de génération des clés propre à la chambre.
+	 */
 	private final String graine;
+	/**
+	 * Le sel pour la génération de clés. À incrémenter à
+	 * chaque renouvellement de clé.
+	 */
 	private int sel;
+	/**
+	 * Attribut redondant indiquant si la chambre est occupée
+	 * ou non.
+	 */
 	private boolean occupee;
+	/**
+	 * Le badge auquel la chambre est potentiellement associé.
+	 */
 	private Badge badge;
+	/**
+	 * La paire de clés utilisée pour représenter la serrure.
+	 */
 	private PaireClefs paireClefs;
 	
 	/**
@@ -131,7 +151,7 @@ public class Chambre {					// TODO Documentation.
 	 * @return La graine de génération de clés de la chambre.
 	 */
 	public String getGraine() {
-		return this.graine;				// TODO Return clone instead.
+		return this.graine;
 	}
 	
 	/**

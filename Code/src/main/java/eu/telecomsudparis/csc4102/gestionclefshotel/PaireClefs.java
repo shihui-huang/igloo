@@ -3,13 +3,33 @@ package eu.telecomsudparis.csc4102.gestionclefshotel;
 import java.util.Arrays;
 
 
-public class PaireClefs {				// TODO Documentation.
+/**
+ * Paire de deux tableaux d'octets représentant des clés
+ * servant à simuler ou déverrouiller des serrures.
+ * 
+ * @see Chambre
+ * @see Badge
+ * @see GestionClefsHotel
+ * @author Paul Mabileau
+ */
+public class PaireClefs {
+	/**
+	 * La première clef de la paire.
+	 */
 	private final byte[] clef1;
+	/**
+	 * La deuxième clef de la paire.
+	 */
 	private final byte[] clef2;
 	
+	/**
+	 * Construit la paire à partir des deux clefs fournies.
+	 * @param clef1 La première clef de la paire.
+	 * @param clef2 La deuxième clef de la paire.
+	 */
 	public PaireClefs(final byte[] clef1, final byte[] clef2) {
-		this.clef1 = clef1;
-		this.clef2 = clef2;
+		this.clef1 = clef1.clone();
+		this.clef2 = clef2.clone();
 		assert this.invariant();
 	}
 	
@@ -17,14 +37,25 @@ public class PaireClefs {				// TODO Documentation.
 		return	clef1 != null && clef2 != null; 						
 	}
 	
+	/**
+	 * @return Une copie de la première clef.
+	 */
 	public byte[] getClef1() {
 		return this.clef1.clone();
 	}
 	
+	/**
+	 * @return Une copie de la deuxième clef.
+	 */
 	public byte[] getClef2() {
 		return this.clef2.clone();
 	}
 	
+	/**
+	 * Implémentation de hashCode() pour {@link PaireClefs}
+	 * basée sur les deux clefs de la paire.
+	 * <br><br>{@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -34,6 +65,11 @@ public class PaireClefs {				// TODO Documentation.
 		return result;
 	}
 	
+	/**
+	 * Implémentation de equals() pour {@link PaireClefs}
+	 * basée sur les deux clefs de la paire.
+	 * <br><br>{@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -57,6 +93,11 @@ public class PaireClefs {				// TODO Documentation.
 		return true;
 	}
 	
+	/**
+	 * Implémentation de toString() pour {@link PaireClefs}
+	 * basée sur les deux clefs de la paire.
+	 * <br><br>{@inheritDoc}
+	 */
 	@Override
 	public String toString() {
 		return String.format("PaireClefs [clef1 = %s, clef2 = %s]",
