@@ -6,7 +6,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenera
 public class Chambre {					// TODO Documentation.
 	private final long id;
 	private final String graine;
-	private final int sel;
+	private int sel;
 	private boolean occupee;
 	private Badge badge;
 	private PaireClefs paireClefs;
@@ -16,8 +16,12 @@ public class Chambre {					// TODO Documentation.
 		this.graine = graine;
 		this.sel = sel;
 		this.occupee = false;
-		this.inscrireClefs(new PaireClefs(Util.genererUneNouvelleClef(graine, Integer.toString(sel)),
-											Util.genererUneNouvelleClef(graine, Integer.toString(sel))));
+		
+		final byte[] clef1 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
+		this.sel++;
+		final byte[] clef2 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
+		this.sel++;
+		this.paireClefs = new PaireClefs(clef1, clef2);
 	}
 	
 	public boolean invariant() {
@@ -72,7 +76,13 @@ public class Chambre {					// TODO Documentation.
 		return this.paireClefs;
 	}
 	
-	// TODO obtenirNouvellePaireClefs
+	public PaireClefs obtenirNouvellePaireClefs() throws ProblemeDansGenerationClef {
+		this.paireClefs = new PaireClefs(this.paireClefs.getClef1(),
+										Util.genererUneNouvelleClef(this.graine,
+																	String.format("%010d%n", this.sel)));
+		this.sel++;
+		return this.paireClefs;
+	}
 	
 	public void inscrireClefs(final PaireClefs paireClefs) {
 		this.paireClefs = paireClefs;
