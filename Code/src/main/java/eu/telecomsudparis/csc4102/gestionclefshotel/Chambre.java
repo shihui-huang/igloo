@@ -73,7 +73,7 @@ public class Chambre {
 		return Long.toString(id) != null 
 				&& graine != null && !graine.equals("") 
 				&& Integer.toString(sel) != null 
-				&& occupee == true || occupee == false
+				&& ( occupee == true && badge != null )|| (occupee == false && badge == null)
 				&& paireClefs != null;				
 	}
 	

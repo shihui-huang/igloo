@@ -34,7 +34,10 @@ public class PaireClefs {
 	}
 	
 	public boolean invariant() {
-		return	clef1 != null && clef2 != null; 						
+		return	clef1 != null 
+				&& clef2 != null 
+				&& clef1.length == Util.TAILLE_CLEF 
+				&& clef2.length == Util.TAILLE_CLEF; 						
 	}
 	
 	/**

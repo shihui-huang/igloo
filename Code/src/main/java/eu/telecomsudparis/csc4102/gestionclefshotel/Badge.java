@@ -45,7 +45,18 @@ public class Badge {
 	}
 	
 	public boolean invariant() {
-		return Long.toString(id) != null ;
+		return Long.toString(id) != null 
+				&&	((
+						client != null 
+						&& chambre != null 
+						&& paireClefs != null 
+						&& chambre.getBadge().equals(this)
+						&& client.getBadge().equals(this)
+					) || ( 
+							client == null 
+							&& chambre == null 
+							&& paireClefs == null 	
+					));
 				
 	}
 	
