@@ -45,7 +45,9 @@ public class GestionClefsHotel {
 	 * @return {@code true} si l'invariant est vérifié.
 	 */
 	public boolean invariant() {
+
 		return chambres != null & badges != null & clients != null;
+
 	}
 
 	

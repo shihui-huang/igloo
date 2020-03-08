@@ -45,8 +45,8 @@ public class Badge {
 	}
 	
 	public boolean invariant() {
-		return Long.toString(id) != null 
-				&&	((
+		return
+					((
 						client != null 
 						&& chambre != null 
 						&& paireClefs != null 

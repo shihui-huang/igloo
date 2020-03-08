@@ -46,8 +46,8 @@ public class Client {
 	}
 	
 	public boolean invariant() {
-		return Long.toString(id) != null 
-				&& nom != null && !nom.equals("") 
+		return
+				nom != null && !nom.equals("")
 				&& prenom !=null && !prenom.equals("");	
 	}
 	
