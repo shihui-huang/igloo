@@ -100,26 +100,32 @@
 \begin{compactitem}
 \usecase{\haute}{Créer une chambre}
         %% précondition
-        {identifiant/code de la chambre bien formé (non \nullvalue et non
-          vide)
-          \\$\land$ chambre avec ce code inexistante \\$\land$ graine pour la génération des clefs bien formée (non
+        {
+		\\ $\land$ identifiant de la chambre bien formé (non \nullvalue et non
+          vide))
+          \\ $\land$ identifiant de la chambre inexistante
+		  \\$\land$ graine pour la génération des clefs bien formée (non
           \nullvalue et non vide)}
         %% postcondition
-        {chambre avec cet identifiant existante}
+        {chambre avec ce identifiant existante}
 
 \smallskip
 
 \usecase{\haute}{Créer un badge d'access}
         %% précondition
-         {}
+         {
+		  \\$\land$ identifiant de le badge bien formé (non \nullvalue et non vide)
+           \\$\land$ identifiant de le badge inexistante
+ 		 }
         %% postcondition
-         {\\badge vierge}
+         {\\chambre avec cet identifiant existante}
 
 \smallskip
 
 \usecase{\haute}{Créer un client}
                %% précondition
-                    {\\nom prénom et identifiant du client bien formées (non \nullvalue et non vide)\\
+                    {
+					\\$\land$ nom prénom et identifiant du client bien formées (non \nullvalue et non vide)\\
                     $\land$ client non existant dans le système}
                 %% postcondition
                     {\\client enregistré dans le système}
@@ -127,7 +133,8 @@
 \smallskip
 \usecase{\haute}{(Re)Initialiser la serrure d'une chambre }
                 %% précondition
-                    {\\identifiant de la serrure bien formé (non \nullvalue et non vide)\\
+                    {
+					\\$\land$ identifiant de la serrure bien formé (non \nullvalue et non vide)\\
                     $\land$ graine et sel pour la génération des clefs bien formée (non \nullvalue et non vide)}
                 %% postcondition
                     {\\serrure initialisé}
@@ -137,34 +144,36 @@
 
             \usecase{\haute}{Enregistrer l'occupation d'une chambre par un client}
                 %% précondition
-                    {\\nom et prénom du client bien formés (non \nullvalue et non vide)\\
-                        $\land$ client existe\\
+                    {\\ $\land$ client existante (identifiant du client non null et non vide)\\
+						$\land$ chambre existante (identifiant du existante non null et non vide)\\
+						$\land$ le badge d'accèss existante (identifiant du chambre non null et non vide)\\
                         $\land$ client occupe aucune chambre\\
-                        $\land$ identifiant/code de la chambre bien formé (non \nullvalue et non vide)\\
-                        $\land$ chambre avec ce code existante\\
                         $\land$ chambre non occupée\\
-                        $\land$ badge d'accèss disponible}
+						$\land$ badge d'accèss disponible(badge n'associe aucun d'autre clients et chambres, paireClefs sont null)}
                 %% postcondition
-                    {\\badge d'accès initialisé\\
+                    {\\
                         $\land$ paire de clés du badge d'accès bien formées (non \nullvalue et non vide)\\
-                        $\land$ +1 sur nombre de chambre occupée en cours du client\\
-                    $\land$ chambre occupée}
+						$\land$ badge associe avec client et chambre \\
+                    	$\land$ chambre occupée
+						}
 
-            \smallskip
+\smallskip
 
            \usecase{\haute}{Libérer une chambre}
                 %% précondition
                     {\\
-                        $\land$ client existe\\
+                        $\land$ client existante\\
+						$\land$ badge existante\\
+						$\land$ chambre existante\\
                         $\land$ client occupe une chambre\\
-                        $\land$ identifiant/code de la chambre bien formé (non \nullvalue et non vide)\\
                         $\land$ chambre occupée}
                 %% postcondition
                     {\\
-                        $\land$ -1 sur nombre de chambre occupée en cous du client\\
-                    $\land$ chambre non occupée}
+						$\land$ vider le clef du badge\\
+						$\land$ disassocie les relation entre le badge et la chambre, le badge et le client \\
+                    	$\land$ chambre non occupée}
 
-            \smallskip
+\smallskip
 
 
 \priorityusecase{\basse}{Retirer une chambre}
@@ -398,6 +407,7 @@ attributs:
 		  \cmt{operations <<~cas d'utilisation~>>} \\
 		  $+$ void inscrireClefs(PaireClefs paireClefs) \\
 		  $+$ void liberer() \\
+		  $+$ void enregistrerChambre() \\
 		  \hline
 	  \end{longtable}
   \end{center}
@@ -477,9 +487,22 @@ attributs:
 
 \end{figure}
 \bigskip
-\bigskip
-Invariants : identifiant de badge non null
 
+
+
+Invariants :
+\bigskip
+					 identifiant de badge $\neq$ null \\
+					$\land$  (( un client associe le badge \\
+									\hspace{1cm} $\land$ un chambre associe le badge\\
+									\hfill $\land$ les paireClefs de badge $\neq$ null\\
+									$\land$ le badge du chambre est pareil que ce badge\\
+									$\land$ le badge du client est pareil que ce badge)\\
+							$\lor$ \\ (
+									$\land$ aucun client associe le badge\\
+									$\land$ aucun chambre associe le badge\\
+									$\land$ les paireClefs de badge $=$ null\\
+							))
 
 \newpage
 

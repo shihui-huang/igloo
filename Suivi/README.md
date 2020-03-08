@@ -5,14 +5,14 @@ suivi est indiqué par une nouvelle section datée.
 Certaines remarques demandent des actions de votre part, vous les
 repérerez par une case à cocher.
 
-- []  Action (à réaliser) 
+- []  Action (à réaliser)
 
 Merci de nous indiquer que vous avez pris en compte la remarque en
 cochant la case. N'hésitez pas à écrire dans ce fichier et à nous
 exposer votre point de vue.
 
 - [x] Action (réalisée)
-    - RÉPONSE et éventuelles remarques de votre part, 
+    - RÉPONSE et éventuelles remarques de votre part,
 
 
 # Suivi du lun. 24 févr. 2020 16:27:10 CET
@@ -59,7 +59,7 @@ Denis Conan
 - fiches des classes
     - [x] à faire
 - invariant
-    - [] à faire
+    - [x] à faire
 - tables de décision des tests unitaires
     - [] à faire
 
@@ -72,7 +72,7 @@ Denis Conan
 - à la lecture du journal du dépôt, je comprends que vous vous êtes concentrés
   sur l'amélioration de la modélisation
 - préconditions et postconditions
-    - [] « enregistrer... » : on ne donne une dernière paire de clefs en
+    - [x] « enregistrer... » : on ne donne une dernière paire de clefs en
          entrée de ce cas d'utilisation ; en revanche, on donne l'identifiant
          d'un badge et on vérifie qu'il est à la réception
 - diagramme de classes

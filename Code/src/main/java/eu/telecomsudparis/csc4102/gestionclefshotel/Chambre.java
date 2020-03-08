@@ -213,6 +213,12 @@ public class Chambre {
 		this.badge.dissocierClient(true);
 		assert invariant();
 	}
+
+	public void enregistrerChambre() {
+		this.occupee = true;
+		assert invariant();
+	}
+
 	
 	/**
 	 * Implémentation de hashCode() pour {@link Chambre}
