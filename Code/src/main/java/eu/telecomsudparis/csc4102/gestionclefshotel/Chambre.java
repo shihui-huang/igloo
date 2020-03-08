@@ -70,9 +70,8 @@ public class Chambre {
 	}
 	
 	public boolean invariant() {
-		return Long.toString(id) != null 
-				&& graine != null && !graine.equals("") 
-				&& Integer.toString(sel) != null 
+		return
+				graine != null && !graine.equals("")
 				&& ( occupee == true && badge != null )|| (occupee == false && badge == null)
 				&& paireClefs != null;				
 	}
@@ -186,12 +185,14 @@ public class Chambre {
 	 *		s'est mal produite.
 	 */
 	public PaireClefs obtenirNouvellePaireClefs() throws ProblemeDansGenerationClef {
-		this.paireClefs = new PaireClefs(this.paireClefs.getClef1(),
+		//this.paireClefs = new PaireClefs(this.paireClefs.getClef1(),
+		//								Util.genererUneNouvelleClef(this.graine,
+		//															String.format("%010d%n", this.sel)));
+		PaireClefs paireClefs = new PaireClefs(this.paireClefs.getClef1(),
 										Util.genererUneNouvelleClef(this.graine,
 																	String.format("%010d%n", this.sel)));
 		this.sel++;
-		assert invariant();
-		return this.paireClefs;
+		return paireClefs;
 	}
 	
 	/**
