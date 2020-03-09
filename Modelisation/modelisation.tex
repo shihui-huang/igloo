@@ -515,8 +515,78 @@ Invariants :
 
 \section{Préparation des tests unitaires}
 
-{\color{red}\textbf{La section est à compléter avec les tables de
-    décision de certaines méthodes des classes les plus importantes.}}
+    %{\color{red}\textbf{La section est à compléter avec les tables de
+    %décision de certaines méthodes des classes les plus importantes.}}
 
+    \begin{table}[htbp!]
+        \begin{tabular}{r|p{0.6\linewidth}|c|}
+            \cline{2-3}
 
+                &Numéro de test
+                &1\\
+            \hline
+            \hline
+
+            Postcondition
+                &badge $\neq$ \nullvalue
+                &T\\
+            \cline{2-3}
+                &paireClefs $=$ \nullvalue
+                &T\\
+            \cline{2-3}
+                &client $=$ \nullvalue
+                &T\\
+            \cline{2-3}
+                &chambre $=$ \nullvalue
+                &T\\
+            \cline{2-3}
+            Exception
+                &Levée d'une exception
+                &NON\\
+            \hline
+            \hline
+            Effet
+                &Création du badge accepté
+                &T\\
+            \hline
+            \hline
+                &Nombre de jeux de test
+                &1\\
+            \cline{2-3}
+        \end{tabular}
+        \caption{Table de décision du "constructeur" de la classe "Badge"}
+    \end{table}
+
+    \begin{table}[htbp!]
+        \begin{tabular}{r|p{0.6\linewidth}|c|c|c|c|}
+            \cline{2-3}
+
+                &Numéro de test
+                &1\\
+            \hline
+            \hline
+
+            Postcondition
+                &client $=$ client
+                &T\\
+            \cline{2-3}
+                &badge.clent $=$ client.badge
+                &T\\
+            \cline{2-3}
+            Exception
+                &Levée d'une exception
+                &NON\\
+            \hline
+            \hline
+            Effet
+                &Association Client Bidirectionnelle accepté pour le badge
+                &T\\
+            \hline
+            \hline
+                &Nombre de jeux de test
+                &1\\
+            \cline{2-3}
+        \end{tabular}
+        \caption{Table de décision du "AssociationClientBidirectionnelle" de la classe "Badge"}
+    \end{table}
 \end{document}

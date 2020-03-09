@@ -209,7 +209,7 @@ public class Badge {
 		
 		this.client = null;
 	}
-	
+
 	/**
 	 * Implémentation de hashCode() pour {@link Badge} basée sur {@link #id}.
 	 * <br>

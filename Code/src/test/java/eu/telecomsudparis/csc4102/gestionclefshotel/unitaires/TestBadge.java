@@ -1,5 +1,6 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel.unitaires;
 
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -25,23 +26,26 @@ public class TestBadge {
 	@Test
 	public void testConstructeur() {
 		Assert.assertNotNull(this.badge);
-		Assert.assertTrue(this.badge.invariant());
+		Assert.assertNull(this.badge.getClefs());
+		Assert.assertNull(this.badge.getClient());
+		Assert.assertNull(this.badge.getChambre());
 	}
-	
-	@Test
-	public void testAssociationClient() {
-		final Client client = new Client(43, "Zidane", "Zinedine");
-		this.badge.associerClient(client);
-		Assert.assertEquals(client, this.badge.getClient());
-		Assert.assertNull(client.getBadge());
-	}
-	
+
+//	@Test
+//	public void testAssociationClient(){
+//		final Client client = new Client(43, "Zidane", "Zinedine");
+//		this.badge.associerClient(client);
+//		Assert.assertEquals(client, this.badge.getClient());
+//		Assert.assertNull(client.getBadge());
+//	}
+
 	@Test
 	public void testAssociationClientBidirectionnelle() {
 		final Client client = new Client(44, "d'Artois", "Robert");
 		this.badge.associerClient(client, true);
-		Assert.assertTrue(client.invariant());
 		Assert.assertEquals(client, this.badge.getClient());
 		Assert.assertEquals(this.badge, client.getBadge());
 	}
+
+
 }
