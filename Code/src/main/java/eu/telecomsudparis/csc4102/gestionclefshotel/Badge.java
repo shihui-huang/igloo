@@ -89,7 +89,10 @@ public class Badge {
 		if (this.chambre != null) {
 			this.chambre.dissocierBadge();
 		}
-		
+		if (this.client != null) {
+			this.dissocierClient();
+		}
+
 		this.paireClefs = null;
 	}
 	

@@ -1,12 +1,10 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel.exception;
-
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
 /**
- * Cette classe définit le type d'exception pour un client occupee deja une chambre.
+ * Cette classe définit le type d'exception pour un client possède pas bonne chambre.
  */
-public class ClientOccupeeDejaChambre extends OperationImpossible {
-
+public class ClientOccupeePasBonneChambre extends OperationImpossible {
     /**
      * numéro de version pour la sérialisation.
      */
@@ -17,7 +15,9 @@ public class ClientOccupeeDejaChambre extends OperationImpossible {
      *
      * @param message le message de l'exception.
      */
-    public ClientOccupeeDejaChambre(final String message) {
+    public ClientOccupeePasBonneChambre(final String message) {
+
         super(message);
     }
+
 }

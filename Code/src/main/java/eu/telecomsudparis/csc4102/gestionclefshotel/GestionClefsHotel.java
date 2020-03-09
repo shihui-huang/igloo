@@ -205,20 +205,20 @@ public class GestionClefsHotel {
 		final Badge badge = this.chercherBadge(idBadge);
 		final Client client = this.chercherClient(idClient);
 
-		if (chambre != null) {
-			throw new OperationImpossible("chambre existe pas, verifier ídChambre encore s'il vous plaît");
+		if (chambre == null) {
+			throw new ChambreInexistante("chambre existe pas, verifier ídChambre encore s'il vous plaît");
 		}
-		if (badge != null) {
-			throw new OperationImpossible("badge existe pas, verifier ídBadge encore s'il vous plaît");
+		if (badge == null) {
+			throw new BadgeInexistant("badge existe pas, verifier ídBadge encore s'il vous plaît");
 		}
-		if (client != null) {
-			throw new OperationImpossible("client existe pas, verifier ídClient encore s'il vous plaît");
+		if (client == null) {
+			throw new ClientInexistant("client existe pas, verifier ídClient encore s'il vous plaît");
 		}
 		if (!chambre.estOccupee()) {
-			throw new OperationImpossible("ce chambre est libre, verifier ídChambre encore s'il vous plaît");
+			throw new ChambreNonOccupee("ce chambre n'est pas occupée, verifier ídChambre encore s'il vous plaît");
 		}
 		if (client.getBadge().getChambre().getId() != chambre.getId()) {
-			throw new OperationImpossible("le client possède pas ce chambre," +
+			throw new ClientOccupeePasBonneChambre("le client possède pas ce chambre," +
 					"verifier encore idClient idChambre et idBadge s'il vous plaît ");
 		}
 

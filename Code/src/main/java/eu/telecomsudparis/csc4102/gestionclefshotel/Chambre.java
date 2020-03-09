@@ -72,8 +72,8 @@ public class Chambre {
 	public boolean invariant() {
 		return
 				graine != null && !graine.equals("")
-				&& ( occupee == true && badge != null )|| (occupee == false && badge == null)
-				&& paireClefs != null;				
+				&& (( occupee == true && badge != null )|| (occupee == false && badge == null))
+				&& paireClefs != null;
 	}
 	
 	/**
@@ -212,6 +212,8 @@ public class Chambre {
 	public void liberer() {
 		this.occupee = false;
 		this.badge.dissocierClient(true);
+		this.badge.dissocierChambre(true);
+
 		assert invariant();
 	}
 

@@ -43,34 +43,33 @@ public class TestEnregistrerOccupationChambre {
     }
 
     @Test(expected = BadgeInexistant.class)
-    public void enregistrerOccupationChambreTest1Jeu2() throws Exception {
+    public void enregistrerOccupationChambreTest2Jeu1() throws Exception {
         systeme. enregistrerOccupationChambre(11, 00, 33);
     }
 
 
     @Test(expected = ClientInexistant.class)
-    public void enregistrerOccupationChambreTest1Jeu3() throws Exception {
+    public void enregistrerOccupationChambreTest3Jeu1() throws Exception {
         systeme. enregistrerOccupationChambre(11, 22, 00);
     }
 
 
 	@Test(expected = ChambreOccupee.class)
-	public void  enregistrerOccupationChambreTest2Jeu1() throws Exception {
+	public void  enregistrerOccupationChambreTest4Jeu1() throws Exception {
 		systeme. enregistrerOccupationChambre(11, 22, 33);
         systeme. enregistrerOccupationChambre(11, 23, 34);
 	}
 
 
     @Test(expected = ClientOccupeeDejaChambre.class)
-    public void  enregistrerOccupationChambreTest3Jeu1() throws Exception {
+    public void  enregistrerOccupationChambreTest5Jeu1() throws Exception {
         systeme. enregistrerOccupationChambre(11, 22, 33);
         systeme. enregistrerOccupationChambre(12, 23, 33);
     }
 
 
-
     @Test(expected = BadgeAssocieDejaChambreOuClient.class)
-    public void  enregistrerOccupationChambreTest4Jeu1() throws Exception {
+    public void  enregistrerOccupationChambreTest6Jeu1() throws Exception {
         systeme. enregistrerOccupationChambre(11, 22, 33);
         systeme. enregistrerOccupationChambre(12, 22, 34);
     }
@@ -78,12 +77,11 @@ public class TestEnregistrerOccupationChambre {
     //Todo tester les paireClefs dans badge sont null
 
     @Test
-    public void  enregistrerOccupationChambreTest6() throws Exception {
+    public void  enregistrerOccupationChambreTest8() throws Exception {
         Chambre chambre1 = systeme.chercherChambre(11);
         Badge Badge1 = systeme.chercherBadge(22);
-
-        System.out.println(chambre1);
         Client client1 = systeme.chercherClient(33);
+
         Assert.assertFalse(chambre1.estOccupee());
         Assert.assertNull(Badge1. getClefs());
         Assert.assertNull(Badge1. getClient());
