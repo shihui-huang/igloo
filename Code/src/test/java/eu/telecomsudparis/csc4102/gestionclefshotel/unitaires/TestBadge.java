@@ -32,7 +32,6 @@ public class TestBadge {
 	public void testAssociationClient() {
 		final Client client = new Client(43, "Zidane", "Zinedine");
 		this.badge.associerClient(client);
-		Assert.assertTrue(this.badge.invariant());
 		Assert.assertEquals(client, this.badge.getClient());
 		Assert.assertNull(client.getBadge());
 	}
@@ -41,7 +40,6 @@ public class TestBadge {
 	public void testAssociationClientBidirectionnelle() {
 		final Client client = new Client(44, "d'Artois", "Robert");
 		this.badge.associerClient(client, true);
-		Assert.assertTrue(this.badge.invariant());
 		Assert.assertTrue(client.invariant());
 		Assert.assertEquals(client, this.badge.getClient());
 		Assert.assertEquals(this.badge, client.getBadge());
