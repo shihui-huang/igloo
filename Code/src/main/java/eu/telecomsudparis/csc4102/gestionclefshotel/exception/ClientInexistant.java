@@ -4,12 +4,9 @@ import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
 
 /**
- * Cette classe définit le type d'exception pour indiquer qu'une chaîne de
- * caractères est par erreur soit null soit vide.
- * 
- * @author Denis Conan
+ * Cette classe définit le type d'exception pour un client non trouvée.
  */
-public class ClefNullOuVide extends OperationImpossible {
+public class ClientInexistant extends OperationImpossible {
 	/**
 	 * numéro de version pour la sérialisation.
 	 */
@@ -17,10 +14,10 @@ public class ClefNullOuVide extends OperationImpossible {
 	
 	/**
 	 * construit une instance.
-	 * 
+	 *
 	 * @param message le message de l'exception.
 	 */
-	public ClefNullOuVide(final String message) {
+	public ClientInexistant(final String message) {
 		super(message);
 	}
 }
