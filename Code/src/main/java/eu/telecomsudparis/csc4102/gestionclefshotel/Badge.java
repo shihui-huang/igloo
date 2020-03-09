@@ -1,17 +1,15 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
-
 /**
- * Classe représentant un badge d'accès permettant de
- * déverrouiller la serrure d'une chambre qui lui a été
- * associée. D'un point de vue modèle, elle est reliée
- * bi-directionnellement à {@link Chambre} et à {@link
- * Client} et uni-directionnellement à {@link PaireClefs}. 
+ * Classe représentant un badge d'accès permettant de déverrouiller la serrure
+ * d'une chambre qui lui a été associée. D'un point de vue modèle, elle est
+ * reliée bi-directionnellement à {@link Chambre} et à {@link Client} et
+ * uni-directionnellement à {@link PaireClefs}.
  * 
- * @see Chambre
- * @see Client
- * @see PaireClefs
- * @see GestionClefsHotel
+ * @see    Chambre
+ * @see    Client
+ * @see    PaireClefs
+ * @see    GestionClefsHotel
  * @author Paul Mabileau
  */
 public class Badge {
@@ -20,23 +18,21 @@ public class Badge {
 	 */
 	private final long id;
 	/**
-	 * La paire de clés permettant de déverrouiller la
-	 * serrure correspondante.
+	 * La paire de clés permettant de déverrouiller la serrure correspondante.
 	 */
 	private PaireClefs paireClefs;
 	/**
-	 * La {@link Chambre} à laquelle est potentiellement
-	 * associée le badge.
+	 * La {@link Chambre} à laquelle est potentiellement associée le badge.
 	 */
 	private Chambre chambre;
 	/**
-	 * Le {@link Client} auquel est potentiellement associé
-	 * le badge.
+	 * Le {@link Client} auquel est potentiellement associé le badge.
 	 */
 	private Client client;
 	
 	/**
 	 * Construit le badge en enregistrant l'identifiant donné.
+	 * 
 	 * @param id L'identifiant unique que le badge doit avoir.
 	 */
 	public Badge(final long id) {
@@ -45,19 +41,14 @@ public class Badge {
 	}
 	
 	public boolean invariant() {
-		return
-					((
-						client != null 
-						&& chambre != null 
-						&& paireClefs != null 
-						&& chambre.getBadge().equals(this)
-						&& client.getBadge().equals(this)
-					) || ( 
-							client == null 
-							&& chambre == null 
-							&& paireClefs == null 	
-					));
-				
+		return this.client != null
+				&& this.chambre != null
+				&& this.paireClefs != null
+				&& this.chambre.getBadge().equals(this)
+				&& this.client.getBadge().equals(this)
+				|| this.client == null
+					&& this.chambre == null
+					&& this.paireClefs == null;
 	}
 	
 	/**
@@ -76,6 +67,7 @@ public class Badge {
 	
 	/**
 	 * Enregistre la {@link PaireClefs} fournie dans le badge.
+	 * 
 	 * @param paireClefs La paire de clefs à stocker.
 	 */
 	public void inscrireClefs(final PaireClefs paireClefs) {
@@ -92,37 +84,36 @@ public class Badge {
 		if (this.client != null) {
 			this.dissocierClient();
 		}
-
+		
 		this.paireClefs = null;
 	}
 	
 	/**
-	 * @return La chambre à laquelle est potentiellement associée
-	 *		le badge.
+	 * @return La chambre à laquelle est potentiellement associée le badge.
 	 */
 	public Chambre getChambre() {
 		return this.chambre;
 	}
 	
 	/**
-	 * Associe de manière unidirectionnelle la chambre au badge,
-	 * c'est-à-dire sans enregistrer le badge dans la chambre.
-	 *   
+	 * Associe de manière unidirectionnelle la chambre au badge, c'est-à-dire
+	 * sans enregistrer le badge dans la chambre.
+	 * 
 	 * @param chambre La chambre à associer.
-	 * @see #associerChambre(Chambre, boolean)
+	 * @see           #associerChambre(Chambre, boolean)
 	 */
 	public void associerChambre(final Chambre chambre) {
 		this.associerChambre(chambre, false);
 	}
 	
 	/**
-	 * Associe la chambre donnée au badge et dans l'autre sens
-	 * aussi si {@code bidirectionnel} vaut {@code true}.
+	 * Associe la chambre donnée au badge et dans l'autre sens aussi si
+	 * {@code bidirectionnel} vaut {@code true}.
 	 * 
-	 * @param chambre La chambre à associer.
-	 * @param bidirectionnel S'il faut aussi faire enregistrer le
-	 *		badge par la chambre.
-	 * @see #associerChambre(Chambre)
+	 * @param chambre        La chambre à associer.
+	 * @param bidirectionnel S'il faut aussi faire enregistrer le badge par la
+	 *                       chambre.
+	 * @see                  #associerChambre(Chambre)
 	 */
 	public void associerChambre(final Chambre chambre, boolean bidirectionnel) {
 		this.chambre = chambre;
@@ -133,8 +124,8 @@ public class Badge {
 	}
 	
 	/**
-	 * Rompt le lien d'association du badge vers sa chambre
-	 * sans en faire de même pour la direction opposée.
+	 * Rompt le lien d'association du badge vers sa chambre sans en faire de
+	 * même pour la direction opposée.
 	 * 
 	 * @see #dissocierChambre(boolean)
 	 */
@@ -143,13 +134,12 @@ public class Badge {
 	}
 	
 	/**
-	 * Rompt le lien d'association du badge vers sa chambre
-	 * en en faisant de même pour la direction opposée si
-	 * {@code bidirectionnel} vaut {@code true}.
+	 * Rompt le lien d'association du badge vers sa chambre en en faisant de
+	 * même pour la direction opposée si {@code bidirectionnel} vaut
+	 * {@code true}.
 	 * 
-	 * @param bidirectionnel S'il faut aussi dissocier dans
-	 *		l'autre sens.
-	 * @see #dissocierChambre()
+	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
+	 * @see                  #dissocierChambre()
 	 */
 	public void dissocierChambre(boolean bidirectionnel) {
 		if (bidirectionnel && this.chambre != null) {
@@ -160,32 +150,31 @@ public class Badge {
 	}
 	
 	/**
-	 * @return Le client auquel est potentiellement associé
-	 *		le badge.
+	 * @return Le client auquel est potentiellement associé le badge.
 	 */
 	public Client getClient() {
 		return this.client;
 	}
 	
 	/**
-	 * Associe de manière unidirectionnelle le client au badge,
-	 * c'est-à-dire sans enregistrer le badge dans la chambre.
-	 *   
+	 * Associe de manière unidirectionnelle le client au badge, c'est-à-dire
+	 * sans enregistrer le badge dans la chambre.
+	 * 
 	 * @param client Le client à associer.
-	 * @see #associerChambre(Client, boolean)
+	 * @see          #associerChambre(Client, boolean)
 	 */
 	public void associerClient(final Client client) {
 		this.associerClient(client, false);
 	}
 	
 	/**
-	 * Associe le client donné au badge et dans l'autre sens
-	 * aussi si {@code bidirectionnel} vaut {@code true}.
+	 * Associe le client donné au badge et dans l'autre sens aussi si
+	 * {@code bidirectionnel} vaut {@code true}.
 	 * 
-	 * @param client Le client à associer.
-	 * @param bidirectionnel S'il faut aussi faire enregistrer le
-	 *		badge par le client.
-	 * @see #associerClient(Client)
+	 * @param client         Le client à associer.
+	 * @param bidirectionnel S'il faut aussi faire enregistrer le badge par le
+	 *                       client.
+	 * @see                  #associerClient(Client)
 	 */
 	public void associerClient(final Client client, boolean bidirectionnel) {
 		this.client = client;
@@ -196,8 +185,8 @@ public class Badge {
 	}
 	
 	/**
-	 * Rompt le lien d'association du badge vers son client
-	 * sans en faire de même pour la direction opposée.
+	 * Rompt le lien d'association du badge vers son client sans en faire de
+	 * même pour la direction opposée.
 	 * 
 	 * @see #dissocierClient(boolean)
 	 */
@@ -206,13 +195,12 @@ public class Badge {
 	}
 	
 	/**
-	 * Rompt le lien d'association du badge vers son client
-	 * en en faisant de même pour la direction opposée si
-	 * {@code bidirectionnel} vaut {@code true}.
+	 * Rompt le lien d'association du badge vers son client en en faisant de
+	 * même pour la direction opposée si {@code bidirectionnel} vaut
+	 * {@code true}.
 	 * 
-	 * @param bidirectionnel S'il faut aussi dissocier dans
-	 *		l'autre sens.
-	 * @see #dissocierClient()
+	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
+	 * @see                  #dissocierClient()
 	 */
 	public void dissocierClient(boolean bidirectionnel) {
 		if (bidirectionnel && this.client != null) {
@@ -223,9 +211,10 @@ public class Badge {
 	}
 	
 	/**
-	 * Implémentation de hashCode() pour {@link Badge} basée
-	 * sur {@link #id}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de hashCode() pour {@link Badge} basée sur {@link #id}.
+	 * <br>
+	 * <br>
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int hashCode() {
@@ -236,9 +225,11 @@ public class Badge {
 	}
 	
 	/**
-	 * Implémentation de equals() pour {@link Badge} pour
-	 * laquelle l'égalité est basée {@link #id}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de equals() pour {@link Badge} pour laquelle l'égalité est
+	 * basée {@link #id}. <br>
+	 * <br>
+	 * {@inheritDoc}
+	 * 
 	 * @return Si le badge est égal à l'objet donné.
 	 */
 	@Override
@@ -261,8 +252,10 @@ public class Badge {
 	}
 	
 	/**
-	 * Implémentation de toString() pour {@link Badge}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de toString() pour {@link Badge}. <br>
+	 * <br>
+	 * {@inheritDoc}
+	 * 
 	 * @return Une représentation textuelle du badge.
 	 */
 	@Override

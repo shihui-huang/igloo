@@ -1,15 +1,13 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
-
 /**
- * Classe représentant un client occupant une chambre
- * au travers d'un badge pouvant en déverrouiller la
- * porte. Les associations intermédiaires sont à sens
- * double.
+ * Classe représentant un client occupant une chambre au travers d'un badge
+ * pouvant en déverrouiller la porte. Les associations intermédiaires sont à
+ * sens double.
  * 
- * @see Chambre
- * @see Badge
- * @see GestionClefsHotel
+ * @see    Chambre
+ * @see    Badge
+ * @see    GestionClefsHotel
  * @author Paul Mabileau
  */
 public class Client {
@@ -31,24 +29,23 @@ public class Client {
 	private Badge badge;
 	
 	/**
-	 * Construit le client en enregistrant les paramètres
-	 * fournis.
+	 * Construit le client en enregistrant les paramètres fournis.
 	 * 
-	 * @param id L'identifiant unique du client.
-	 * @param nom Le nom de famille du client.
+	 * @param id       L'identifiant unique du client.
+	 * @param nom      Le nom de famille du client.
 	 * @param prenomLe prénom du client.
 	 */
 	public Client(final long id, final String nom, final String prenom) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
+		
 		assert this.invariant();
 	}
 	
 	public boolean invariant() {
-		return
-				nom != null && !nom.equals("")
-				&& prenom !=null && !prenom.equals("");	
+		return this.nom != null && !this.nom.equals("")
+				&& this.prenom != null && !this.prenom.equals("");
 	}
 	
 	/**
@@ -73,32 +70,31 @@ public class Client {
 	}
 	
 	/**
-	 * @return Le badge auquel est potentiellement
-	 *		associé le client.
+	 * @return Le badge auquel est potentiellement associé le client.
 	 */
 	public Badge getBadge() {
 		return this.badge;
 	}
 	
 	/**
-	 * Associe de manière unidirectionnelle le badge au client,
-	 * c'est-à-dire sans enregistrer le client dans le badge.
+	 * Associe de manière unidirectionnelle le badge au client, c'est-à-dire
+	 * sans enregistrer le client dans le badge.
 	 * 
 	 * @param badge Le badge à associer.
-	 * @see #associerBadge(Badge, boolean)
+	 * @see         #associerBadge(Badge, boolean)
 	 */
 	public void associerBadge(final Badge badge) {
 		this.associerBadge(badge, false);
 	}
 	
 	/**
-	 * Associe le badge donné au client et dans l'autre sens
-	 * aussi si {@code bidirectionnel} vaut {@code true}.
+	 * Associe le badge donné au client et dans l'autre sens aussi si
+	 * {@code bidirectionnel} vaut {@code true}.
 	 * 
-	 * @param badge Le badge à associer.
-	 * @param bidirectionnel S'il faut aussi faire enregistrer le
-	 *		client par le badge.
-	 * @see #associerBadge(Badge)
+	 * @param badge          Le badge à associer.
+	 * @param bidirectionnel S'il faut aussi faire enregistrer le client par le
+	 *                       badge.
+	 * @see                  #associerBadge(Badge)
 	 */
 	public void associerBadge(final Badge badge, boolean bidirectionnel) {
 		this.badge = badge;
@@ -109,8 +105,8 @@ public class Client {
 	}
 	
 	/**
-	 * Rompt le lien d'association du client vers son badge
-	 * sans en faire de même pour la direction opposée.
+	 * Rompt le lien d'association du client vers son badge sans en faire de
+	 * même pour la direction opposée.
 	 * 
 	 * @see #dissocierBadge(boolean)
 	 */
@@ -119,13 +115,12 @@ public class Client {
 	}
 	
 	/**
-	 * Rompt le lien d'association du client vers son badge
-	 * en en faisant de même pour la direction opposée si
-	 * {@code bidirectionnel} vaut {@code true}.
+	 * Rompt le lien d'association du client vers son badge en en faisant de
+	 * même pour la direction opposée si {@code bidirectionnel} vaut
+	 * {@code true}.
 	 * 
-	 * @param bidirectionnel S'il faut aussi dissocier dans
-	 *		l'autre sens.
-	 * @see #dissocierBadge()
+	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
+	 * @see                  #dissocierBadge()
 	 */
 	public void dissocierBadge(boolean bidirectionnel) {
 		if (bidirectionnel && this.badge != null) {
@@ -136,10 +131,10 @@ public class Client {
 	}
 	
 	/**
-	 * Implémentation de hashCode() pour {@link Client}
-	 * basée sur les membres {@link #id}, {@link #nom}
-	 * et {@link #prenom}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de hashCode() pour {@link Client} basée sur les membres
+	 * {@link #id}, {@link #nom} et {@link #prenom}. <br>
+	 * <br>
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int hashCode() {
@@ -152,10 +147,12 @@ public class Client {
 	}
 	
 	/**
-	 * Implémentation de equals() pour {@link Client} pour
-	 * laquelle l'égalité est basée sur les membres {@link
-	 * #id}, {@link #nom} et {@link #prenom}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de equals() pour {@link Client} pour laquelle l'égalité
+	 * est basée sur les membres {@link #id}, {@link #nom} et {@link #prenom}.
+	 * <br>
+	 * <br>
+	 * {@inheritDoc}
+	 * 
 	 * @return Si le client est égal à l'objet donné.
 	 */
 	@Override
@@ -196,8 +193,10 @@ public class Client {
 	}
 	
 	/**
-	 * Implémentation de toString() pour {@link Client}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de toString() pour {@link Client}. <br>
+	 * <br>
+	 * {@inheritDoc}
+	 * 
 	 * @return Une représentation textuelle du client.
 	 */
 	@Override

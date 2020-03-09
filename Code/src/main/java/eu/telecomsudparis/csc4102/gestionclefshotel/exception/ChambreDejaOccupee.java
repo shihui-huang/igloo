@@ -4,9 +4,10 @@ import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
 
 /**
- * Cette classe définit le type d'exception pour un client non trouvée.
+ * Cette classe définit le type d'exception pour une chambre occupée dans le
+ * système.
  */
-public class ClientInexistant extends OperationImpossible {
+public class ChambreDejaOccupee extends OperationImpossible {
 	/**
 	 * numéro de version pour la sérialisation.
 	 */
@@ -17,7 +18,7 @@ public class ClientInexistant extends OperationImpossible {
 	 *
 	 * @param message le message de l'exception.
 	 */
-	public ClientInexistant(final String message) {
+	public ChambreDejaOccupee(final String message) {
 		super(message);
 	}
 }

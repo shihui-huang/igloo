@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 
 /**
- * Paire de deux tableaux d'octets représentant des clés
- * servant à simuler ou déverrouiller des serrures.
+ * Paire de deux tableaux d'octets représentant des clés servant à simuler ou
+ * déverrouiller des serrures.
  * 
- * @see Chambre
- * @see Badge
- * @see GestionClefsHotel
+ * @see    Chambre
+ * @see    Badge
+ * @see    GestionClefsHotel
  * @author Paul Mabileau
  */
 public class PaireClefs {
@@ -24,6 +24,7 @@ public class PaireClefs {
 	
 	/**
 	 * Construit la paire à partir des deux clefs fournies.
+	 * 
 	 * @param clef1 La première clef de la paire.
 	 * @param clef2 La deuxième clef de la paire.
 	 */
@@ -34,10 +35,8 @@ public class PaireClefs {
 	}
 	
 	public boolean invariant() {
-		return	clef1 != null 
-				&& clef2 != null 
-				&& clef1.length == Util.TAILLE_CLEF 
-				&& clef2.length == Util.TAILLE_CLEF; 						
+		return this.clef1 != null && this.clef1.length == Util.TAILLE_CLEF
+				&& this.clef2 != null && this.clef2.length == Util.TAILLE_CLEF;
 	}
 	
 	/**
@@ -55,9 +54,10 @@ public class PaireClefs {
 	}
 	
 	/**
-	 * Implémentation de hashCode() pour {@link PaireClefs}
-	 * basée sur les deux clefs de la paire.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de hashCode() pour {@link PaireClefs} basée sur les deux
+	 * clefs de la paire. <br>
+	 * <br>
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int hashCode() {
@@ -69,9 +69,10 @@ public class PaireClefs {
 	}
 	
 	/**
-	 * Implémentation de equals() pour {@link PaireClefs}
-	 * basée sur les deux clefs de la paire.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de equals() pour {@link PaireClefs} basée sur les deux
+	 * clefs de la paire. <br>
+	 * <br>
+	 * {@inheritDoc}
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -97,9 +98,10 @@ public class PaireClefs {
 	}
 	
 	/**
-	 * Implémentation de toString() pour {@link PaireClefs}
-	 * basée sur les deux clefs de la paire.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de toString() pour {@link PaireClefs} basée sur les deux
+	 * clefs de la paire. <br>
+	 * <br>
+	 * {@inheritDoc}
 	 */
 	@Override
 	public String toString() {

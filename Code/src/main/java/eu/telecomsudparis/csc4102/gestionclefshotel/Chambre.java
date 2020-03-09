@@ -4,15 +4,14 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenera
 
 
 /**
- * Classe représentant une chambre dans le système de
- * gestion des clefs d'un hôtel. D'un point de vue modèle,
- * elle est reliée bi-directionnellement à {@link Badge}
- * et uni-directionnellement à {@link PaireClefs}.
+ * Classe représentant une chambre dans le système de gestion des clefs d'un
+ * hôtel. D'un point de vue modèle, elle est reliée bi-directionnellement à
+ * {@link Badge} et uni-directionnellement à {@link PaireClefs}.
  * 
- * @see Badge
- * @see Client
- * @see PaireClefs
- * @see GestionClefsHotel
+ * @see    Badge
+ * @see    Client
+ * @see    PaireClefs
+ * @see    GestionClefsHotel
  * @author Paul Mabileau
  */
 public class Chambre {
@@ -25,13 +24,12 @@ public class Chambre {
 	 */
 	private final String graine;
 	/**
-	 * Le sel pour la génération de clés. À incrémenter à
-	 * chaque renouvellement de clé.
+	 * Le sel pour la génération de clés. À incrémenter à chaque renouvellement
+	 * de clé.
 	 */
 	private int sel;
 	/**
-	 * Attribut redondant indiquant si la chambre est occupée
-	 * ou non.
+	 * Attribut redondant indiquant si la chambre est occupée ou non.
 	 */
 	private boolean occupee;
 	/**
@@ -44,16 +42,18 @@ public class Chambre {
 	private PaireClefs paireClefs;
 	
 	/**
-	 * Construit une nouvelle chambre et initialise sa paire
-	 * de clés à partir des paramètres fournis.
+	 * Construit une nouvelle chambre et initialise sa paire de clés à partir
+	 * des paramètres fournis.
 	 * 
-	 * @param id L'identifiant que va prendre la chambre.
-	 * @param graine La graine servant aux générations de
-	 *		paires de clés.
-	 * @param sel Le sel servant aux générations de paires
-	 *		de clés qui va être incrémentés à chaque fois.
-	 * @throws ProblemeDansGenerationClef Proviens de la
-	 *		génération de clés réalisée par {@link Util}.
+	 * @param  id                         L'identifiant que va prendre la
+	 *                                    chambre.
+	 * @param  graine                     La graine servant aux générations de
+	 *                                    paires de clés.
+	 * @param  sel                        Le sel servant aux générations de
+	 *                                    paires de clés qui va être incrémentés
+	 *                                    à chaque fois.
+	 * @throws ProblemeDansGenerationClef Proviens de la génération de clés
+	 *                                    réalisée par {@link Util}.
 	 */
 	public Chambre(final long id, final String graine, final int sel) throws ProblemeDansGenerationClef {
 		this.id = id;
@@ -66,14 +66,15 @@ public class Chambre {
 		final byte[] clef2 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
 		this.sel++;
 		this.paireClefs = new PaireClefs(clef1, clef2);
+		
 		assert this.invariant();
 	}
 	
 	public boolean invariant() {
-		return
-				graine != null && !graine.equals("")
-				&& (( occupee == true && badge != null )|| (occupee == false && badge == null))
-				&& paireClefs != null;
+		return this.graine != null && !this.graine.equals("")
+				&& (this.occupee == true && this.badge != null
+					|| this.occupee == false && this.badge == null)
+				&& this.paireClefs != null;
 	}
 	
 	/**
@@ -84,33 +85,32 @@ public class Chambre {
 	}
 	
 	/**
-	 * @return Le badge auquel est potentiellement associé
-	 *			la chambre. Peut être {@code null}.
+	 * @return Le badge auquel est potentiellement associé la chambre. Peut être
+	 *         {@code null}.
 	 */
 	public Badge getBadge() {
 		return this.badge;
 	}
 	
 	/**
-	 * Associe le badge fourni à la chambre sans associer
-	 * la chambre au badge, c'est donc unidirectionnel.
+	 * Associe le badge fourni à la chambre sans associer la chambre au badge,
+	 * c'est donc unidirectionnel.
 	 * 
 	 * @param badge Le badge à associer.
-	 * @see #associerBadge(Badge, boolean)
+	 * @see         #associerBadge(Badge, boolean)
 	 */
 	public void associerBadge(final Badge badge) {
 		this.associerBadge(badge, false);
 	}
 	
 	/**
-	 * Associe le badge fourni à la chambre donnée et
-	 * vice-versa si {@code bidirectionnel} vaut {@code
+	 * Associe le badge fourni à la chambre donnée et vice-versa si
+	 * {@code bidirectionnel} vaut {@code
 	 * true}.
 	 * 
-	 * @param badge Le badge à associer.
-	 * @param bidirectionnel S'il faut aussi associer la
-	 *		chambre au badge.
-	 * @see #associerBadge(Badge)
+	 * @param badge          Le badge à associer.
+	 * @param bidirectionnel S'il faut aussi associer la chambre au badge.
+	 * @see                  #associerBadge(Badge)
 	 */
 	public void associerBadge(final Badge badge, boolean bidirectionnel) {
 		this.badge = badge;
@@ -121,8 +121,8 @@ public class Chambre {
 	}
 	
 	/**
-	 * Rompt le lien d'association de la chambre vers son
-	 * badge sans en faire de même pour la direction opposée.
+	 * Rompt le lien d'association de la chambre vers son badge sans en faire de
+	 * même pour la direction opposée.
 	 * 
 	 * @see #dissocierBadge(boolean)
 	 */
@@ -131,12 +131,11 @@ public class Chambre {
 	}
 	
 	/**
-	 * Rompt le lien d'association de la chambre vers son
-	 * badge en en faisant de même pour la direction opposée.
+	 * Rompt le lien d'association de la chambre vers son badge en en faisant de
+	 * même pour la direction opposée.
 	 * 
-	 * @param bidirectionnel S'il faut aussi dissocier dans
-	 *		l'autre sens.
-	 * @see #dissocierBadge()
+	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
+	 * @see                  #dissocierBadge()
 	 */
 	public void dissocierBadge(boolean bidirectionnel) {
 		if (bidirectionnel && this.badge != null) {
@@ -175,28 +174,25 @@ public class Chambre {
 	}
 	
 	/**
-	 * Génère une nouvelle {@link PaireClefs} pour la chambre
-	 * en mettant l'ancienne clef n°2 comme nouvelle clef n°1
-	 * et en générant une nouvelle clef n°2 à partir des membres
-	 * {@link #graine} et {@link #sel} en incrémentant ce dernier.
+	 * Génère une nouvelle {@link PaireClefs} pour la chambre en mettant
+	 * l'ancienne clef n°2 comme nouvelle clef n°1 et en générant une nouvelle
+	 * clef n°2 à partir des membres {@link #graine} et {@link #sel} en
+	 * incrémentant ce dernier.
 	 * 
-	 * @return La nouvelle paire ainsi générée.
-	 * @throws ProblemeDansGenerationClef Si la génération
-	 *		s'est mal produite.
+	 * @return                            La nouvelle paire ainsi générée.
+	 * @throws ProblemeDansGenerationClef Si la génération s'est mal produite.
 	 */
 	public PaireClefs obtenirNouvellePaireClefs() throws ProblemeDansGenerationClef {
-		//this.paireClefs = new PaireClefs(this.paireClefs.getClef1(),
-		//								Util.genererUneNouvelleClef(this.graine,
-		//															String.format("%010d%n", this.sel)));
-		PaireClefs paireClefs = new PaireClefs(this.paireClefs.getClef1(),
-										Util.genererUneNouvelleClef(this.graine,
-																	String.format("%010d%n", this.sel)));
+		final PaireClefs paireClefs = new PaireClefs(this.paireClefs.getClef1(),
+													Util.genererUneNouvelleClef(this.graine,
+																				String.format("%010d%n", this.sel)));
 		this.sel++;
 		return paireClefs;
 	}
 	
 	/**
 	 * Enregistre la paire de clefs données dans la chambre.
+	 * 
 	 * @param paireClefs L'objet {@link PaireClefs} à stocker.
 	 */
 	public void inscrireClefs(final PaireClefs paireClefs) {
@@ -204,30 +200,28 @@ public class Chambre {
 	}
 	
 	/**
-	 * Libère la chambre de son client en le dissociant du
-	 * badge associé à la chambre (bidirectionnellement).
-	 * Maintient le lien entre la chambre et son badge. Marque
-	 * la chambre comme non occupée.
+	 * Libère la chambre de son client en le dissociant du badge associé à la
+	 * chambre (bidirectionnellement). Maintient le lien entre la chambre et son
+	 * badge. Marque la chambre comme non occupée.
 	 */
 	public void liberer() {
 		this.occupee = false;
 		this.badge.dissocierClient(true);
 		this.badge.dissocierChambre(true);
-
-		assert invariant();
+		
+		assert this.invariant();
 	}
-
+	
 	public void enregistrerChambre() {
 		this.occupee = true;
-		assert invariant();
+		assert this.invariant();
 	}
-
 	
 	/**
-	 * Implémentation de hashCode() pour {@link Chambre}
-	 * basée sur les membres {@link #id}, {@link #graine}
-	 * et {@link #sel}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de hashCode() pour {@link Chambre} basée sur les membres
+	 * {@link #id}, {@link #graine} et {@link #sel}. <br>
+	 * <br>
+	 * {@inheritDoc}
 	 */
 	@Override
 	public int hashCode() {
@@ -240,10 +234,12 @@ public class Chambre {
 	}
 	
 	/**
-	 * Implémentation de equals() pour {@link Chambre} pour
-	 * laquelle l'égalité est basée sur les membres {@link
-	 * #id}, {@link #graine} et {@link #sel}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de equals() pour {@link Chambre} pour laquelle l'égalité
+	 * est basée sur les membres {@link #id}, {@link #graine} et {@link #sel}.
+	 * <br>
+	 * <br>
+	 * {@inheritDoc}
+	 * 
 	 * @return Si la chambre est égale à l'objet donné.
 	 */
 	@Override
@@ -279,13 +275,15 @@ public class Chambre {
 	}
 	
 	/**
-	 * Implémentation de toString() pour {@link Chambre}.
-	 * <br><br>{@inheritDoc}
+	 * Implémentation de toString() pour {@link Chambre}. <br>
+	 * <br>
+	 * {@inheritDoc}
+	 * 
 	 * @return Une représentation textuelle de la chambre.
 	 */
 	@Override
 	public String toString() {
 		return String.format("Chambre [id = %s, graine = %s, sel = %s, occupee = %s, paireClefs = %s]",
-							this.id, this.graine, this.sel, this.occupee, this.paireClefs);
+								this.id, this.graine, this.sel, this.occupee, this.paireClefs);
 	}
 }
