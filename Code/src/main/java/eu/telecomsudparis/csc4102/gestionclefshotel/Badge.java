@@ -1,5 +1,7 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
+import java.util.Objects;
+
 /**
  * Classe représentant un badge d'accès permettant de déverrouiller la serrure
  * d'une chambre qui lui a été associée. D'un point de vue modèle, elle est
@@ -218,12 +220,9 @@ public class Badge {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (this.id ^ this.id >>> 32);
-		return result;
+		return Objects.hash(id);
 	}
-	
+
 	/**
 	 * Implémentation de equals() pour {@link Badge} pour laquelle l'égalité est
 	 * basée {@link #id}. <br>
@@ -233,24 +232,17 @@ public class Badge {
 	 * @return Si le badge est égal à l'objet donné.
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
+	public boolean equals(final Object o) {
+		if (this == o) {
 			return true;
 		}
-		
-		if (!(obj instanceof Badge)) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		
-		final Badge other = (Badge) obj;
-		
-		if (this.id != other.id) {
-			return false;
-		}
-		
-		return true;
+		Badge badge = (Badge) o;
+		return id == badge.id;
 	}
-	
+
 	/**
 	 * Implémentation de toString() pour {@link Badge}. <br>
 	 * <br>

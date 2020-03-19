@@ -2,6 +2,8 @@ package eu.telecomsudparis.csc4102.gestionclefshotel;
 
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenerationClef;
 
+import java.util.Objects;
+
 
 /**
  * Classe représentant une chambre dans le système de gestion des clefs d'un
@@ -216,7 +218,28 @@ public class Chambre {
 		this.occupee = true;
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Implémentation de equals() pour {@link Chambre} pour laquelle l'égalité
+	 * est basée sur les membres {@link #id}, {@link #graine} et {@link #sel}.
+	 * <br>
+	 * <br>
+	 * {@inheritDoc}
+	 *
+	 * @return Si la chambre est égale à l'objet donné.
+	 */
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Chambre chambre = (Chambre) o;
+		return id == chambre.id;
+	}
+
 	/**
 	 * Implémentation de hashCode() pour {@link Chambre} basée sur les membres
 	 * {@link #id}, {@link #graine} et {@link #sel}. <br>
@@ -225,60 +248,14 @@ public class Chambre {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.graine == null ? 0 : this.graine.hashCode());
-		result = prime * result + (int) (this.id ^ this.id >>> 32);
-		result = prime * result + this.sel;
-		return result;
+		return Objects.hash(id);
 	}
-	
-	/**
-	 * Implémentation de equals() pour {@link Chambre} pour laquelle l'égalité
-	 * est basée sur les membres {@link #id}, {@link #graine} et {@link #sel}.
-	 * <br>
-	 * <br>
-	 * {@inheritDoc}
-	 * 
-	 * @return Si la chambre est égale à l'objet donné.
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		
-		if (!(obj instanceof Chambre)) {
-			return false;
-		}
-		
-		final Chambre other = (Chambre) obj;
-		
-		if (this.graine == null) {
-			if (other.graine != null) {
-				return false;
-			}
-		}
-		else if (!this.graine.equals(other.graine)) {
-			return false;
-		}
-		
-		if (this.id != other.id) {
-			return false;
-		}
-		
-		if (this.sel != other.sel) {
-			return false;
-		}
-		
-		return true;
-	}
-	
+
 	/**
 	 * Implémentation de toString() pour {@link Chambre}. <br>
 	 * <br>
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @return Une représentation textuelle de la chambre.
 	 */
 	@Override

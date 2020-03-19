@@ -1,5 +1,7 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
+import java.util.Objects;
+
 /**
  * Classe représentant un client occupant une chambre au travers d'un badge
  * pouvant en déverrouiller la porte. Les associations intermédiaires sont à
@@ -138,14 +140,9 @@ public class Client {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (this.id ^ this.id >>> 32);
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
-		return result;
+		return Objects.hash(id);
 	}
-	
+
 	/**
 	 * Implémentation de equals() pour {@link Client} pour laquelle l'égalité
 	 * est basée sur les membres {@link #id}, {@link #nom} et {@link #prenom}.
@@ -156,42 +153,17 @@ public class Client {
 	 * @return Si le client est égal à l'objet donné.
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
+	public boolean equals(final Object o) {
+		if (this == o) {
 			return true;
 		}
-		
-		if (!(obj instanceof Client)) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		
-		final Client other = (Client) obj;
-		
-		if (this.id != other.id) {
-			return false;
-		}
-		
-		if (this.nom == null) {
-			if (other.nom != null) {
-				return false;
-			}
-		}
-		else if (!this.nom.equals(other.nom)) {
-			return false;
-		}
-		
-		if (this.prenom == null) {
-			if (other.prenom != null) {
-				return false;
-			}
-		}
-		else if (!this.prenom.equals(other.prenom)) {
-			return false;
-		}
-		
-		return true;
+		Client client = (Client) o;
+		return id == client.id;
 	}
-	
+
 	/**
 	 * Implémentation de toString() pour {@link Client}. <br>
 	 * <br>
