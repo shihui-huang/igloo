@@ -41,7 +41,14 @@ public class Badge {
 		this.id = id;
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Les invariants du Badge.
+	 * Soit il est en train d'etre utilisé, la chambre et les paireClefs ne sont pas null,
+	 * le badge du chambre et le badge du client sont ce badge.
+	 * Soit il est en train pas d'etre utilisé,la chambre et parieClefs sont null.
+	 * @return boolean
+	 */
 	public boolean invariant() {
 		return this.client != null
 				&& this.chambre != null
@@ -117,7 +124,7 @@ public class Badge {
 	 *                       chambre.
 	 * @see                  #associerChambre(Chambre)
 	 */
-	public void associerChambre(final Chambre chambre, boolean bidirectionnel) {
+	public void associerChambre(final Chambre chambre, final boolean bidirectionnel) {
 		this.chambre = chambre;
 		
 		if (bidirectionnel) {
@@ -143,7 +150,7 @@ public class Badge {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierChambre()
 	 */
-	public void dissocierChambre(boolean bidirectionnel) {
+	public void dissocierChambre(final boolean bidirectionnel) {
 		if (bidirectionnel && this.chambre != null) {
 			this.chambre.dissocierBadge(false);
 		}
@@ -163,7 +170,7 @@ public class Badge {
 	 * sans enregistrer le badge dans la chambre.
 	 * 
 	 * @param client Le client à associer.
-	 * @see          #associerChambre(Client, boolean)
+	 * @see          #associerClient(Client, boolean)
 	 */
 	public void associerClient(final Client client) {
 		this.associerClient(client, false);
@@ -178,7 +185,7 @@ public class Badge {
 	 *                       client.
 	 * @see                  #associerClient(Client)
 	 */
-	public void associerClient(final Client client, boolean bidirectionnel) {
+	public void associerClient(final Client client, final boolean bidirectionnel) {
 		this.client = client;
 		
 		if (bidirectionnel) {
@@ -204,7 +211,7 @@ public class Badge {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierClient()
 	 */
-	public void dissocierClient(boolean bidirectionnel) {
+	public void dissocierClient(final boolean bidirectionnel) {
 		if (bidirectionnel && this.client != null) {
 			this.client.dissocierBadge(false);
 		}

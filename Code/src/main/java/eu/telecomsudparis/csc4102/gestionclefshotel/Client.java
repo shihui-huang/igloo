@@ -35,7 +35,7 @@ public class Client {
 	 * 
 	 * @param id       L'identifiant unique du client.
 	 * @param nom      Le nom de famille du client.
-	 * @param prenomLe prénom du client.
+	 * @param prenom   Le prénom du client.
 	 */
 	public Client(final long id, final String nom, final String prenom) {
 		this.id = id;
@@ -98,7 +98,7 @@ public class Client {
 	 *                       badge.
 	 * @see                  #associerBadge(Badge)
 	 */
-	public void associerBadge(final Badge badge, boolean bidirectionnel) {
+	public void associerBadge(final Badge badge, final boolean bidirectionnel) {
 		this.badge = badge;
 		
 		if (bidirectionnel) {
@@ -124,7 +124,7 @@ public class Client {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierBadge()
 	 */
-	public void dissocierBadge(boolean bidirectionnel) {
+	public void dissocierBadge(final boolean bidirectionnel) {
 		if (bidirectionnel && this.badge != null) {
 			this.badge.dissocierClient(false);
 		}

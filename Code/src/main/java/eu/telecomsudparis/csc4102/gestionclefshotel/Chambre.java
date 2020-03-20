@@ -71,11 +71,16 @@ public class Chambre {
 		
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Invariant boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean invariant() {
 		return this.graine != null && !this.graine.equals("")
-				&& (this.occupee == true && this.badge != null
-					|| this.occupee == false && this.badge == null)
+				&& (this.occupee  && this.badge != null
+					|| !this.occupee && this.badge == null)
 				&& this.paireClefs != null;
 	}
 	
@@ -114,7 +119,7 @@ public class Chambre {
 	 * @param bidirectionnel S'il faut aussi associer la chambre au badge.
 	 * @see                  #associerBadge(Badge)
 	 */
-	public void associerBadge(final Badge badge, boolean bidirectionnel) {
+	public void associerBadge(final Badge badge, final boolean bidirectionnel) {
 		this.badge = badge;
 		
 		if (bidirectionnel) {
@@ -139,7 +144,7 @@ public class Chambre {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierBadge()
 	 */
-	public void dissocierBadge(boolean bidirectionnel) {
+	public void dissocierBadge(final boolean bidirectionnel) {
 		if (bidirectionnel && this.badge != null) {
 			this.badge.dissocierClient(false);
 		}
@@ -213,7 +218,9 @@ public class Chambre {
 		
 		assert this.invariant();
 	}
-	
+	/**
+	 * Enregistrer la chambre en marquant la chambre comme non occupée.
+	 */
 	public void enregistrerChambre() {
 		this.occupee = true;
 		assert this.invariant();

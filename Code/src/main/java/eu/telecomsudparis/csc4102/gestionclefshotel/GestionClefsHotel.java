@@ -15,7 +15,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientDejaPresent;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeDejaChambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenerationClef;
+
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
 
@@ -58,13 +58,13 @@ public class GestionClefsHotel {
 	public boolean invariant() {
 		return this.chambres != null && this.badges != null && this.clients != null;
 	}
-	
+
 	/**
 	 * Opération cas d'utilisation "Créer une chambre" : la façade reçoit un
 	 * identifiant, une graine et un sel et crée une nouvelle chambre grâce à
 	 * ceux-ci, si l' identifiant n'est pas déjà utilisé et que la graine est
 	 * non vide.
-	 * 
+	 *
 	 * @param  id                         L'identifiant de la chambre à créer.
 	 * @param  graine                     La graine de génération de clés de la
 	 *                                    chambre.
@@ -72,7 +72,7 @@ public class GestionClefsHotel {
 	 *                                    chambre.
 	 * @return                            La nouvelle chambre si l'identifiant
 	 *                                    est libre, l'ancienne sinon.
-	 * @throws ProblemeDansGenerationClef Si la génération est cassée en mille
+	 * @throws OperationImpossible        Si la génération est cassée en mille
 	 *                                    morceaux.
 	 */
 	public Chambre creerChambre(final long id, final String graine, final int sel) throws OperationImpossible {
@@ -122,7 +122,7 @@ public class GestionClefsHotel {
 	 * @param  idBadge                    Le badge qui va servir à ouvrir la
 	 *                                    chambre.
 	 * @param  idClient                   Le client payant pour la chambre.
-	 * @throws ProblemeDansGenerationClef Si la génération est cassée en mille
+	 * @throws OperationImpossible Si la génération est cassée en mille
 	 *                                    morceaux.
 	 */
 	public void enregistrerOccupationChambre(final long idChambre, final long idBadge, final long idClient)
@@ -177,6 +177,7 @@ public class GestionClefsHotel {
 	 * 
 	 * @param idChambre La chambre à libérer de son client.
 	 * @param idBadge   Le badge du client.
+	 * @param idClient  L'id du client.
 	 */
 	public void libererChambre(final long idChambre, final long idBadge, final long idClient)
 			throws OperationImpossible {
@@ -204,7 +205,14 @@ public class GestionClefsHotel {
 		badge.vider();
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Creer badge badge.
+	 *
+	 * @param id the id
+	 * @return the badge
+	 * @throws OperationImpossible the operation impossible
+	 */
 	public Badge creerBadge(final long id) throws OperationImpossible {
 		final Badge currentBadge = this.chercherBadge(id);
 		
@@ -228,7 +236,16 @@ public class GestionClefsHotel {
 	public Badge chercherBadge(final long id) {
 		return this.badges.get(id);
 	}
-	
+
+	/**
+	 * Creer client client.
+	 *
+	 * @param id     the id
+	 * @param nom    the nom
+	 * @param prenom the prenom
+	 * @return the client
+	 * @throws OperationImpossible the operation impossible
+	 */
 	public Client creerClient(final long id, final String nom, final String prenom) throws OperationImpossible {
 		Client currentClient = this.chercherClient(id);
 		

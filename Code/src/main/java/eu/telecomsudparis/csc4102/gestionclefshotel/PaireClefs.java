@@ -6,11 +6,11 @@ import java.util.Arrays;
 /**
  * Paire de deux tableaux d'octets représentant des clés servant à simuler ou
  * déverrouiller des serrures.
- * 
- * @see    Chambre
- * @see    Badge
- * @see    GestionClefsHotel
+ *
  * @author Paul Mabileau
+ * @see Chambre
+ * @see Badge
+ * @see GestionClefsHotel
  */
 public class PaireClefs {
 	/**
@@ -33,7 +33,12 @@ public class PaireClefs {
 		this.clef2 = clef2.clone();
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Invariant boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean invariant() {
 		return this.clef1 != null && this.clef1.length == Util.TAILLE_CLEF
 				&& this.clef2 != null && this.clef2.length == Util.TAILLE_CLEF;
@@ -75,7 +80,7 @@ public class PaireClefs {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj) {
 			return true;
 		}
