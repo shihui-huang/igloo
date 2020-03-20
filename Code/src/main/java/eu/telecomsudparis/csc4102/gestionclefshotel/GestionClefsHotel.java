@@ -70,12 +70,10 @@ public class GestionClefsHotel {
 	 *                                    chambre.
 	 * @param  sel                        Le sel de génération de clés de la
 	 *                                    chambre.
-	 * @return                            La nouvelle chambre si l'identifiant
-	 *                                    est libre, l'ancienne sinon.
 	 * @throws OperationImpossible        Si la génération est cassée en mille
 	 *                                    morceaux.
 	 */
-	public Chambre creerChambre(final long id, final String graine, final int sel) throws OperationImpossible {
+	public void creerChambre(final long id, final String graine, final int sel) throws OperationImpossible {
 		final Chambre current = this.chercherChambre(id);
 		
 		if (graine == null || graine.equals("")) {
@@ -88,7 +86,6 @@ public class GestionClefsHotel {
 		final Chambre chambre = new Chambre(id, graine, sel);
 		this.chambres.put(id, chambre);
 		assert this.invariant();
-		return chambre;
 	}
 	
 	/**
@@ -210,10 +207,9 @@ public class GestionClefsHotel {
 	 * Creer badge badge.
 	 *
 	 * @param id the id
-	 * @return the badge
 	 * @throws OperationImpossible the operation impossible
 	 */
-	public Badge creerBadge(final long id) throws OperationImpossible {
+	public void creerBadge(final long id) throws OperationImpossible {
 		final Badge currentBadge = this.chercherBadge(id);
 		
 		if (currentBadge != null) {
@@ -223,7 +219,7 @@ public class GestionClefsHotel {
 		final Badge badge = new Badge(id);
 		this.badges.put(id, badge);
 		assert this.invariant();
-		return badge;
+
 	}
 	
 	/**
@@ -243,10 +239,9 @@ public class GestionClefsHotel {
 	 * @param id     the id
 	 * @param nom    the nom
 	 * @param prenom the prenom
-	 * @return the client
 	 * @throws OperationImpossible the operation impossible
 	 */
-	public Client creerClient(final long id, final String nom, final String prenom) throws OperationImpossible {
+	public void creerClient(final long id, final String nom, final String prenom) throws OperationImpossible {
 		Client currentClient = this.chercherClient(id);
 		
 		if (currentClient != null) {
@@ -256,7 +251,7 @@ public class GestionClefsHotel {
 		final Client client = new Client(id, nom, prenom);
 		this.clients.put(id, client);
 		assert this.invariant();
-		return client;
+
 	}
 	
 	/**
