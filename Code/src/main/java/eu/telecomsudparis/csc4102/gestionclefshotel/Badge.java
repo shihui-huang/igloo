@@ -53,8 +53,6 @@ public class Badge {
 		return this.client != null
 				&& this.chambre != null
 				&& this.paireClefs != null
-				&& this.chambre.getBadge().equals(this)
-				&& this.client.getBadge().equals(this)
 				|| this.client == null
 					&& this.chambre == null
 					&& this.paireClefs == null;
