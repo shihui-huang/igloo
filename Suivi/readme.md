@@ -13,8 +13,8 @@ Denis Conan
          bidirectionnelle, donc aussi dans le code
     - à quelques détails près comme les arguments, c'est cohérent
 - cohérence entre la préparation des tests et la programmation des tests
-    - []
-- [] un invariant s'exprime avec les attributs de la classe (uniquement) :
+    - [?]
+- [x] un invariant s'exprime avec les attributs de la classe (uniquement) :
      par exemple, l'invariant de Badge ne doit pas aller dans Chambre ou
      dans Client
      + écire this.client != null dans l'invariant de Badge signifie qu'un
@@ -22,10 +22,10 @@ Denis Conan
      + idem avec d'autres termes de cet invariant
 - [] vous avez trop de getters et de setters ; certains ne sont pas utiles ;
      vous cassez la propriété d'encapsulation
-- [] les méthodes de la façade ne doivent pas utiliser des objets
+- [?] les méthodes de la façade ne doivent pas utiliser des objets
      (internes) au système ; sinon, cela signifie que les acteurs doivent
      connaître le COMMENT en plus du QUOI
-     - les méthodes chercherXxxx doivent rester privées
+     - les méthodes chercherXxxx doivent rester privée:s
      - les méthodes créerXxxx ne doivent pas retourner d'objets (internes)
        du système
 - programmation des cas d'utilisation
@@ -38,9 +38,9 @@ Denis Conan
     - « check-out » : ok
 - programmation des tests unitaires
     - constructeur ok
-    - [] l'autre, c'est pas clair entre table de décision et code (détail)
+    - [?] l'autre, c'est pas clair entre table de décision et code (détail)
 - equals, hashCode et toString
-    - [] revoyez le cours sur equals et plus particulièrement la propriété
+    - [x] revoyez le cours sur equals et plus particulièrement la propriété
          de consistance (vous mettez trop d'attributs, par exemple dans
          Chambre::equals)
 
