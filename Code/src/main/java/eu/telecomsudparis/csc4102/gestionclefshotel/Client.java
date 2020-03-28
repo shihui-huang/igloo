@@ -44,7 +44,12 @@ public class Client {
 		
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Invariant boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean invariant() {
 		return this.nom != null && !this.nom.equals("")
 				&& this.prenom != null && !this.prenom.equals("");
