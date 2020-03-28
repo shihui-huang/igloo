@@ -15,6 +15,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientDejaPresent;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeDejaChambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAucuneChambre;
 
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
@@ -193,6 +194,9 @@ public class GestionClefsHotel {
 		}
 		if (!chambre.estOccupee()) {
 			throw new ChambreNonOccupee("La chambre n'est pas occupée, elle ne peut donc pas être libérée.");
+		}
+		if (client.getBadge() == null) {
+			throw new ClientOccupeAucuneChambre("Le client n'occupe aucune chambre, il ne peut donc pas la libérer.");
 		}
 		if (client.getBadge().getChambre().getId() != chambre.getId()) {
 			throw new ClientOccupeAutreChambre("Le client n'occupe pas cette chambre, il ne peut donc pas la libérer.");

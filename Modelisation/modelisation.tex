@@ -176,12 +176,54 @@
 
 \smallskip
 
+\smallskip
+\usecase{\haute}{(Re)Initialiser la serrure d'une chambre }
+                %% précondition
+                    {
+					\\$\land$ identifiant de la serrure bien formé (non \nullvalue et non vide)\\
+                    $\land$ graine et sel pour la génération des clefs bien formée (non \nullvalue et non vide)}
+                %% postcondition
+                    {\\serrure initialisé}
 
 \priorityusecase{\basse}{Retirer une chambre}
 
 \smallskip
 
 \priorityusecase{\moyenne}{Lister les chambres}
+
+
+            \subsubsection{Sprint 2}
+
+                \usecase{\haute}{Déclarer la perte d'un badge sans remplacement}
+                %% précondition
+                    {\\
+					badge avec ce identifiant existant\\
+				}
+                %% postcondition
+                    {\\
+					(Si le badge était en cours d'utilisation) chambre occupée par le client possédant le badge est libérée\\
+					$\land$ (Si le badge était en cours d'utilisation) badge d'accès retiré du client\\
+					$\land$ badge avec ce identifiant inexistant\\}
+
+\smallskip
+
+				\usecase{\haute}{Déclarer la perte d'un badge avec remplacement}
+				%% précondition
+					{\\
+					badge avec ce identifiant existant
+					}
+				%% postcondition
+					{\\
+
+						(Si le badge était en cours d'utilisation) chambre occupée par le client possédant le badge est libérée\\
+						$\land$ (Si le badge était en cours d'utilisation) badge d'accès retiré du client\\
+						$\land$ badge avec ce identifiant inexistant\\
+						$\land$ enregistrerOccupationChambre avec la meme client, meme chambre et d'autre badges}
+
+                \smallskip
+
+                \priorityusecase{\moyenne}{Notifier les doublons dans les paires de clefs et les clefs}
+
 \end{compactitem}
 
 \newpage
@@ -304,6 +346,32 @@ Nombre de jeux de test
             \end{tabular}
             \caption{Cas d'utilisation <<~libérer une chambre~>>}
         \end{table}
+
+		\newpage
+
+		        \subsubsection{Sprint 2}
+
+		            \begin{table}[htbp!]
+		                \begin{tabular}{|p{0.6\linewidth}|c|c|c|}
+		                    \hline
+		                    Numéro de test
+		                        &1&2\\
+		                    \hline
+		                    \hline
+		                   Badge avec ce identifiant existant
+		                        &F&T\\
+		                    \hline
+		                    \hline
+		                    Badge déclaré perdu acceptée
+		                        &F&T\\
+		                    \hline
+		                    \hline
+		                    Nombre de jeux de test
+		                        &1&1\\
+		                    \hline
+		                \end{tabular}
+		                \caption{Cas d'utilisation <<~déclarer la perte d'un badge d'accès~>>}
+		            \end{table}
 \newpage
 
 \section{Conception}
