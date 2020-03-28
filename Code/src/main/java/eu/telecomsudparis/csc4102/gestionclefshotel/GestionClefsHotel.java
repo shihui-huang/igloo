@@ -264,4 +264,27 @@ public class GestionClefsHotel {
 	public Client chercherClient(final long id) {
 		return this.clients.get(id);
 	}
+
+
+	/**
+	 * Instantiates a new Declarer perdu du chambre.
+	 *
+	 * @param idBadge the id badge
+	 */
+	public void declarerPerduDuBadge(final long idBadge) throws OperationImpossible {
+		final Badge badge = chercherBadge(idBadge);
+		if (badge == null) {
+			throw new BadgeInexistant("Le badge n'existe pas.");
+		}
+		if (badge.getChambre() != null) {
+			long idChambre = badge.getChambre().getId();
+			long idClient = badge.getClient().getId();
+			libererChambre(idChambre, idBadge, idClient);
+		}
+		this.badges.remove(idBadge);
+	}
+
+
+
+
 }
