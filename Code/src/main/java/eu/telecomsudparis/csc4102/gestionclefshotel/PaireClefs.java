@@ -21,10 +21,10 @@ public class PaireClefs {
 	 * La deuxième clef de la paire.
 	 */
 	private final byte[] clef2;
-	
+
 	/**
 	 * Construit la paire à partir des deux clefs fournies.
-	 * 
+	 *
 	 * @param clef1 La première clef de la paire.
 	 * @param clef2 La deuxième clef de la paire.
 	 */
@@ -43,21 +43,21 @@ public class PaireClefs {
 		return this.clef1 != null && this.clef1.length == Util.TAILLE_CLEF
 				&& this.clef2 != null && this.clef2.length == Util.TAILLE_CLEF;
 	}
-	
+
 	/**
 	 * @return Une copie de la première clef.
 	 */
 	public byte[] getClef1() {
 		return this.clef1.clone();
 	}
-	
+
 	/**
 	 * @return Une copie de la deuxième clef.
 	 */
 	public byte[] getClef2() {
 		return this.clef2.clone();
 	}
-	
+
 	/**
 	 * Implémentation de hashCode() pour {@link PaireClefs} basée sur les deux
 	 * clefs de la paire. <br>
@@ -72,7 +72,7 @@ public class PaireClefs {
 		result = prime * result + Arrays.hashCode(this.clef2);
 		return result;
 	}
-	
+
 	/**
 	 * Implémentation de equals() pour {@link PaireClefs} basée sur les deux
 	 * clefs de la paire. <br>
@@ -84,24 +84,24 @@ public class PaireClefs {
 		if (this == obj) {
 			return true;
 		}
-		
+
 		if (!(obj instanceof PaireClefs)) {
 			return false;
 		}
-		
+
 		final PaireClefs other = (PaireClefs) obj;
-		
+
 		if (!Arrays.equals(this.clef1, other.clef1)) {
 			return false;
 		}
-		
+
 		if (!Arrays.equals(this.clef2, other.clef2)) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Implémentation de toString() pour {@link PaireClefs} basée sur les deux
 	 * clefs de la paire. <br>
@@ -110,7 +110,7 @@ public class PaireClefs {
 	 */
 	@Override
 	public String toString() {
-		return String.format("PaireClefs [clef1 = %s, clef2 = %s]",
-							Arrays.toString(this.clef1), Arrays.toString(this.clef2));
-	}
+	return String.format("PaireClefs [clef1 = %s, clef2 = %s]",
+						Util.clefToString(this.clef1), Util.clefToString(this.clef2));
+}
 }
