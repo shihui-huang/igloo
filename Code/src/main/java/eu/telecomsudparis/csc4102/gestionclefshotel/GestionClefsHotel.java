@@ -15,6 +15,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientDejaPresent;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeDejaChambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAucuneChambre;
 
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
@@ -194,6 +195,9 @@ public class GestionClefsHotel {
 		if (!chambre.estOccupee()) {
 			throw new ChambreNonOccupee("La chambre n'est pas occupée, elle ne peut donc pas être libérée.");
 		}
+		if (client.getBadge() == null) {
+			throw new ClientOccupeAucuneChambre("Le client n'occupe aucune chambre, il ne peut donc pas la libérer.");
+		}
 		if (client.getBadge().getChambre().getId() != chambre.getId()) {
 			throw new ClientOccupeAutreChambre("Le client n'occupe pas cette chambre, il ne peut donc pas la libérer.");
 		}
@@ -264,4 +268,27 @@ public class GestionClefsHotel {
 	public Client chercherClient(final long id) {
 		return this.clients.get(id);
 	}
+
+
+	/**
+	 * Instantiates a new Declarer perdu du chambre.
+	 *
+	 * @param idBadge the id badge
+	 */
+	public void declarerPerduDuBadge(final long idBadge) throws OperationImpossible {
+		final Badge badge = chercherBadge(idBadge);
+		if (badge == null) {
+			throw new BadgeInexistant("Le badge n'existe pas.");
+		}
+		if (badge.getChambre() != null) {
+			long idChambre = badge.getChambre().getId();
+			long idClient = badge.getClient().getId();
+			libererChambre(idChambre, idBadge, idClient);
+		}
+		this.badges.remove(idBadge);
+	}
+
+
+
+
 }
