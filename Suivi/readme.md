@@ -123,26 +123,37 @@ Denis Conan
 # Suivi du lun. 16 mars 2020 14:31:19 CET
 Denis Conan
 - cohérence entre le modèle et le code
-    - [] qu'est-ce que associerBadge(final Badge badge, boolean bidirectionnel)
+    - [x] qu'est-ce que associerBadge(final Badge badge, boolean bidirectionnel)
          dans Client ? l'association du diagramme de classes est
          bidirectionnelle, donc aussi dans le code
     - à quelques détails près comme les arguments, c'est cohérent
 - cohérence entre la préparation des tests et la programmation des tests
     - [?]
+
+(**On écrit le test selon le préparation,est-ce que vous pouvez expliquer plus présisément,svp?)
+
+
 - [x] un invariant s'exprime avec les attributs de la classe (uniquement) :
      par exemple, l'invariant de Badge ne doit pas aller dans Chambre ou
      dans Client
      + écire this.client != null dans l'invariant de Badge signifie qu'un
        badge est toujours en possession d'un client : c'est faux
      + idem avec d'autres termes de cet invariant
-- [] vous avez trop de getters et de setters ; certains ne sont pas utiles ;
+- [?] vous avez trop de getters et de setters ; certains ne sont pas utiles ;
      vous cassez la propriété d'encapsulation
+
+(**Est-ce que vous pouvez expliquer plus présisément,svp?)
+
 - [?] les méthodes de la façade ne doivent pas utiliser des objets
      (internes) au système ; sinon, cela signifie que les acteurs doivent
      connaître le COMMENT en plus du QUOI
-     - les méthodes chercherXxxx doivent rester privée:s
-     - les méthodes créerXxxx ne doivent pas retourner d'objets (internes)
+     - [?]les méthodes chercherXxxx doivent rester privée:s
+     - [x]les méthodes créerXxxx ne doivent pas retourner d'objets (internes)
        du système
+
+(**Si on met les méthodes chercherXxxx à privée, comment peut-on tester le dernier
+    test dans TestEnregistereOccupationChambre?)
+
 - programmation des cas d'utilisation
     - « créer chambre » : ok
     - « check-in » : ok
