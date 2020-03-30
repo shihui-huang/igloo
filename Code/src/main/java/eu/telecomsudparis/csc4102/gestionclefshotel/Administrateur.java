@@ -15,6 +15,9 @@ public class Administrateur implements Subscriber<String> {
      * suivre l'execution.
      */
     private String id;
+    private String nom;
+    private String prenom;
+
     /**
      * la souscription. Cet objet sert a controler le flux entre le producteur et le
      * consommateur.
@@ -27,8 +30,10 @@ public class Administrateur implements Subscriber<String> {
      *
      * @param id identifiant pour les affichages.
      */
-    public Administrateur(final String id) {
+    public Administrateur(final String id,String nom,String prenom) {
         this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     @Override
@@ -37,7 +42,7 @@ public class Administrateur implements Subscriber<String> {
         // on consomme un message des qu'il arrive ; un a la fois
         // on declare qu'on est pret a recevoir un message
         this.souscription.request(1);
-        System.out.println("Admin " + id + " pret a recevoir la premiere notification");
+        System.out.println("Admin " + id + nom +prenom" pret a recevoir la premiere notification");
     }
 
     @Override
