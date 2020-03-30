@@ -1,5 +1,7 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenerationClef;
+
 import java.util.Arrays;
 
 
@@ -16,46 +18,45 @@ public class PaireClefs {
 	/**
 	 * La première clef de la paire.
 	 */
-	private final byte[] clef1;
+	private Clef clef1;
 	/**
 	 * La deuxième clef de la paire.
 	 */
-	private final byte[] clef2;
+	private Clef clef2;
+
 
 	/**
-	 * Construit la paire à partir des deux clefs fournies.
+	 * Instantiates a new Paire clefs.
 	 *
-	 * @param clef1 La première clef de la paire.
-	 * @param clef2 La deuxième clef de la paire.
+	 * @param clef1 the clef 1
+	 * @param clef2 the clef 2
+	 * @throws ProblemeDansGenerationClef the probleme dans generation clef
 	 */
-	public PaireClefs(final byte[] clef1, final byte[] clef2) {
-		this.clef1 = clef1.clone();
-		this.clef2 = clef2.clone();
+	public PaireClefs(final Clef clef1, final Clef clef2) {
+		this.clef1 = clef1;
+		this.clef2 = clef2;
 		assert this.invariant();
 	}
-
 	/**
 	 * Invariant boolean.
 	 *
 	 * @return the boolean
 	 */
 	public boolean invariant() {
-		return this.clef1 != null && this.clef1.length == Util.TAILLE_CLEF
-				&& this.clef2 != null && this.clef2.length == Util.TAILLE_CLEF;
+		return this.clef1 != null && this.clef1.getValue().length == Util.TAILLE_CLEF
+				&& this.clef2 != null && this.clef2.getValue().length == Util.TAILLE_CLEF;
 	}
 
 	/**
 	 * @return Une copie de la première clef.
 	 */
-	public byte[] getClef1() {
-		return this.clef1.clone();
-	}
+	public Clef getClef1() { return clef1; }
 
 	/**
 	 * @return Une copie de la deuxième clef.
 	 */
-	public byte[] getClef2() {
-		return this.clef2.clone();
+	public Clef getClef2() {
+		return clef2;
 	}
 
 	/**
@@ -68,8 +69,8 @@ public class PaireClefs {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(this.clef1);
-		result = prime * result + Arrays.hashCode(this.clef2);
+		result = prime * result + Arrays.hashCode(this.clef1.getValue());
+		result = prime * result + Arrays.hashCode(this.clef2.getValue());
 		return result;
 	}
 
@@ -91,11 +92,11 @@ public class PaireClefs {
 
 		final PaireClefs other = (PaireClefs) obj;
 
-		if (!Arrays.equals(this.clef1, other.clef1)) {
+		if (!Arrays.equals(this.clef1.getValue(), other.clef1.getValue())) {
 			return false;
 		}
 
-		if (!Arrays.equals(this.clef2, other.clef2)) {
+		if (!Arrays.equals(this.clef2.getValue(), other.clef2.getValue())) {
 			return false;
 		}
 
@@ -111,6 +112,6 @@ public class PaireClefs {
 	@Override
 	public String toString() {
 	return String.format("PaireClefs [clef1 = %s, clef2 = %s]",
-						Util.clefToString(this.clef1), Util.clefToString(this.clef2));
+						Util.clefToString(this.clef1.getValue()), Util.clefToString(this.clef2.getValue()));
 }
 }
