@@ -63,9 +63,9 @@ public class Chambre {
 		this.sel = sel;
 		this.occupee = false;
 		
-		final byte[] clef1 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
+		final Clef clef1 = new Clef(Util.genererUneNouvelleClef(graine, Integer.toString(sel)));
 		this.sel++;
-		final byte[] clef2 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
+		final Clef clef2 = new Clef(Util.genererUneNouvelleClef(graine, Integer.toString(sel)));
 		this.sel++;
 		this.paireClefs = new PaireClefs(clef1, clef2);
 		
@@ -190,9 +190,9 @@ public class Chambre {
 	 * @throws ProblemeDansGenerationClef Si la génération s'est mal produite.
 	 */
 	public PaireClefs obtenirNouvellePaireClefs() throws ProblemeDansGenerationClef {
-		final PaireClefs paireClefs = new PaireClefs(this.paireClefs.getClef1(),
-													Util.genererUneNouvelleClef(this.graine,
-																				String.format("%010d%n", this.sel)));
+		Clef clef1 = new Clef(this.paireClefs.getClef2());
+		Clef clef2 = new Clef(Util.genererUneNouvelleClef(this.graine, String.format("%010d%n", this.sel)));
+		PaireClefs paireClefs = new PaireClefs(clef1, clef2);
 		this.sel++;
 		return paireClefs;
 	}
