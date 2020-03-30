@@ -1,9 +1,6 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import eu.telecomsudparis.csc4102.exception.ChaineDeCaracteresNullOuVide;
@@ -19,9 +16,8 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeDejaChambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAucuneChambre;
-
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
-
+import java.util.concurrent.SubmissionPublisher;
 
 /**
  * Cette classe définit la façade du système de gestion des clefs de l'hôtel.
@@ -46,12 +42,20 @@ public class GestionClefsHotel {
 	/**
 	 * l'ensemble des paires de clef.
 	 */
-	private List<PaireClefs> paireClefs;
+	private List<PaireClefs> pairesClefs;
 
 	/**
 	 * l'ensemble des clefs.
 	 */
 	private List<Clef> clefs;
+
+	/**
+	 * Constante de Thread Sleep.
+	 */
+	private static final int SLEEP_TIME = 100;
+
+	private SubmissionPublisher<String> publisher;
+
 
 	/**
 	 * Construit la façade. Initialise les collections.
@@ -60,7 +64,9 @@ public class GestionClefsHotel {
 		this.chambres = new HashMap<Long, Chambre>();
 		this.badges = new HashMap<Long, Badge>();
 		this.clients = new HashMap<Long, Client>();
-
+		this.clefs = new ArrayList<Clef>();
+		this.pairesClefs = new ArrayList<PaireClefs>();
+		this.publisher = new SubmissionPublisher<>();
 		assert this.invariant();
 	}
 
@@ -79,15 +85,12 @@ public class GestionClefsHotel {
 	 * ceux-ci, si l' identifiant n'est pas déjà utilisé et que la graine est
 	 * non vide.
 	 *
-	 * @param  id                         L'identifiant de la chambre à créer.
-	 * @param  graine                     La graine de génération de clés de la
-	 *                                    chambre.
-	 * @param  sel                        Le sel de génération de clés de la
-	 *                                    chambre.
-	 * @throws OperationImpossible        Si la génération est cassée en mille
-	 *                                    morceaux.
+	 * @param id     L'identifiant de la chambre à créer.
+	 * @param graine La graine de génération de clés de la                                    chambre.
+	 * @param sel    Le sel de génération de clés de la                                    chambre.
+	 * @throws OperationImpossible Si la génération est cassée en mille                                    morceaux.
 	 */
-	public void creerChambre(final long id, final String graine, final int sel) throws OperationImpossible {
+	public void creerChambre(final long id, final String graine, final int sel) throws OperationImpossible, InterruptedException {
 		final Optional<Chambre> current = this.chercherChambre(id);
 
 		if (graine == null || graine.equals("")) {
@@ -99,6 +102,36 @@ public class GestionClefsHotel {
 
 		final Chambre chambre = new Chambre(id, graine, sel);
 		this.chambres.put(id, chambre);
+
+		PaireClefs paireClefs = chambre.getClefs();
+		Clef clef1 = paireClefs.getClef1();
+		Clef clef2 = paireClefs.getClef2();
+
+		if (clefs.contains(clef1)) {
+			publisher.submit("\"Doublon de clef1 pour la chambre " + id + " lors de la création de chambre.\"");
+			Thread.sleep(SLEEP_TIME);
+
+		} else {
+			clefs.add(clef1);
+		}
+
+		if (clefs.contains(clef2)) {
+			publisher.submit("\"Doublon de clef2 pour la chambre " + id + " lors de la création de chambre.\"");
+			Thread.sleep(SLEEP_TIME);
+
+		} else {
+			clefs.add(clef2);
+		}
+
+		if (pairesClefs.contains(paireClefs)) {
+			publisher.submit("\"Doublon de pairede clef pour la chambre " + id + " lors de la création de chambre.\"");
+			Thread.sleep(SLEEP_TIME);
+
+		} else {
+			pairesClefs.add(paireClefs);
+		}
+
+
 		assert this.invariant();
 	}
 
@@ -106,8 +139,8 @@ public class GestionClefsHotel {
 	 * Cherche et renvoie la chambre associée à l'identifiant donné. Si aucune
 	 * chambre n'a cet identifiant, {@code null} est alors renvoyé.
 	 *
-	 * @param  id L'identifiant de la chambre à chercher.
-	 * @return    La chambre associé à l'id, {@code null} sinon.
+	 * @param id L'identifiant de la chambre à chercher.
+	 * @return La chambre associé à l'id, {@code null} sinon.
 	 */
 	public Optional<Chambre> chercherChambre(final long id) {
 		return chambres.values()
@@ -117,6 +150,8 @@ public class GestionClefsHotel {
 	}
 
 	/**
+	 * Lister chambres string.
+	 *
 	 * @return Une collection des chambres de l'hôtel.
 	 */
 	public String listerChambres() {
@@ -134,16 +169,13 @@ public class GestionClefsHotel {
 	 * client et de même à la chambre qui obtient une nouvelle paire de clefs
 	 * enfin inscrite dans le badge.
 	 *
-	 * @param  idChambre                  La chambre à faire occuper par le
-	 *                                    client.
-	 * @param  idBadge                    Le badge qui va servir à ouvrir la
-	 *                                    chambre.
-	 * @param  idClient                   Le client payant pour la chambre.
-	 * @throws OperationImpossible Si la génération est cassée en mille
-	 *                                    morceaux.
+	 * @param idChambre La chambre à faire occuper par le                                    client.
+	 * @param idBadge   Le badge qui va servir à ouvrir la                                    chambre.
+	 * @param idClient  Le client payant pour la chambre.
+	 * @throws OperationImpossible Si la génération est cassée en mille                                    morceaux.
 	 */
 	public void enregistrerOccupationChambre(final long idChambre, final long idBadge, final long idClient)
-			throws OperationImpossible {
+			throws OperationImpossible, InterruptedException {
 		final Optional<Chambre> chambre = this.chercherChambre(idChambre);
 		final Optional<Badge> badge = this.chercherBadge(idBadge);
 		final Optional<Client> client = this.chercherClient(idClient);
@@ -178,10 +210,27 @@ public class GestionClefsHotel {
 
 		badge.get().associerClient(client.get(), true);
 		badge.get().associerChambre(chambre.get(), true);
+
 		final PaireClefs nouvellePaireClefs = chambre.get().obtenirNouvellePaireClefs();
 		badge.get().inscrireClefs(nouvellePaireClefs);
 		chambre.get().inscrireClefs(nouvellePaireClefs);
 		chambre.get().enregistrerChambre();
+
+		Clef clef = chambre.get().getClefs().getClef2();
+		if (clefs.contains(clef)) {
+			publisher.submit("\"Doublon de nouveau clef pour la chambre " +idChambre + " lors de la enregisterOccupationChambre chambre.\"");
+			Thread.sleep(SLEEP_TIME);
+
+		} else {
+			clefs.add(clef);
+		}
+		if (pairesClefs.contains(nouvellePaireClefs)) {
+			publisher.submit("\"Doublon de nouveau clef pour la chambre " +idChambre + " lors de la enregisterOccupationChambre chambre.\"");
+			Thread.sleep(SLEEP_TIME);
+		} else {
+			pairesClefs.add(nouvellePaireClefs);
+		}
+
 		assert this.invariant();
 	}
 
@@ -195,6 +244,7 @@ public class GestionClefsHotel {
 	 * @param idChambre La chambre à libérer de son client.
 	 * @param idBadge   Le badge du client.
 	 * @param idClient  L'id du client.
+	 * @throws OperationImpossible the operation impossible
 	 */
 	public void libererChambre(final long idChambre, final long idBadge, final long idClient)
 			throws OperationImpossible {
@@ -249,8 +299,8 @@ public class GestionClefsHotel {
 	 * Cherche et renvoie le badge associée à l'identifiant donné. Si aucun
 	 * badge n'a cet identifiant, {@code null} est alors renvoyé.
 	 *
-	 * @param  id L'identifiant du badge à chercher.
-	 * @return    Le badge associé à l'id, {@code null} sinon.
+	 * @param id L'identifiant du badge à chercher.
+	 * @return Le badge associé à l'id, {@code null} sinon.
 	 */
 	public Optional<Badge> chercherBadge(final long id) {
 		return badges.values()
@@ -285,8 +335,8 @@ public class GestionClefsHotel {
 	 * Cherche et renvoie le client associée à l'identifiant donné. Si aucun
 	 * client n'a cet identifiant, {@code null} est alors renvoyé.
 	 *
-	 * @param  id L'identifiant du client à chercher.
-	 * @return    Le client associé à l'id, {@code null} sinon.
+	 * @param id L'identifiant du client à chercher.
+	 * @return Le client associé à l'id, {@code null} sinon.
 	 */
 	public Optional<Client> chercherClient(final long id) {
 		return clients.values()
@@ -300,6 +350,7 @@ public class GestionClefsHotel {
 	 * Instantiates a new Declarer perdu du chambre.
 	 *
 	 * @param idBadge the id badge
+	 * @throws OperationImpossible the operation impossible
 	 */
 	public void declarerPerduDuBadge(final long idBadge) throws OperationImpossible {
 		final Optional<Badge> badge = chercherBadge(idBadge);
@@ -314,6 +365,14 @@ public class GestionClefsHotel {
 		this.badges.remove(idBadge);
 	}
 
+	/**
+	 * Gets publisher.
+	 *
+	 * @return the publisher
+	 */
+	public SubmissionPublisher<String> getPublisher() {
+		return publisher;
+	}
 
 
 
