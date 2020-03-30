@@ -42,13 +42,13 @@ public class Administrateur implements Subscriber<String> {
         // on consomme un message des qu'il arrive ; un a la fois
         // on declare qu'on est pret a recevoir un message
         this.souscription.request(1);
-        System.out.println("Admin " + id + nom +prenom" pret a recevoir la premiere notification");
+        System.out.println("Admin " + id + nom +prenom+ " pret a recevoir la premiere notification");
     }
 
     @Override
     public void onNext(final String notification) {
         // reception d'une notification : ici, simple affichage a la console
-        System.out.println("Admin " + id + " a recu une nouvelle notification : " + notification);
+        System.out.println("Admin " + id + nom +prenom + " a recu une nouvelle notification : " + notification);
         // on declare qu'on est pret a recevoir un nouveau message
         souscription.request(1);
     }
@@ -63,7 +63,7 @@ public class Administrateur implements Subscriber<String> {
     @Override
     public void onComplete() {
         // lorsque le producteur ferme le flux, on affiche la fin a la console
-        System.out.println("Admin " + id + " est desabonne suite a la fermeture du flux par le producteur");
+        System.out.println("Admin "+ id + nom +prenom+ " est desabonne suite a la fermeture du flux par le producteur");
     }
 
 }
