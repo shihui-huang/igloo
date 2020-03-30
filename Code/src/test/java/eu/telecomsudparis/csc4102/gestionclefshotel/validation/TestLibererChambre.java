@@ -15,6 +15,8 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreNonOccupee;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
 
+import java.util.Optional;
+
 
 public class TestLibererChambre {
 	private GestionClefsHotel systeme;
@@ -77,26 +79,26 @@ public class TestLibererChambre {
 		this.systeme.creerBadge(24);
 		this.systeme.creerClient(35, "Huang", "shihui");
 		
-		Chambre chambre1 = this.systeme.chercherChambre(13);
-		Badge Badge1 = this.systeme.chercherBadge(24);
-		Client client1 = this.systeme.chercherClient(35);
+		Optional<Chambre> chambre1 = this.systeme.chercherChambre(13);
+		Optional<Badge> Badge1 = this.systeme.chercherBadge(24);
+		Optional<Client> client1 = this.systeme.chercherClient(35);
 		
 		this.systeme.enregistrerOccupationChambre(13, 24, 35);
 		
-		Assert.assertTrue(chambre1.estOccupee());
-		Assert.assertNotNull(Badge1.getClefs());
-		Assert.assertNotNull(Badge1.getClient());
-		Assert.assertNotNull(Badge1.getChambre());
-		Assert.assertNotNull(chambre1.getBadge());
-		Assert.assertNotNull(client1.getBadge());
-		Assert.assertEquals(chambre1.getBadge(), Badge1);
-		Assert.assertEquals(client1.getBadge(), Badge1);
+		Assert.assertTrue(chambre1.get().estOccupee());
+		Assert.assertNotNull(Badge1.get().getClefs());
+		Assert.assertNotNull(Badge1.get().getClient());
+		Assert.assertNotNull(Badge1.get().getChambre());
+		Assert.assertNotNull(chambre1.get().getBadge());
+		Assert.assertNotNull(client1.get().getBadge());
+		Assert.assertEquals(chambre1.get().getBadge(), Badge1.get());
+		Assert.assertEquals(client1.get().getBadge(), Badge1.get());
 		this.systeme.libererChambre(13, 24, 35);
-		Assert.assertFalse(chambre1.estOccupee());
-		Assert.assertNull(Badge1.getClefs());
-		Assert.assertNull(Badge1.getClient());
-		Assert.assertNull(Badge1.getChambre());
-		Assert.assertNull(chambre1.getBadge());
-		Assert.assertNull(client1.getBadge());
+		Assert.assertFalse(chambre1.get().estOccupee());
+		Assert.assertNull(Badge1.get().getClefs());
+		Assert.assertNull(Badge1.get().getClient());
+		Assert.assertNull(Badge1.get().getChambre());
+		Assert.assertNull(chambre1.get().getBadge());
+		Assert.assertNull(client1.get().getBadge());
 	}
 }
