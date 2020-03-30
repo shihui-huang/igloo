@@ -2,7 +2,6 @@ package eu.telecomsudparis.csc4102.gestionclefshotel;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import eu.telecomsudparis.csc4102.exception.ChaineDeCaracteresNullOuVide;
@@ -42,7 +41,6 @@ public class GestionClefsHotel {
 	 */
 	private final HashMap<Long, Client> clients;
 
-
 	/**
 	 * Construit la façade. Initialise les collections.
 	 */
@@ -78,12 +76,12 @@ public class GestionClefsHotel {
 	 *                                    morceaux.
 	 */
 	public void creerChambre(final long id, final String graine, final int sel) throws OperationImpossible {
-		final Optional<Chambre> current = this.chercherChambre(id);
+		final Chambre current = this.chercherChambre(id);
 
 		if (graine == null || graine.equals("")) {
 			throw new ChaineDeCaracteresNullOuVide("Graine null ou vide non autorisée.");
 		}
-		if (current.isPresent()) {
+		if (current != null) {
 			throw new ChambreDejaPresente("Chambre '" + id + "' déjà présente dans le système.");
 		}
 
@@ -99,11 +97,12 @@ public class GestionClefsHotel {
 	 * @param  id L'identifiant de la chambre à chercher.
 	 * @return    La chambre associé à l'id, {@code null} sinon.
 	 */
-	public Optional<Chambre> chercherChambre(final long id) {
+	public Chambre chercherChambre(final long id) {
 		return chambres.values()
 				.stream()
 				.filter(chambre -> chambre.getId() == id)
-				.findFirst();
+				.findFirst()
+				.orElse(null);
 	}
 
 	/**
@@ -134,44 +133,44 @@ public class GestionClefsHotel {
 	 */
 	public void enregistrerOccupationChambre(final long idChambre, final long idBadge, final long idClient)
 			throws OperationImpossible {
-		final Optional<Chambre> chambre = this.chercherChambre(idChambre);
-		final Optional<Badge> badge = this.chercherBadge(idBadge);
-		final Optional<Client> client = this.chercherClient(idClient);
+		final Chambre chambre = this.chercherChambre(idChambre);
+		final Badge badge = this.chercherBadge(idBadge);
+		final Client client = this.chercherClient(idClient);
 
-		if (!chambre.isPresent()) {
+		if (chambre == null) {
 			throw new ChambreInexistante("La chambre n'existe pas, il faut d'abord la créer.");
 		}
-		if (!badge.isPresent()) {
+		if (badge == null) {
 			throw new BadgeInexistant("Le badge n'existe pas, il faut d'abord le créer.");
 		}
-		if (!client.isPresent()) {
+		if (client == null) {
 			throw new ClientInexistant("Le client n'existe pas, il faut d'abord le créer.");
 		}
-		if (client.get().getBadge() != null) {
+		if (client.getBadge() != null) {
 			throw new ClientOccupeDejaChambre("Le client occupe déjà une chambre.");
 		}
-		if (chambre.get().estOccupee()) {
+		if (chambre.estOccupee()) {
 			throw new ChambreDejaOccupee("La chambre '" + idChambre + "' est déjà occupée.");
 		}
 
-		if (badge.get().getChambre() != null) {
+		if (badge.getChambre() != null) {
 			throw new BadgeDejaAssocieChambreOuClient("Le badge '" + idBadge + "' est déjà associé avec la chambre '"
-														+ badge.get().getChambre().getId() + "'.");
+														+ badge.getChambre().getId() + "'.");
 		}
-		if (badge.get().getClient() != null) {
+		if (badge.getClient() != null) {
 			throw new BadgeDejaAssocieChambreOuClient("Le badge '" + idBadge + "' est déjà associé avec le client '"
-														+ badge.get().getClient().getId() + "'.");
+														+ badge.getClient().getId() + "'.");
 		}
-		if (badge.get().getClefs() != null) {
+		if (badge.getClefs() != null) {
 			throw new OperationImpossible("Le badge '" + idBadge + "' a déjà une paire de clefs.");
 		}
 
-		badge.get().associerClient(client.get(), true);
-		badge.get().associerChambre(chambre.get(), true);
-		final PaireClefs nouvellePaireClefs = chambre.get().obtenirNouvellePaireClefs();
-		badge.get().inscrireClefs(nouvellePaireClefs);
-		chambre.get().inscrireClefs(nouvellePaireClefs);
-		chambre.get().enregistrerChambre();
+		badge.associerClient(client, true);
+		badge.associerChambre(chambre, true);
+		final PaireClefs nouvellePaireClefs = chambre.obtenirNouvellePaireClefs();
+		badge.inscrireClefs(nouvellePaireClefs);
+		chambre.inscrireClefs(nouvellePaireClefs);
+		chambre.enregistrerChambre();
 		assert this.invariant();
 	}
 
@@ -188,31 +187,31 @@ public class GestionClefsHotel {
 	 */
 	public void libererChambre(final long idChambre, final long idBadge, final long idClient)
 			throws OperationImpossible {
-		final Optional<Chambre> chambre = this.chercherChambre(idChambre);
-		final Optional<Badge> badge = this.chercherBadge(idBadge);
-		final Optional<Client> client = this.chercherClient(idClient);
+		final Chambre chambre = this.chercherChambre(idChambre);
+		final Badge badge = this.chercherBadge(idBadge);
+		final Client client = this.chercherClient(idClient);
 
-		if (!chambre.isPresent()) {
+		if (chambre == null) {
 			throw new ChambreInexistante("La chambre n'existe pas.");
 		}
-		if (!badge.isPresent()) {
+		if (badge == null) {
 			throw new BadgeInexistant("Le badge n'existe pas.");
 		}
-		if (!client.isPresent()) {
+		if (client == null) {
 			throw new ClientInexistant("Le client n'existe pas.");
 		}
-		if (!chambre.get().estOccupee()) {
+		if (!chambre.estOccupee()) {
 			throw new ChambreNonOccupee("La chambre n'est pas occupée, elle ne peut donc pas être libérée.");
 		}
-		if (client.get().getBadge() == null) {
+		if (client.getBadge() == null) {
 			throw new ClientOccupeAucuneChambre("Le client n'occupe aucune chambre, il ne peut donc pas la libérer.");
 		}
-		if (client.get().getBadge().getChambre().getId() != chambre.get().getId()) {
+		if (client.getBadge().getChambre().getId() != chambre.getId()) {
 			throw new ClientOccupeAutreChambre("Le client n'occupe pas cette chambre, il ne peut donc pas la libérer.");
 		}
 
-		chambre.get().liberer();
-		badge.get().vider();
+		chambre.liberer();
+		badge.vider();
 		assert this.invariant();
 	}
 
@@ -223,9 +222,9 @@ public class GestionClefsHotel {
 	 * @throws OperationImpossible the operation impossible
 	 */
 	public void creerBadge(final long id) throws OperationImpossible {
-		final Optional<Badge> currentBadge = this.chercherBadge(id);
+		final Badge currentBadge = this.chercherBadge(id);
 
-		if (currentBadge.isPresent()) {
+		if (currentBadge != null) {
 			throw new BadgeDejaPresent("Le badge '" + id + "' est déjà présent dans le système.");
 		}
 
@@ -242,12 +241,12 @@ public class GestionClefsHotel {
 	 * @param  id L'identifiant du badge à chercher.
 	 * @return    Le badge associé à l'id, {@code null} sinon.
 	 */
-	public Optional<Badge> chercherBadge(final long id) {
+	public Badge chercherBadge(final long id) {
 		return badges.values()
 				.stream()
 				.filter(badge -> badge.getId() == id)
-				.findFirst();
-
+				.findFirst()
+				.orElse(null);
 	}
 
 	/**
@@ -259,9 +258,9 @@ public class GestionClefsHotel {
 	 * @throws OperationImpossible the operation impossible
 	 */
 	public void creerClient(final long id, final String nom, final String prenom) throws OperationImpossible {
-		Optional<Client> currentClient = this.chercherClient(id);
+		Client currentClient = this.chercherClient(id);
 
-		if (currentClient.isPresent()) {
+		if (currentClient != null) {
 			throw new ClientDejaPresent("Le client '" + id + "' est déjà présent dans le système.");
 		}
 
@@ -278,11 +277,12 @@ public class GestionClefsHotel {
 	 * @param  id L'identifiant du client à chercher.
 	 * @return    Le client associé à l'id, {@code null} sinon.
 	 */
-	public Optional<Client> chercherClient(final long id) {
+	public Client chercherClient(final long id) {
 		return clients.values()
 				.stream()
 				.filter(client -> client.getId() == id)
-				.findFirst();
+				.findFirst()
+				.orElse(null);
 	}
 
 
@@ -292,13 +292,13 @@ public class GestionClefsHotel {
 	 * @param idBadge the id badge
 	 */
 	public void declarerPerduDuBadge(final long idBadge) throws OperationImpossible {
-		final Optional<Badge> badge = chercherBadge(idBadge);
-		if (!badge.isPresent()) {
+		final Badge badge = chercherBadge(idBadge);
+		if (badge == null) {
 			throw new BadgeInexistant("Le badge n'existe pas.");
 		}
-		if (badge.get().getChambre() != null) {
-			long idChambre = badge.get().getChambre().getId();
-			long idClient = badge.get().getClient().getId();
+		if (badge.getChambre() != null) {
+			long idChambre = badge.getChambre().getId();
+			long idClient = badge.getClient().getId();
 			libererChambre(idChambre, idBadge, idClient);
 		}
 		this.badges.remove(idBadge);
@@ -308,4 +308,3 @@ public class GestionClefsHotel {
 
 
 }
-
