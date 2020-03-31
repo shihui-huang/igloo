@@ -549,11 +549,13 @@ attributs:
 		  \multicolumn{1}{|c|}{{\Large \textsf{PaireClefs}}} \\
 		  \hline
 		  \cmt{attributs}\\
-		  $-$ clef1: byte[] \\
-		  $-$ clef2: byte[] \\
+		  $\#$ clef1: Clef \\
+		  $\#$ clef2: Clef \\
 		  \hline
-		  \cmt{constructeur} \\
+		  \cmt{constructeurs} \\
+          $+$ PaireClefs(Clef clef1, Clef clef2) \\
 		  $+$ PaireClefs(byte[] clef1, byte[] clef2) \\
+          $+$ PaireClefs() \\
 		  $+$ boolean invariant() \\
 		  \hline
 	  \end{longtable}
