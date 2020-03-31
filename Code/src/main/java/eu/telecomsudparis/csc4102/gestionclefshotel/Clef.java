@@ -9,7 +9,7 @@ public class Clef {
 	/**
 	 * La clef.
 	 */
-	private byte[] value;
+	protected byte[] value;
 	
 	public Clef(final Clef clef) {
 		this.value = clef.value.clone();

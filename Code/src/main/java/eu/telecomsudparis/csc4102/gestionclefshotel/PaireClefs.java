@@ -18,11 +18,11 @@ public class PaireClefs {
 	/**
 	 * La première clef de la paire.
 	 */
-	private Clef clef1;
+	protected Clef clef1;
 	/**
 	 * La deuxième clef de la paire.
 	 */
-	private Clef clef2;
+	protected Clef clef2;
 	
 	/**
 	 * Instantiates a new Paire clefs.
