@@ -2,12 +2,18 @@ package eu.telecomsudparis.csc4102.gestionclefshotel;
 
 
 public final class ClefVide extends Clef {
-	public ClefVide() {
+	private static final ClefVide INSTANCE = new ClefVide();
+	
+	private ClefVide() {
 		this.value = null;
 	}
 	
+	public static final ClefVide getInstance() {
+		return ClefVide.INSTANCE;
+	}
+	
 	@Override
-	public final byte[] getValue() {
-		return this.value;
+	public final boolean invariant() {
+		return this.value == null;
 	}
 }

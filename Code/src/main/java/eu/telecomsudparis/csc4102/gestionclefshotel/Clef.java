@@ -32,6 +32,10 @@ public class Clef {
 		this.value = new byte[Util.TAILLE_CLEF];
 	}
 	
+	public boolean invariant() {
+		return this.value != null && this.value.length == Util.TAILLE_CLEF;
+	}
+	
 	/**
 	 * Get clef byte [ ].
 	 *
