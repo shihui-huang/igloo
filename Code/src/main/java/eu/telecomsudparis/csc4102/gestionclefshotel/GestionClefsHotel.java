@@ -4,6 +4,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import eu.telecomsudparis.csc4102.exception.ChaineDeCaracteresNullOuVide;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.Badge;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.Clef;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefs;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaAssocieChambreOuClient;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaPresent;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeInexistant;

@@ -1,7 +1,8 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef;
 
 import java.util.Arrays;
 
+import eu.telecomsudparis.csc4102.gestionclefshotel.Util;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenerationClef;
 
 

@@ -5,10 +5,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.telecomsudparis.csc4102.gestionclefshotel.Badge;
-import eu.telecomsudparis.csc4102.gestionclefshotel.Chambre;
-import eu.telecomsudparis.csc4102.gestionclefshotel.Client;
 import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.Badge;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreInexistante;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreNonOccupee;

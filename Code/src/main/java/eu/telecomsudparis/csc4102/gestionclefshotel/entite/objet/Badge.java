@@ -1,6 +1,11 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet;
 
 import java.util.Objects;
+
+import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefs;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 
 /**
  * Classe représentant un badge d'accès permettant de déverrouiller la serrure

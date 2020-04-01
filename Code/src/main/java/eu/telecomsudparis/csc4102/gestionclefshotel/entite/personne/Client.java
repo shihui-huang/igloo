@@ -1,6 +1,10 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne;
 
 import java.util.Objects;
+
+import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.Badge;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 
 /**
  * Classe représentant un client occupant une chambre au travers d'un badge

@@ -1,4 +1,4 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne;
 
 
 import java.util.concurrent.Flow.Subscriber;
