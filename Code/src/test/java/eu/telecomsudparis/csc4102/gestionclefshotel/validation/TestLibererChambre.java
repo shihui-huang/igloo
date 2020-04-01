@@ -53,9 +53,12 @@ public class TestLibererChambre {
 	public void libererChambreTest3Jeu1() throws Exception {
 		this.systeme.libererChambre(11, 22, 00);
 	}
-	
-	// TODO tester si client occupe aucune chambre
-	
+
+	@Test(expected = ClientOccupeAucuneChambre.class)
+	public void libererChambreTest4Jeu1() throws Exception {
+		this.systeme.enregistrerOccupationChambre(11, 22, 33);
+		this.systeme.libererChambre(11, 22, 34);
+	}
 	@Test(expected = ClientOccupeAutreChambre.class)
 	public void libererChambreTest5Jeu1() throws Exception {
 		this.systeme.enregistrerOccupationChambre(11, 22, 33);

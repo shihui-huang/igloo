@@ -250,7 +250,7 @@ m2=2
       <w>130</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>_Administrateur_
+    <panel_attributes>_Consomateur_
 --
 - id: String
 - nom : String

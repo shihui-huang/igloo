@@ -11,6 +11,7 @@ import java.util.Objects;
  * @see    Badge
  * @see    GestionClefsHotel
  * @author Paul Mabileau
+ * @author Shihui HUANG
  */
 public class Client {
 	/**

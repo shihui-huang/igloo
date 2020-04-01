@@ -15,6 +15,7 @@ import java.util.Objects;
  * @see    PaireClefs
  * @see    GestionClefsHotel
  * @author Paul Mabileau
+ * @author Shihui HUANG
  */
 public class Chambre {
 	/**
@@ -151,21 +152,7 @@ public class Chambre {
 		
 		this.badge = null;
 	}
-	
-	/**
-	 * @return La graine de génération de clés de la chambre.
-	 */
-	public String getGraine() {
-		return this.graine;
-	}
-	
-	/**
-	 * @return La sel de génération de clés de la chambre.
-	 */
-	public int getSel() {
-		return this.sel;
-	}
-	
+
 	/**
 	 * @return Si la chambre est occupée ou non.
 	 */

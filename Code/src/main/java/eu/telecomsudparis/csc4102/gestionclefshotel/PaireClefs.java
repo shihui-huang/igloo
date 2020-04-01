@@ -10,6 +10,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenera
  * déverrouiller des serrures.
  *
  * @author Paul Mabileau
+ * @author Shihui HUANG
  * @see    Chambre
  * @see    Badge
  * @see    GestionClefsHotel
