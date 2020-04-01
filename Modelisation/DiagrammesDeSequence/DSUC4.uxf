@@ -5,7 +5,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>40</x>
-      <y>10</y>
+      <y>0</y>
       <w>120</w>
       <h>110</h>
     </coordinates>
@@ -16,7 +16,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>90</x>
-      <y>140</y>
+      <y>130</y>
       <w>20</w>
       <h>580</h>
     </coordinates>
@@ -27,7 +27,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>210</x>
-      <y>30</y>
+      <y>20</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -38,7 +38,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>280</x>
-      <y>140</y>
+      <y>130</y>
       <w>20</w>
       <h>580</h>
     </coordinates>
@@ -49,7 +49,7 @@
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>150</y>
+      <y>140</y>
       <w>400</w>
       <h>40</h>
     </coordinates>
@@ -60,10 +60,10 @@ declarerPerduDuBadgeSansRemplacement(long idBadge)</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>190</x>
-      <y>320</y>
+      <x>210</x>
+      <y>250</y>
       <w>720</w>
-      <h>380</h>
+      <h>330</h>
     </coordinates>
     <panel_attributes>optional 
 --
@@ -74,7 +74,7 @@ badge.getChambre() != null</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>50</y>
+      <y>40</y>
       <w>30</w>
       <h>110</h>
     </coordinates>
@@ -85,7 +85,7 @@ badge.getChambre() != null</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>90</x>
-      <y>60</y>
+      <y>50</y>
       <w>30</w>
       <h>100</h>
     </coordinates>
@@ -96,7 +96,7 @@ badge.getChambre() != null</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>460</x>
-      <y>20</y>
+      <y>10</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -108,7 +108,7 @@ _:Badge_</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>650</x>
-      <y>20</y>
+      <y>10</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -120,7 +120,7 @@ _:Client_</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>830</x>
-      <y>20</y>
+      <y>10</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -132,7 +132,7 @@ _:Chambre_</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>290</x>
-      <y>180</y>
+      <y>170</y>
       <w>370</w>
       <h>70</h>
     </coordinates>
@@ -144,9 +144,9 @@ badge = chercherBadge(idBadge) : Badge </panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>500</x>
-      <y>370</y>
+      <y>300</y>
       <w>20</w>
-      <h>220</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -154,19 +154,8 @@ badge = chercherBadge(idBadge) : Badge </panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>50</y>
-      <w>30</w>
-      <h>220</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>290</x>
-      <y>240</y>
+      <y>600</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -178,29 +167,29 @@ remove(idBadge)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>690</x>
-      <y>50</y>
+      <y>40</y>
       <w>30</w>
-      <h>350</h>
+      <h>290</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;330.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>870</x>
-      <y>50</y>
+      <y>40</y>
       <w>30</w>
-      <h>430</h>
+      <h>370</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>290</x>
-      <y>280</y>
+      <y>640</y>
       <w>230</w>
       <h>30</h>
     </coordinates>
@@ -211,7 +200,7 @@ remove(idBadge)</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>240</x>
-      <y>610</y>
+      <y>490</y>
       <w>660</w>
       <h>60</h>
     </coordinates>
@@ -224,7 +213,7 @@ libererChambre(idChambre, idBadge, idClient)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>290</x>
-      <y>370</y>
+      <y>300</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -236,7 +225,7 @@ getClient()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>510</x>
-      <y>460</y>
+      <y>390</y>
       <w>380</w>
       <h>40</h>
     </coordinates>
@@ -248,7 +237,7 @@ idChambre = getId()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>510</x>
-      <y>380</y>
+      <y>310</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
@@ -260,7 +249,7 @@ idClient = getId()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>290</x>
-      <y>430</y>
+      <y>360</y>
       <w>230</w>
       <h>30</h>
     </coordinates>
@@ -271,7 +260,7 @@ idClient = getId()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>510</x>
-      <y>410</y>
+      <y>340</y>
       <w>200</w>
       <h>30</h>
     </coordinates>
@@ -282,7 +271,7 @@ idClient = getId()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>500</x>
-      <y>250</y>
+      <y>610</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -292,19 +281,8 @@ idClient = getId()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>300</y>
-      <w>30</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>290</x>
-      <y>450</y>
+      <y>380</y>
       <w>230</w>
       <h>40</h>
     </coordinates>
@@ -316,7 +294,7 @@ getChambre()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>510</x>
-      <y>500</y>
+      <y>430</y>
       <w>380</w>
       <h>30</h>
     </coordinates>
@@ -327,7 +305,7 @@ getChambre()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>290</x>
-      <y>520</y>
+      <y>450</y>
       <w>230</w>
       <h>30</h>
     </coordinates>
@@ -338,7 +316,7 @@ getChambre()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>690</x>
-      <y>380</y>
+      <y>310</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -349,7 +327,7 @@ getChambre()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>870</x>
-      <y>460</y>
+      <y>390</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -360,44 +338,66 @@ getChambre()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>870</x>
-      <y>510</y>
+      <y>440</y>
       <w>30</w>
-      <h>240</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>690</x>
-      <y>430</y>
+      <y>360</y>
       <w>30</w>
-      <h>310</h>
+      <h>370</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>500</x>
-      <y>580</y>
-      <w>30</w>
-      <h>170</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>500</x>
-      <y>280</y>
+      <y>640</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
     <panel_attributes>type=termination</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>40</y>
+      <w>30</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>470</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>660</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
 </diagram>
