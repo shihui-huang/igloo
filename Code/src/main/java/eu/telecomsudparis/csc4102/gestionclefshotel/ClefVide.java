@@ -8,6 +8,6 @@ public final class ClefVide extends Clef {
 	
 	@Override
 	public final byte[] getValue() {
-		return null;
+		return this.value;
 	}
 }
