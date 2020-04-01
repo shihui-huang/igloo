@@ -4,18 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import eu.telecomsudparis.csc4102.exception.ChaineDeCaracteresNullOuVide;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaAssocieChambreOuClient;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaPresent;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeInexistant;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreDejaOccupee;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreDejaPresente;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreInexistante;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreNonOccupee;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientDejaPresent;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeDejaChambre;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAucuneChambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.*;
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 import java.util.concurrent.SubmissionPublisher;
 
@@ -382,6 +371,8 @@ public class GestionClefsHotel {
 			long idClient = badgePerdu.get().getClient().getId();
 			libererChambre(idChambre, idBadgePerdu, idClient);
 			enregistrerOccupationChambre(idChambre,idBadgeRemplace,idClient);
+		}else{
+			throw new BadgeNonUtilise("Ce badge n'est pas en cours d'utilisation ");
 		}
 		this.badges.remove(idBadgePerdu);
 
