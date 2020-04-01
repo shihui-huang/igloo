@@ -11,4 +11,9 @@ public final class ClefVide extends Clef {
 	public static final ClefVide getInstance() {
 		return ClefVide.INSTANCE;
 	}
+	
+	@Override
+	public final boolean invariant() {
+		return this.value == null;
+	}
 }

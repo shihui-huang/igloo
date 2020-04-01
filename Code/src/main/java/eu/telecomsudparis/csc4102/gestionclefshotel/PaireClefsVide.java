@@ -17,8 +17,10 @@ public final class PaireClefsVide extends PaireClefs {
 		return this.clef1 != null
 					&& this.clef1 instanceof ClefVide
 					&& this.clef1 == ClefVide.getInstance()
+					&& this.clef1.invariant()
 				&& this.clef2 != null
 					&& this.clef2 instanceof ClefVide
-					&& this.clef2 == ClefVide.getInstance();
+					&& this.clef2 == ClefVide.getInstance()
+					&& this.clef2.invariant();
 	}
 }
