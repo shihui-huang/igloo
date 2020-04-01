@@ -11,7 +11,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
 import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaAssocieChambreOuClient;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaPresent;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeNonUtilise
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeNonUtilise;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreDejaOccupee;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreDejaPresente;
