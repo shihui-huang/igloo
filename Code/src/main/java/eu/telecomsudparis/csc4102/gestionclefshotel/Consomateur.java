@@ -5,13 +5,13 @@ import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 
 /**
- * Cette classe définit le Administrateur. Les notifications sont typées.
+ * Cette classe définit le Consomateur. Les notifications sont typées.
  *
  * @author Denis Conan
  */
-public class Administrateur implements Subscriber<String> {
+public class Consomateur implements Subscriber<String> {
     /**
-     * identifiant du Administrateur : pour les messages a la console qui servent a
+     * identifiant du Consomateur : pour les messages a la console qui servent a
      * suivre l'execution.
      */
     private String id;
@@ -29,7 +29,7 @@ public class Administrateur implements Subscriber<String> {
      *
      * @param id identifiant pour les affichages.
      */
-    public Administrateur(final String id,String nom,String prenom) {
+    public Consomateur(final String id,String nom,String prenom) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -39,13 +39,13 @@ public class Administrateur implements Subscriber<String> {
     public void onSubscribe(final Subscription souscription) {
         this.souscription = souscription;
         this.souscription.request(1);
-        System.out.println("Admin " + id + nom +prenom+ " pret a recevoir la premiere notification");
+        System.out.println("Consomateur " + id + nom +prenom+ " pret a recevoir la premiere notification");
     }
 
     @Override
     public void onNext(final String notification) {
         // reception d'une notification : ici, simple affichage a la console
-        System.out.println("Admin " + id + nom +prenom + " a recu une nouvelle notification : " + notification);
+        System.out.println("Consomateur " + id + nom +prenom + " a recu une nouvelle notification : " + notification);
         // on declare qu'on est pret a recevoir un nouveau message
         souscription.request(1);
     }
@@ -57,7 +57,7 @@ public class Administrateur implements Subscriber<String> {
 
     @Override
     public void onComplete() {
-        System.out.println("Admin "+ id + nom +prenom+ " est desabonne suite a la fermeture du flux");
+        System.out.println("Consomateur "+ id + nom +prenom+ " est desabonne suite a la fermeture du flux");
     }
 
 }
