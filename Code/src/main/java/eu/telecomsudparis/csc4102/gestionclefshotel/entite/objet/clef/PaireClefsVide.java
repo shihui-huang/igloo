@@ -1,4 +1,4 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef;
 
 
 public final class PaireClefsVide extends PaireClefs {

@@ -4,7 +4,24 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import eu.telecomsudparis.csc4102.exception.ChaineDeCaracteresNullOuVide;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.*;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.Badge;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.Clef;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefs;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaAssocieChambreOuClient;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaPresent;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeNonUtilise
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeInexistant;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreDejaOccupee;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreDejaPresente;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreInexistante;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreNonOccupee;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientDejaPresent;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeDejaChambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAucuneChambre;
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 import java.util.concurrent.SubmissionPublisher;
 

@@ -1,17 +1,20 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel.validation;
 
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import eu.telecomsudparis.csc4102.gestionclefshotel.Badge;
-import eu.telecomsudparis.csc4102.gestionclefshotel.Chambre;
-import eu.telecomsudparis.csc4102.gestionclefshotel.Client;
 import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
 
-import java.util.Optional;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeInexistant;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreInexistante;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreNonOccupee;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAutreChambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeAucuneChambre;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeNonUtilise;
+
 
 
 public class TestLibererChambre {
