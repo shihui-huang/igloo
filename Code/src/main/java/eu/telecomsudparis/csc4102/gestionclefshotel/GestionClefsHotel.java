@@ -49,10 +49,7 @@ public class GestionClefsHotel {
 	 */
 	private List<Clef> clefs;
 
-	/**
-	 * Constante de Thread Sleep.
-	 */
-	private static final int SLEEP_TIME = 100;
+
 
 	private SubmissionPublisher<String> publisher;
 
@@ -109,7 +106,6 @@ public class GestionClefsHotel {
 
 		if (clefs.contains(clef1)) {
 			publisher.submit("\"Doublon de clef1 pour la chambre " + id + " lors de la création de chambre.\"");
-			Thread.sleep(SLEEP_TIME);
 
 		} else {
 			clefs.add(clef1);
@@ -117,7 +113,7 @@ public class GestionClefsHotel {
 
 		if (clefs.contains(clef2)) {
 			publisher.submit("\"Doublon de clef2 pour la chambre " + id + " lors de la création de chambre.\"");
-			Thread.sleep(SLEEP_TIME);
+
 
 		} else {
 			clefs.add(clef2);
@@ -125,7 +121,7 @@ public class GestionClefsHotel {
 
 		if (pairesClefs.contains(paireClefs)) {
 			publisher.submit("\"Doublon de pairede clef pour la chambre " + id + " lors de la création de chambre.\"");
-			Thread.sleep(SLEEP_TIME);
+
 
 		} else {
 			pairesClefs.add(paireClefs);
@@ -219,14 +215,13 @@ public class GestionClefsHotel {
 		Clef clef = chambre.get().getClefs().getClef2();
 		if (clefs.contains(clef)) {
 			publisher.submit("\"Doublon de nouveau clef pour la chambre " +idChambre + " lors de la enregisterOccupationChambre chambre.\"");
-			Thread.sleep(SLEEP_TIME);
 
 		} else {
 			clefs.add(clef);
 		}
 		if (pairesClefs.contains(nouvellePaireClefs)) {
 			publisher.submit("\"Doublon de nouveau clef pour la chambre " +idChambre + " lors de la enregisterOccupationChambre chambre.\"");
-			Thread.sleep(SLEEP_TIME);
+
 		} else {
 			pairesClefs.add(nouvellePaireClefs);
 		}
@@ -347,12 +342,12 @@ public class GestionClefsHotel {
 
 
 	/**
-	 * Instantiates a new Declarer perdu du chambre.
+	 * Instantiates a new Declarer perdu du Badge sans remplacement.
 	 *
 	 * @param idBadge the id badge
 	 * @throws OperationImpossible the operation impossible
 	 */
-	public void declarerPerduDuBadge(final long idBadge) throws OperationImpossible {
+	public void declarerPerduDuBadgeSansRemplacement(final long idBadge) throws OperationImpossible {
 		final Optional<Badge> badge = chercherBadge(idBadge);
 		if (!badge.isPresent()) {
 			throw new BadgeInexistant("Le badge n'existe pas.");
@@ -366,14 +361,31 @@ public class GestionClefsHotel {
 	}
 
 	/**
-	 * Gets publisher.
+	 * Declarer perdu du badge avec remplacement.
 	 *
-	 * @return the publisher
+	 * @param idBadgePerdu    the id badge perdu
+	 * @param idBadgeRemplace the id badge remplace
+	 * @throws OperationImpossible  the operation impossible
+	 * @throws InterruptedException the interrupted exception
 	 */
-	public SubmissionPublisher<String> getPublisher() {
-		return publisher;
-	}
+	public void declarerPerduDuBadgeAvecRemplacement(final long idBadgePerdu,final long idBadgeRemplace) throws OperationImpossible, InterruptedException {
+		final Optional<Badge> badgePerdu = chercherBadge(idBadgePerdu);
+		final Optional<Badge> badgeRemplace = chercherBadge(idBadgeRemplace);
+		if (!badgePerdu.isPresent()) {
+			throw new BadgeInexistant("Le badgePerdu n'existe pas.");
+		}
+		if (!badgeRemplace.isPresent()) {
+			throw new BadgeInexistant("Le badgeRemplace n'existe pas.");
+		}
+		if (badgePerdu.get().getChambre() != null) {
+			long idChambre = badgePerdu.get().getChambre().getId();
+			long idClient = badgePerdu.get().getClient().getId();
+			libererChambre(idChambre, idBadgePerdu, idClient);
+			enregistrerOccupationChambre(idChambre,idBadgeRemplace,idClient);
+		}
+		this.badges.remove(idBadgePerdu);
 
+	}
 
 
 }
