@@ -75,7 +75,7 @@ public class TestEnregistrerOccupationChambre {
 		this.systeme.enregistrerOccupationChambre(12, 22, 34);
 	}
 
-	@Test(expected = ChambreNonOccupee.class)
+	@Test(expected = ChambreDejaOccupee.class)
 	public void enregistrerOccupationChambreTest7Jeu1() throws Exception {
 		this.systeme.enregistrerOccupationChambre(11, 22, 33);
 		this.systeme.enregistrerOccupationChambre(11, 23, 34);
