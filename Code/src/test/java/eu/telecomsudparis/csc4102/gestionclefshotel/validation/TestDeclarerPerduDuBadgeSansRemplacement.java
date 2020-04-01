@@ -9,7 +9,7 @@ import org.junit.Test;
 
 
 
-public class TestDeclarerPerduDuBadge {
+public class TestDeclarerPerduDuBadgeSansRemplacement {
     private GestionClefsHotel systeme;
 
     @Before
@@ -34,30 +34,30 @@ public class TestDeclarerPerduDuBadge {
         this.systeme = null;
     }
     @Test(expected = BadgeInexistant.class)
-    public void declarerPerduDuBadgeTest1Jeu1() throws Exception {
-        this.systeme.declarerPerduDuBadge(20);
+    public void declarerPerduDuBadgeSansRemplacementTest1Jeu1() throws Exception {
+        this.systeme.declarerPerduDuBadgeSansRemplacement(20);
     }
 
     @Test(expected = BadgeInexistant.class)
-    public void declarerPerduDuBadgeTest2Jeu1() throws Exception  {
-        this.systeme.declarerPerduDuBadge(22);
+    public void declarerPerduDuBadgeSansRemplacementTest2Jeu1() throws Exception  {
+        this.systeme.declarerPerduDuBadgeSansRemplacement(22);
         systeme.enregistrerOccupationChambre(11,22,33);//apres declaration,le badge n'exist plus.Donc,il va y avoir l'erreur
     }
 
     @Test(expected = ChambreNonOccupee.class)
-    public void declarerPerduDuBadgeTest2Jeu2() throws Exception {
+    public void declarerPerduDuBadgeSansRemplacementTest2Jeu2() throws Exception {
         this.systeme.enregistrerOccupationChambre(11, 22, 33);
         this.systeme.enregistrerOccupationChambre(12, 23, 34);
-        this.systeme.declarerPerduDuBadge(22);
+        this.systeme.declarerPerduDuBadgeSansRemplacement(22);
         this.systeme.libererChambre(11, 23, 34);//apres declaration,le chambre n'est plus occupee.
     }
 
     @Test(expected = ClientOccupeAucuneChambre.class)
-    public void declarerPerduDuBadgeTest2Jeu3() throws Exception {
+    public void declarerPerduDuBadgeSansRemplacementTest2Jeu3() throws Exception {
 
         this.systeme.enregistrerOccupationChambre(11, 22, 33);
         this.systeme.enregistrerOccupationChambre(12, 23, 34);
-        this.systeme.declarerPerduDuBadge(22);
+        this.systeme.declarerPerduDuBadgeSansRemplacement(22);
         this.systeme.libererChambre(12, 23, 33);//apres declaration,le client n'a plus chambre.Donc,il va y avoir pas l'erreur
 
     }
