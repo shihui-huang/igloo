@@ -93,7 +93,7 @@ public class GestionClefsHotel {
 	 * @param sel    Le sel de génération de clés de la                                    chambre.
 	 * @throws OperationImpossible Si la génération est cassée en mille                                    morceaux.
 	 */
-	public void creerChambre(final long id, final String graine, final int sel) throws OperationImpossible, InterruptedException {
+	public void creerChambre(final long id, final String graine, final int sel) throws OperationImpossible {
 		final Optional<Chambre> current = this.chercherChambre(id);
 
 		if (graine == null || graine.equals("")) {
@@ -177,7 +177,7 @@ public class GestionClefsHotel {
 	 * @throws OperationImpossible Si la génération est cassée en mille                                    morceaux.
 	 */
 	public void enregistrerOccupationChambre(final long idChambre, final long idBadge, final long idClient)
-			throws OperationImpossible, InterruptedException {
+			throws OperationImpossible {
 		final Optional<Chambre> chambre = this.chercherChambre(idChambre);
 		final Optional<Badge> badge = this.chercherBadge(idBadge);
 		final Optional<Client> client = this.chercherClient(idClient);

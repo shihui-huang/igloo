@@ -102,12 +102,8 @@ public class PaireClefs {
 		if (!Arrays.equals(this.clef1.getValue(), other.clef1.getValue())) {
 			return false;
 		}
-		
-		if (!Arrays.equals(this.clef2.getValue(), other.clef2.getValue())) {
-			return false;
-		}
-		
-		return true;
+
+		return Arrays.equals(this.clef2.getValue(), other.clef2.getValue());
 	}
 	
 	/**

@@ -3,7 +3,6 @@ package eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef;
 import java.util.Arrays;
 
 import eu.telecomsudparis.csc4102.gestionclefshotel.Util;
-import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenerationClef;
 
 
 public class Clef {
@@ -11,16 +10,20 @@ public class Clef {
 	 * La clef.
 	 */
 	protected byte[] value;
-	
-	public Clef(final Clef clef) {
-		this.value = clef.value.clone();
-	}
-	
+
 	/**
 	 * Instantiates a new Clef.
 	 *
-	 * @param  value                      the value
-	 * @throws ProblemeDansGenerationClef the probleme dans generation clef
+	 * @param clef the clef
+	 */
+	public Clef(final Clef clef) {
+		this.value = clef.value.clone();
+	}
+
+	/**
+	 * Instantiates a new Clef.
+	 *
+	 * @param value the value
 	 */
 	public Clef(final byte[] value) {
 		this.value = value.clone();

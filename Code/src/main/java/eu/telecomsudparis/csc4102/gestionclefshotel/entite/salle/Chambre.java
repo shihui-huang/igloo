@@ -185,9 +185,9 @@ public class Chambre {
 	public PaireClefs obtenirNouvellePaireClefs() throws ProblemeDansGenerationClef {
 		Clef clef1 = new Clef(this.paireClefs.getClef2());
 		Clef clef2 = new Clef(Util.genererUneNouvelleClef(this.graine, String.format("%010d%n", this.sel)));
-		PaireClefs paireClefs = new PaireClefs(clef1, clef2);
+		PaireClefs newPaireClefs = new PaireClefs(clef1, clef2);
 		this.sel++;
-		return paireClefs;
+		return newPaireClefs;
 	}
 	
 	/**

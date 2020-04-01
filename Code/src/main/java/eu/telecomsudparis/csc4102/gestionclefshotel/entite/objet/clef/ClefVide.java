@@ -7,8 +7,13 @@ public final class ClefVide extends Clef {
 	private ClefVide() {
 		this.value = null;
 	}
-	
-	public static final ClefVide getInstance() {
+
+	/**
+	 * Gets instance.
+	 *
+	 * @return the instance
+	 */
+	public static ClefVide getInstance() {
 		return ClefVide.INSTANCE;
 	}
 	
