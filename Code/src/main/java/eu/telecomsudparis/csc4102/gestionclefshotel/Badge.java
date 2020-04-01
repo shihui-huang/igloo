@@ -13,6 +13,7 @@ import java.util.Objects;
  * @see    PaireClefs
  * @see    GestionClefsHotel
  * @author Paul Mabileau
+ * @author Shihui HUANG
  */
 public class Badge {
 	/**
@@ -80,7 +81,8 @@ public class Badge {
 	public void inscrireClefs(final PaireClefs paireClefs) {
 		this.paireClefs = paireClefs;
 	}
-	
+
+
 	/**
 	 * Vide le badge de sa paire de clefs et dissocie la chambre.
 	 */
@@ -93,6 +95,7 @@ public class Badge {
 		}
 		
 		this.paireClefs = null;
+		assert this.invariant();
 	}
 	
 	/**

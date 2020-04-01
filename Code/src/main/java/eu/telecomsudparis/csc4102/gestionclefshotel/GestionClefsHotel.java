@@ -127,7 +127,7 @@ public class GestionClefsHotel {
 	 * @param id L'identifiant de la chambre à chercher.
 	 * @return La chambre associé à l'id, {@code null} sinon.
 	 */
-	public Optional<Chambre> chercherChambre(final long id) {
+	private Optional<Chambre> chercherChambre(final long id) {
 		return chambres.values()
 				.stream()
 				.filter(chambre -> chambre.getId() == id)
@@ -189,9 +189,6 @@ public class GestionClefsHotel {
 			throw new BadgeDejaAssocieChambreOuClient("Le badge '" + idBadge + "' est déjà associé avec le client '"
 														+ badge.get().getClient().getId() + "'.");
 		}
-		if (badge.get().getClefs() != null) {
-			throw new OperationImpossible("Le badge '" + idBadge + "' a déjà une paire de clefs.");
-		}
 
 		badge.get().associerClient(client.get(), true);
 		badge.get().associerChambre(chambre.get(), true);
@@ -248,6 +245,9 @@ public class GestionClefsHotel {
 		if (!chambre.get().estOccupee()) {
 			throw new ChambreNonOccupee("La chambre n'est pas occupée, elle ne peut donc pas être libérée.");
 		}
+		if (badge.get().getClient() == null) {
+			throw new BadgeNonUtilise("Le badge n'est pas en cours de utilisation, elle ne peut donc pas être libérée.");
+		}
 		if (client.get().getBadge() == null) {
 			throw new ClientOccupeAucuneChambre("Le client n'occupe aucune chambre, il ne peut donc pas la libérer.");
 		}
@@ -286,7 +286,7 @@ public class GestionClefsHotel {
 	 * @param id L'identifiant du badge à chercher.
 	 * @return Le badge associé à l'id, {@code null} sinon.
 	 */
-	public Optional<Badge> chercherBadge(final long id) {
+	private Optional<Badge> chercherBadge(final long id) {
 		return badges.values()
 				.stream()
 				.filter(badge -> badge.getId() == id)
@@ -322,7 +322,7 @@ public class GestionClefsHotel {
 	 * @param id L'identifiant du client à chercher.
 	 * @return Le client associé à l'id, {@code null} sinon.
 	 */
-	public Optional<Client> chercherClient(final long id) {
+	private Optional<Client> chercherClient(final long id) {
 		return clients.values()
 				.stream()
 				.filter(client -> client.getId() == id)

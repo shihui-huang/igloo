@@ -197,8 +197,7 @@
                 \usecase{\haute}{Déclarer la perte d'un badge sans remplacement}
                 %% précondition
                     {\\
-					badge avec ce identifiant existant\\
-				}
+					badge avec ce identifiant existant\\}
                 %% postcondition
                     {\\
 					(Si le badge était en cours d'utilisation) chambre occupée par le client possédant le badge est libérée\\
@@ -210,11 +209,11 @@
 				\usecase{\haute}{Déclarer la perte d'un badge avec remplacement}
 				%% précondition
 					{\\
-					badge avec ce identifiant existant
+					badgePerdu avec ce identifiant existant
+					badgeRemplce avec ce identifiant existant
 					}
 				%% postcondition
 					{\\
-
 						(Si le badge était en cours d'utilisation) chambre occupée par le client possédant le badge est libérée\\
 						$\land$ (Si le badge était en cours d'utilisation) badge d'accès retiré du client\\
 						$\land$ badge avec ce identifiant inexistant\\
@@ -268,41 +267,37 @@ Nombre de jeux de test
             \begin{tabular}{|p{0.6\linewidth}|c|c|c|c|c|c|c|c|}
                 \hline
                 Numéro de test
-                    &1&2&3&4&5&6&7&8\\
+                    &1&2&3&4&5&6&7\\
 
                 \hline
                 Chambre existante
-                    &F&T&T& & & & &T\\
+                    &F&T&T& & & &T\\
                 \hline
                 Badge existant
-                    & &F&T& & & & &T\\
+                    & &F&T& & & &T\\
 				\hline
                 Client existant
-                    & & &F& & & & &T\\
+                    & & &F& & & &T\\
                 \hline
                 \hline
                 Chambre non occupée
-                    & & & &F&T&T&T&T\\
+                    & & & &F&T&T&T\\
                 \hline
 				\hline
 				Client occupe aucune chambre
-					& & & & &F&T&T&T\\
+					& & & & &F&T&T\\
 				\hline
 				\hline
 				Badge disponible
-					& & & & & &F&T&T\\
-				\hline
-				\hline
-                Dernière paire de clefs de la chambre bien formé ($\neq$ \nullvalue $\land$ $\neq$ vide)
-                    & & & & & & &F&T\\
+					& & & & & &F&T\\
                 \hline
                 \hline
                 Enregistrement accepté
-                    &F&F&F&F&F&F&F&T\\
+                    &F&F&F&F&F&F&T\\
                 \hline
                 \hline
                 Nombre de jeux de test
-                                    &1&1&1&1&1&1&2&1\\
+                                    &1&1&1&1&1&1&1\\
                 \hline
             \end{tabular}
             \caption{Cas d'utilisation <<~enregistrer l'occupation d'une chambre par un client~>>}
