@@ -187,11 +187,11 @@ Denis Conan
 - [] utilisation des Streams : dans chercherChambre,
      chambre.getId() == id est une très grosse erreur
 - utilisation de la classe Optional : ok
-- [] ajout des classes Clefs et PaireDeClefs : pourquoi ClefVide::getValue
-     retourne null ?
-     + dans le diagramme de classes, ce ne peut pas être une composition car
-       il y a des agrégations
-- [] intégration du patron de conception Singleton : à faire
+- [x] ajout des classes Clefs et PaireDeClefs : pourquoi ClefVide::getValue
+      retourne null ?
+      + dans le diagramme de classes, ce ne peut pas être une composition car
+        il y a des agrégations
+- [x] intégration du patron de conception Singleton : à faire
 - [] intégration du patron de conception Publier-Souscrire : les temporisations
      de l'exemple Thread.sleep() n'est pas à mettre dans votre logiciel
      + qu'est-ce que getPublisher dans la façade ? il n'y a pas de cas
