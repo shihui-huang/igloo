@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
 import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefs;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefsVide;
 import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
 import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 
@@ -12,7 +13,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
  * d'une chambre qui lui a été associée. D'un point de vue modèle, elle est
  * reliée bi-directionnellement à {@link Chambre} et à {@link Client} et
  * uni-directionnellement à {@link PaireClefs}.
- * 
+ *
  * @see    Chambre
  * @see    Client
  * @see    PaireClefs
@@ -45,6 +46,7 @@ public class Badge {
 	 */
 	public Badge(final long id) {
 		this.id = id;
+		this.paireClefs = PaireClefsVide.getInstance();
 		assert this.invariant();
 	}
 
@@ -58,10 +60,10 @@ public class Badge {
 	public boolean invariant() {
 		return this.client != null
 				&& this.chambre != null
-				&& this.paireClefs != null
+				&& this.paireClefs != PaireClefsVide.getInstance()
 				|| this.client == null
 					&& this.chambre == null
-					&& this.paireClefs == null;
+					&& this.paireClefs == PaireClefsVide.getInstance();
 	}
 	
 	/**
@@ -99,7 +101,7 @@ public class Badge {
 			this.dissocierClient();
 		}
 		
-		this.paireClefs = null;
+		this.paireClefs = PaireClefsVide.getInstance();
 		assert this.invariant();
 	}
 	
