@@ -2,8 +2,14 @@ package eu.telecomsudparis.csc4102.gestionclefshotel;
 
 
 public final class PaireClefsVide extends PaireClefs {
-	public PaireClefsVide() {
-		super(new ClefVide(), new ClefVide());
+	private static final PaireClefsVide INSTANCE = new PaireClefsVide();
+	
+	private PaireClefsVide() {
+		super(ClefVide.getInstance(), ClefVide.getInstance());
+	}
+	
+	public static final PaireClefsVide getInstance() {
+		return PaireClefsVide.INSTANCE;
 	}
 	
 	@Override
