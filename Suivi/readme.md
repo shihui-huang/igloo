@@ -171,3 +171,42 @@ Denis Conan
          Chambre::equals)
 
 ---
+
+# Suivi du mer. 01 avril 2020 08:03:14 CEST
+Denis Conan
+- vous avez demandé le suivi beaucoup trop tard ; donc, uniquement partiel
+- (**On écrit le test selon le préparation,est-ce que vous pouvez expliquer
+     plus présisément,svp?)
+    - nommage correct ; donc, soit correction par vos soins, soit mauvaise
+      appréciation de ma part lors du suivi
+- (**Si on met les méthodes chercherXxxx à privée, comment peut-on tester le
+     dernier test dans TestEnregistereOccupationChambre?)
+    - cf. mon message dans le forum vendredi 27 mars
+- getters/setters (**Est-ce que vous pouvez expliquer plus présisément,svp?)
+    - pb de qualité
+- [] utilisation des Streams : dans chercherChambre,
+     chambre.getId() == id est une très grosse erreur
+- utilisation de la classe Optional : ok
+- [] ajout des classes Clefs et PaireDeClefs : pourquoi ClefVide::getValue
+     retourne null ?
+     + dans le diagramme de classes, ce ne peut pas être une composition car
+       il y a des agrégations
+- [] intégration du patron de conception Singleton : à faire
+- [] intégration du patron de conception Publier-Souscrire : les temporisations
+     de l'exemple Thread.sleep() n'est pas à mettre dans votre logiciel
+     + qu'est-ce que getPublisher dans la façade ? il n'y a pas de cas
+       d'utilisation dans le diagramme de cas d'utilisation
+     + mauvais nommage de la classe de consommation car c'est le nom d'un
+       acteur ; ambigu par exemple avec Client
+- cas d'utilisation du Sprint 2
+     - [] « perte sans remplacement » : précondition incomplète car le
+          cahier des charges qui distinguent explicitement deux situations
+          selon que le badge perdu était à la réception ou avec un client
+          => adapter la suite
+          + mauvaise formulation logique de la postcondition
+          + diagramme de séquence avec modélisation de la suppression du badge
+            mal placée
+     - [] « perte avec remplacement » : à faire
+
+
+---
