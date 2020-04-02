@@ -1,4 +1,10 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne;
+
+import java.util.Objects;
+
+import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.Badge;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 
 /**
  * Classe représentant un client occupant une chambre au travers d'un badge
@@ -9,6 +15,7 @@ package eu.telecomsudparis.csc4102.gestionclefshotel;
  * @see    Badge
  * @see    GestionClefsHotel
  * @author Paul Mabileau
+ * @author Shihui HUANG
  */
 public class Client {
 	/**
@@ -33,7 +40,7 @@ public class Client {
 	 * 
 	 * @param id       L'identifiant unique du client.
 	 * @param nom      Le nom de famille du client.
-	 * @param prenomLe prénom du client.
+	 * @param prenom   Le prénom du client.
 	 */
 	public Client(final long id, final String nom, final String prenom) {
 		this.id = id;
@@ -42,7 +49,12 @@ public class Client {
 		
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Invariant boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean invariant() {
 		return this.nom != null && !this.nom.equals("")
 				&& this.prenom != null && !this.prenom.equals("");
@@ -96,7 +108,7 @@ public class Client {
 	 *                       badge.
 	 * @see                  #associerBadge(Badge)
 	 */
-	public void associerBadge(final Badge badge, boolean bidirectionnel) {
+	public void associerBadge(final Badge badge, final boolean bidirectionnel) {
 		this.badge = badge;
 		
 		if (bidirectionnel) {
@@ -122,7 +134,7 @@ public class Client {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierBadge()
 	 */
-	public void dissocierBadge(boolean bidirectionnel) {
+	public void dissocierBadge(final boolean bidirectionnel) {
 		if (bidirectionnel && this.badge != null) {
 			this.badge.dissocierClient(false);
 		}
@@ -138,14 +150,9 @@ public class Client {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (this.id ^ this.id >>> 32);
-		result = prime * result + (this.nom == null ? 0 : this.nom.hashCode());
-		result = prime * result + (this.prenom == null ? 0 : this.prenom.hashCode());
-		return result;
+		return Objects.hash(id);
 	}
-	
+
 	/**
 	 * Implémentation de equals() pour {@link Client} pour laquelle l'égalité
 	 * est basée sur les membres {@link #id}, {@link #nom} et {@link #prenom}.
@@ -156,42 +163,17 @@ public class Client {
 	 * @return Si le client est égal à l'objet donné.
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
+	public boolean equals(final Object o) {
+		if (this == o) {
 			return true;
 		}
-		
-		if (!(obj instanceof Client)) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		
-		final Client other = (Client) obj;
-		
-		if (this.id != other.id) {
-			return false;
-		}
-		
-		if (this.nom == null) {
-			if (other.nom != null) {
-				return false;
-			}
-		}
-		else if (!this.nom.equals(other.nom)) {
-			return false;
-		}
-		
-		if (this.prenom == null) {
-			if (other.prenom != null) {
-				return false;
-			}
-		}
-		else if (!this.prenom.equals(other.prenom)) {
-			return false;
-		}
-		
-		return true;
+		Client client = (Client) o;
+		return id == client.id;
 	}
-	
+
 	/**
 	 * Implémentation de toString() pour {@link Client}. <br>
 	 * <br>

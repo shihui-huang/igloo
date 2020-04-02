@@ -119,3 +119,94 @@ Denis Conan
   prochaine séance ce mercredi
 
 ---
+
+# Suivi du lun. 16 mars 2020 14:31:19 CET
+Denis Conan
+- cohérence entre le modèle et le code
+    - [x] qu'est-ce que associerBadge(final Badge badge, boolean bidirectionnel)
+         dans Client ? l'association du diagramme de classes est
+         bidirectionnelle, donc aussi dans le code
+    - à quelques détails près comme les arguments, c'est cohérent
+- cohérence entre la préparation des tests et la programmation des tests
+    - [?]
+
+(**On écrit le test selon le préparation,est-ce que vous pouvez expliquer plus présisément,svp?)
+
+
+- [x] un invariant s'exprime avec les attributs de la classe (uniquement) :
+     par exemple, l'invariant de Badge ne doit pas aller dans Chambre ou
+     dans Client
+     + écire this.client != null dans l'invariant de Badge signifie qu'un
+       badge est toujours en possession d'un client : c'est faux
+     + idem avec d'autres termes de cet invariant
+- [?] vous avez trop de getters et de setters ; certains ne sont pas utiles ;
+     vous cassez la propriété d'encapsulation
+
+(**Est-ce que vous pouvez expliquer plus présisément,svp?)
+
+- [?] les méthodes de la façade ne doivent pas utiliser des objets
+     (internes) au système ; sinon, cela signifie que les acteurs doivent
+     connaître le COMMENT en plus du QUOI
+     - [?]les méthodes chercherXxxx doivent rester privée:s
+     - [x]les méthodes créerXxxx ne doivent pas retourner d'objets (internes)
+       du système
+
+(**Si on met les méthodes chercherXxxx à privée, comment peut-on tester le dernier
+    test dans TestEnregistereOccupationChambre?)
+
+- programmation des cas d'utilisation
+    - « créer chambre » : ok
+    - « check-in » : ok
+    - « check-out » : ok
+- programmation des tests de validation des cas d'utilisation
+    - « créer chambre » : ok
+    - « check-in » : ok
+    - « check-out » : ok
+- programmation des tests unitaires
+    - constructeur ok
+    - [?] l'autre, c'est pas clair entre table de décision et code (détail)
+- equals, hashCode et toString
+    - [x] revoyez le cours sur equals et plus particulièrement la propriété
+         de consistance (vous mettez trop d'attributs, par exemple dans
+         Chambre::equals)
+
+---
+
+# Suivi du mer. 01 avril 2020 08:03:14 CEST
+Denis Conan
+- vous avez demandé le suivi beaucoup trop tard ; donc, uniquement partiel
+- (**On écrit le test selon le préparation,est-ce que vous pouvez expliquer
+     plus présisément,svp?)
+    - nommage correct ; donc, soit correction par vos soins, soit mauvaise
+      appréciation de ma part lors du suivi
+- (**Si on met les méthodes chercherXxxx à privée, comment peut-on tester le
+     dernier test dans TestEnregistereOccupationChambre?)
+    - cf. mon message dans le forum vendredi 27 mars
+- getters/setters (**Est-ce que vous pouvez expliquer plus présisément,svp?)
+    - pb de qualité
+- [x] utilisation des Streams : dans chercherChambre,
+     chambre.getId() == id est une très grosse erreur
+- utilisation de la classe Optional : ok
+- [x] ajout des classes Clefs et PaireDeClefs : pourquoi ClefVide::getValue
+     retourne null ?
+     + dans le diagramme de classes, ce ne peut pas être une composition car
+       il y a des agrégations
+- [x] intégration du patron de conception Singleton : à faire
+- [x] intégration du patron de conception Publier-Souscrire : les temporisations
+     de l'exemple Thread.sleep() n'est pas à mettre dans votre logiciel
+     + qu'est-ce que getPublisher dans la façade ? il n'y a pas de cas
+       d'utilisation dans le diagramme de cas d'utilisation
+     + mauvais nommage de la classe de consommation car c'est le nom d'un
+       acteur ; ambigu par exemple avec Client
+- cas d'utilisation du Sprint 2
+     - [x] « perte sans remplacement » : précondition incomplète car le
+          cahier des charges qui distinguent explicitement deux situations
+          selon que le badge perdu était à la réception ou avec un client
+          => adapter la suite
+          + mauvaise formulation logique de la postcondition
+          + diagramme de séquence avec modélisation de la suppression du badge
+            mal placée
+     - [x] « perte avec remplacement » : à faire
+
+
+---

@@ -1,6 +1,14 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle;
 
+import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
+import eu.telecomsudparis.csc4102.gestionclefshotel.Util;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.Badge;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.Clef;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefs;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenerationClef;
+
+import java.util.Objects;
 
 
 /**
@@ -13,6 +21,7 @@ import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ProblemeDansGenera
  * @see    PaireClefs
  * @see    GestionClefsHotel
  * @author Paul Mabileau
+ * @author Shihui HUANG
  */
 public class Chambre {
 	/**
@@ -61,19 +70,24 @@ public class Chambre {
 		this.sel = sel;
 		this.occupee = false;
 		
-		final byte[] clef1 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
+		final Clef clef1 = new Clef(Util.genererUneNouvelleClef(graine, Integer.toString(sel)));
 		this.sel++;
-		final byte[] clef2 = Util.genererUneNouvelleClef(graine, Integer.toString(sel));
+		final Clef clef2 = new Clef(Util.genererUneNouvelleClef(graine, Integer.toString(sel)));
 		this.sel++;
 		this.paireClefs = new PaireClefs(clef1, clef2);
 		
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Invariant boolean.
+	 *
+	 * @return the boolean
+	 */
 	public boolean invariant() {
 		return this.graine != null && !this.graine.equals("")
-				&& (this.occupee == true && this.badge != null
-					|| this.occupee == false && this.badge == null)
+				&& (this.occupee  && this.badge != null
+					|| !this.occupee && this.badge == null)
 				&& this.paireClefs != null;
 	}
 	
@@ -112,7 +126,7 @@ public class Chambre {
 	 * @param bidirectionnel S'il faut aussi associer la chambre au badge.
 	 * @see                  #associerBadge(Badge)
 	 */
-	public void associerBadge(final Badge badge, boolean bidirectionnel) {
+	public void associerBadge(final Badge badge, final boolean bidirectionnel) {
 		this.badge = badge;
 		
 		if (bidirectionnel) {
@@ -137,28 +151,14 @@ public class Chambre {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierBadge()
 	 */
-	public void dissocierBadge(boolean bidirectionnel) {
+	public void dissocierBadge(final boolean bidirectionnel) {
 		if (bidirectionnel && this.badge != null) {
 			this.badge.dissocierClient(false);
 		}
 		
 		this.badge = null;
 	}
-	
-	/**
-	 * @return La graine de génération de clés de la chambre.
-	 */
-	public String getGraine() {
-		return this.graine;
-	}
-	
-	/**
-	 * @return La sel de génération de clés de la chambre.
-	 */
-	public int getSel() {
-		return this.sel;
-	}
-	
+
 	/**
 	 * @return Si la chambre est occupée ou non.
 	 */
@@ -183,11 +183,11 @@ public class Chambre {
 	 * @throws ProblemeDansGenerationClef Si la génération s'est mal produite.
 	 */
 	public PaireClefs obtenirNouvellePaireClefs() throws ProblemeDansGenerationClef {
-		final PaireClefs paireClefs = new PaireClefs(this.paireClefs.getClef1(),
-													Util.genererUneNouvelleClef(this.graine,
-																				String.format("%010d%n", this.sel)));
+		Clef clef1 = new Clef(this.paireClefs.getClef2());
+		Clef clef2 = new Clef(Util.genererUneNouvelleClef(this.graine, String.format("%010d%n", this.sel)));
+		PaireClefs newPaireClefs = new PaireClefs(clef1, clef2);
 		this.sel++;
-		return paireClefs;
+		return newPaireClefs;
 	}
 	
 	/**
@@ -211,12 +211,35 @@ public class Chambre {
 		
 		assert this.invariant();
 	}
-	
+	/**
+	 * Enregistrer la chambre en marquant la chambre comme non occupée.
+	 */
 	public void enregistrerChambre() {
 		this.occupee = true;
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Implémentation de equals() pour {@link Chambre} pour laquelle l'égalité
+	 * est basée sur les membres {@link #id}, {@link #graine} et {@link #sel}.
+	 * <br>
+	 * <br>
+	 * {@inheritDoc}
+	 *
+	 * @return Si la chambre est égale à l'objet donné.
+	 */
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Chambre chambre = (Chambre) o;
+		return id == chambre.id;
+	}
+
 	/**
 	 * Implémentation de hashCode() pour {@link Chambre} basée sur les membres
 	 * {@link #id}, {@link #graine} et {@link #sel}. <br>
@@ -225,60 +248,14 @@ public class Chambre {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.graine == null ? 0 : this.graine.hashCode());
-		result = prime * result + (int) (this.id ^ this.id >>> 32);
-		result = prime * result + this.sel;
-		return result;
+		return Objects.hash(id);
 	}
-	
-	/**
-	 * Implémentation de equals() pour {@link Chambre} pour laquelle l'égalité
-	 * est basée sur les membres {@link #id}, {@link #graine} et {@link #sel}.
-	 * <br>
-	 * <br>
-	 * {@inheritDoc}
-	 * 
-	 * @return Si la chambre est égale à l'objet donné.
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		
-		if (!(obj instanceof Chambre)) {
-			return false;
-		}
-		
-		final Chambre other = (Chambre) obj;
-		
-		if (this.graine == null) {
-			if (other.graine != null) {
-				return false;
-			}
-		}
-		else if (!this.graine.equals(other.graine)) {
-			return false;
-		}
-		
-		if (this.id != other.id) {
-			return false;
-		}
-		
-		if (this.sel != other.sel) {
-			return false;
-		}
-		
-		return true;
-	}
-	
+
 	/**
 	 * Implémentation de toString() pour {@link Chambre}. <br>
 	 * <br>
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @return Une représentation textuelle de la chambre.
 	 */
 	@Override

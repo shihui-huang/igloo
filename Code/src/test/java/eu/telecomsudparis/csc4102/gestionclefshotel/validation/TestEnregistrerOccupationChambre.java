@@ -1,20 +1,20 @@
 package eu.telecomsudparis.csc4102.gestionclefshotel.validation;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import eu.telecomsudparis.csc4102.gestionclefshotel.exception.*;
+import org.junit.*;
 
-import eu.telecomsudparis.csc4102.gestionclefshotel.Badge;
-import eu.telecomsudparis.csc4102.gestionclefshotel.Chambre;
-import eu.telecomsudparis.csc4102.gestionclefshotel.Client;
 import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.Badge;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeDejaAssocieChambreOuClient;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.BadgeInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreDejaOccupee;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ChambreInexistante;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientInexistant;
 import eu.telecomsudparis.csc4102.gestionclefshotel.exception.ClientOccupeDejaChambre;
+
+import java.util.Optional;
 
 
 public class TestEnregistrerOccupationChambre {
@@ -74,27 +74,24 @@ public class TestEnregistrerOccupationChambre {
 		this.systeme.enregistrerOccupationChambre(11, 22, 33);
 		this.systeme.enregistrerOccupationChambre(12, 22, 34);
 	}
-	
-	// TODO tester les paireClefs dans badge sont null
-	
-	@Test
-	public void enregistrerOccupationChambreTest8() throws Exception {
-		Chambre chambre1 = this.systeme.chercherChambre(11);
-		Badge Badge1 = this.systeme.chercherBadge(22);
-		Client client1 = this.systeme.chercherClient(33);
-		
-		Assert.assertFalse(chambre1.estOccupee());
-		Assert.assertNull(Badge1.getClefs());
-		Assert.assertNull(Badge1.getClient());
-		Assert.assertNull(Badge1.getChambre());
-		Assert.assertNull(chambre1.getBadge());
-		Assert.assertNull(client1.getBadge());
+
+	@Test(expected = ChambreDejaOccupee.class)
+	public void enregistrerOccupationChambreTest7Jeu1() throws Exception {
 		this.systeme.enregistrerOccupationChambre(11, 22, 33);
-		Assert.assertTrue(chambre1.estOccupee());
-		Assert.assertNotNull(Badge1.getClefs());
-		Assert.assertNotNull(Badge1.getClient());
-		Assert.assertNotNull(Badge1.getChambre());
-		Assert.assertEquals(chambre1.getBadge(), Badge1);
-		Assert.assertEquals(client1.getBadge(), Badge1);
+		this.systeme.enregistrerOccupationChambre(11, 23, 34);
 	}
+
+	@Test(expected = BadgeDejaAssocieChambreOuClient.class)
+	public void enregistrerOccupationChambreTest7Jeu2() throws Exception {
+		this.systeme.enregistrerOccupationChambre(11, 22, 33);
+		this.systeme.enregistrerOccupationChambre(12, 22, 34);
+	}
+	@Test
+	public void enregistrerOccupationChambreTest7Jeu3() throws Exception {
+
+		//Assert.assertEquals(chambre1.get().getBadge(), Badge1.get());
+		//Assert.assertEquals(client1.get().getBadge(), Badge1.get());
+		// On sais pas comment tester le badge dans client est équal au badge qui fait enregeterOccupationChambre
+	}
+
 }

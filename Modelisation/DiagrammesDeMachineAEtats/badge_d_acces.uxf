@@ -16,8 +16,8 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>730</x>
-      <y>600</y>
+      <x>1000</x>
+      <y>680</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -114,24 +114,25 @@ Créer par l'administrateur
     <coordinates>
       <x>1020</x>
       <y>340</y>
-      <w>120</w>
+      <w>330</w>
       <h>240</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
-désactivation
-/desactiver()</panel_attributes>
+Perte du Badge
+/declarerPerduDuBadgeSansRemplacement()
+/declarerPerduDuBadgeAvecRemplacement()</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
-      <y>600</y>
-      <w>220</w>
-      <h>30</h>
+      <x>1000</x>
+      <y>630</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -161,5 +162,20 @@ libérer une chambre
 /libererChambre()
 lt=-&gt;</panel_attributes>
     <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>330</y>
+      <w>400</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>
+Perte du Badge
+/declarerPerduDuBadgeSansRemplacement()
+/declarerPerduDuBadgeAvecRemplacement()
+lt=-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;380.0;250.0</additional_attributes>
   </element>
 </diagram>

@@ -1,16 +1,25 @@
-package eu.telecomsudparis.csc4102.gestionclefshotel;
+package eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet;
+
+import java.util.Objects;
+
+import eu.telecomsudparis.csc4102.gestionclefshotel.GestionClefsHotel;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefs;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.objet.clef.PaireClefsVide;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.personne.Client;
+import eu.telecomsudparis.csc4102.gestionclefshotel.entite.salle.Chambre;
 
 /**
  * Classe représentant un badge d'accès permettant de déverrouiller la serrure
  * d'une chambre qui lui a été associée. D'un point de vue modèle, elle est
  * reliée bi-directionnellement à {@link Chambre} et à {@link Client} et
  * uni-directionnellement à {@link PaireClefs}.
- * 
+ *
  * @see    Chambre
  * @see    Client
  * @see    PaireClefs
  * @see    GestionClefsHotel
  * @author Paul Mabileau
+ * @author Shihui HUANG
  */
 public class Badge {
 	/**
@@ -37,18 +46,24 @@ public class Badge {
 	 */
 	public Badge(final long id) {
 		this.id = id;
+		this.paireClefs = PaireClefsVide.getInstance();
 		assert this.invariant();
 	}
-	
+
+	/**
+	 * Les invariants du Badge.
+	 * Soit il est en train d'etre utilisé, la chambre et les paireClefs ne sont pas null,
+	 * le badge du chambre et le badge du client sont ce badge.
+	 * Soit il est en train pas d'etre utilisé,la chambre et parieClefs sont null.
+	 * @return boolean
+	 */
 	public boolean invariant() {
 		return this.client != null
 				&& this.chambre != null
-				&& this.paireClefs != null
-				&& this.chambre.getBadge().equals(this)
-				&& this.client.getBadge().equals(this)
+				&& this.paireClefs != PaireClefsVide.getInstance()
 				|| this.client == null
 					&& this.chambre == null
-					&& this.paireClefs == null;
+					&& this.paireClefs == PaireClefsVide.getInstance();
 	}
 	
 	/**
@@ -73,7 +88,8 @@ public class Badge {
 	public void inscrireClefs(final PaireClefs paireClefs) {
 		this.paireClefs = paireClefs;
 	}
-	
+
+
 	/**
 	 * Vide le badge de sa paire de clefs et dissocie la chambre.
 	 */
@@ -85,7 +101,8 @@ public class Badge {
 			this.dissocierClient();
 		}
 		
-		this.paireClefs = null;
+		this.paireClefs = PaireClefsVide.getInstance();
+		assert this.invariant();
 	}
 	
 	/**
@@ -115,7 +132,7 @@ public class Badge {
 	 *                       chambre.
 	 * @see                  #associerChambre(Chambre)
 	 */
-	public void associerChambre(final Chambre chambre, boolean bidirectionnel) {
+	public void associerChambre(final Chambre chambre, final boolean bidirectionnel) {
 		this.chambre = chambre;
 		
 		if (bidirectionnel) {
@@ -141,7 +158,7 @@ public class Badge {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierChambre()
 	 */
-	public void dissocierChambre(boolean bidirectionnel) {
+	public void dissocierChambre(final boolean bidirectionnel) {
 		if (bidirectionnel && this.chambre != null) {
 			this.chambre.dissocierBadge(false);
 		}
@@ -161,7 +178,7 @@ public class Badge {
 	 * sans enregistrer le badge dans la chambre.
 	 * 
 	 * @param client Le client à associer.
-	 * @see          #associerChambre(Client, boolean)
+	 * @see          #associerClient(Client, boolean)
 	 */
 	public void associerClient(final Client client) {
 		this.associerClient(client, false);
@@ -176,7 +193,7 @@ public class Badge {
 	 *                       client.
 	 * @see                  #associerClient(Client)
 	 */
-	public void associerClient(final Client client, boolean bidirectionnel) {
+	public void associerClient(final Client client, final boolean bidirectionnel) {
 		this.client = client;
 		
 		if (bidirectionnel) {
@@ -202,7 +219,7 @@ public class Badge {
 	 * @param bidirectionnel S'il faut aussi dissocier dans l'autre sens.
 	 * @see                  #dissocierClient()
 	 */
-	public void dissocierClient(boolean bidirectionnel) {
+	public void dissocierClient(final boolean bidirectionnel) {
 		if (bidirectionnel && this.client != null) {
 			this.client.dissocierBadge(false);
 		}
@@ -218,12 +235,9 @@ public class Badge {
 	 */
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (this.id ^ this.id >>> 32);
-		return result;
+		return Objects.hash(id);
 	}
-	
+
 	/**
 	 * Implémentation de equals() pour {@link Badge} pour laquelle l'égalité est
 	 * basée {@link #id}. <br>
@@ -233,24 +247,17 @@ public class Badge {
 	 * @return Si le badge est égal à l'objet donné.
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
+	public boolean equals(final Object o) {
+		if (this == o) {
 			return true;
 		}
-		
-		if (!(obj instanceof Badge)) {
+		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		
-		final Badge other = (Badge) obj;
-		
-		if (this.id != other.id) {
-			return false;
-		}
-		
-		return true;
+		Badge badge = (Badge) o;
+		return id == badge.id;
 	}
-	
+
 	/**
 	 * Implémentation de toString() pour {@link Badge}. <br>
 	 * <br>
